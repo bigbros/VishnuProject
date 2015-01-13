@@ -8,9 +8,11 @@ _Resharper.*/
 Platform/Windows/extern/
 
 Platform/Android/bin/
+Platform/Android/gen/
 Platform/Android/.settings/
 
 Platform/AndroidNative/bin/
+Platform/AndroidNative/gen/
 Platform/AndroidNative/.settings/
 
 # -----[ Visual Studio / Android Eclipse generated ]---
