@@ -1,0 +1,240 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{544D1ED4-DB07-467F-8AF6-C7DC0F0721F3}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>VishnuDLL</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>..\;..\..\..\Test;..\..\..\Engine\Core\include;..\..\..\Engine\Draw;..\..\..\Engine\Draw\GLES2_2D;..\..\..\Engine\Draw\GLES2_3D;..\..\..\Engine\Platform;..\..\..\Engine\Script;..\..\..\Engine\SystemTask;..\..\..\Engine\Utility;..\extern\yajl-1.0.12\include;..\extern\Lua;..\extern\libpng\include;..\extern\freetype2\include;..\extern\OpenGLES\include;$(IncludePath)</IncludePath>
+    <LibraryPath>..\extern\Lua;..\extern\OpenGLES\lib;..\extern\libpng;..\extern\yajl-1.0.12\lib;..\extern\freetype2;$(LibraryPath)</LibraryPath>
+    <OutDir>..\VishnuDev\Package</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;_CRT_SECURE_NO_WARNINGS;VISHNUDLL_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <CompileAsWinRT>false</CompileAsWinRT>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>libEGL.lib;libGLESv2.lib;Lua.lib;yajl.lib;libpng16.lib;zlib.lib;freetype253_D.lib;Winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;VISHNUDLL_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\Engine\Collision\Collision2D.h" />
+    <ClInclude Include="..\..\..\Engine\Collision\Collision3D.h" />
+    <ClInclude Include="..\..\..\Engine\Core\include\CVSNEngineHeap.h" />
+    <ClInclude Include="..\..\..\Engine\Core\include\CVSNGameEnvironment.h" />
+    <ClInclude Include="..\..\..\Engine\Core\include\CVSNObj.h" />
+    <ClInclude Include="..\..\..\Engine\Core\include\CVSNPropertyFunc.h" />
+    <ClInclude Include="..\..\..\Engine\Core\include\CVSNTask.h" />
+    <ClInclude Include="..\..\..\Engine\Draw\CGLAlloc.h" />
+    <ClInclude Include="..\..\..\Engine\Draw\CGLBase.h" />
+    <ClInclude Include="..\..\..\Engine\Draw\CGLEnv.h" />
+    <ClInclude Include="..\..\..\Engine\Draw\CGLObj.h" />
+    <ClInclude Include="..\..\..\Engine\Draw\CGLShader.h" />
+    <ClInclude Include="..\..\..\Engine\Draw\CGLTex.h" />
+    <ClInclude Include="..\..\..\Engine\Draw\dtypes.h" />
+    <ClInclude Include="..\..\..\Engine\Draw\GLES2_2D\C2DDefaultShader.h" />
+    <ClInclude Include="..\..\..\Engine\Draw\GLES2_2D\C2DDrawEnv.h" />
+    <ClInclude Include="..\..\..\Engine\Draw\GLES2_2D\C2DDrawQueue.h" />
+    <ClInclude Include="..\..\..\Engine\Draw\GLES2_2D\c2dgles.h" />
+    <ClInclude Include="..\..\..\Engine\Draw\GLES2_2D\C2DNullObj.h" />
+    <ClInclude Include="..\..\..\Engine\Draw\GLES2_2D\C2DObj.h" />
+    <ClInclude Include="..\..\..\Engine\Draw\GLES2_2D\C2DQueueItem.h" />
+    <ClInclude Include="..\..\..\Engine\Draw\GLES2_2D\C2DRenderer.h" />
+    <ClInclude Include="..\..\..\Engine\Draw\GLES2_2D\C2DSprite.h" />
+    <ClInclude Include="..\..\..\Engine\Draw\GLES2_2D\C2DTexOT.h" />
+    <ClInclude Include="..\..\..\Engine\Draw\GLES2_3D\C3DCameraObj.h" />
+    <ClInclude Include="..\..\..\Engine\Draw\GLES2_3D\C3DCelestialSphereShader.h" />
+    <ClInclude Include="..\..\..\Engine\Draw\GLES2_3D\C3DCharacter.h" />
+    <ClInclude Include="..\..\..\Engine\Draw\GLES2_3D\C3DDefaultShader.h" />
+    <ClInclude Include="..\..\..\Engine\Draw\GLES2_3D\C3DDrawable.h" />
+    <ClInclude Include="..\..\..\Engine\Draw\GLES2_3D\C3DDrawEnv.h" />
+    <ClInclude Include="..\..\..\Engine\Draw\GLES2_3D\C3DGLDrawObj.h" />
+    <ClInclude Include="..\..\..\Engine\Draw\GLES2_3D\c3dgles.h" />
+    <ClInclude Include="..\..\..\Engine\Draw\GLES2_3D\C3DLog.h" />
+    <ClInclude Include="..\..\..\Engine\Draw\GLES2_3D\C3DMaterial.h" />
+    <ClInclude Include="..\..\..\Engine\Draw\GLES2_3D\C3DModel.h" />
+    <ClInclude Include="..\..\..\Engine\Draw\GLES2_3D\C3DNullObj.h" />
+    <ClInclude Include="..\..\..\Engine\Draw\GLES2_3D\C3DObj.h" />
+    <ClInclude Include="..\..\..\Engine\Draw\Types2D.h" />
+    <ClInclude Include="..\..\..\Engine\Draw\Types3D.h" />
+    <ClInclude Include="..\..\..\Engine\Platform\CVSNPlatform.h" />
+    <ClInclude Include="..\..\..\Engine\Platform\CVSNPointing.h" />
+    <ClInclude Include="..\..\..\Engine\Platform\CVSNStorage.h" />
+    <ClInclude Include="..\..\..\Engine\Platform\CVSNThread.h" />
+    <ClInclude Include="..\..\..\Engine\Platform\CVSNTouchPanel.h" />
+    <ClInclude Include="..\..\..\Engine\Platform\platform.h" />
+    <ClInclude Include="..\..\..\Engine\Platform\PlatformUtil.h" />
+    <ClInclude Include="..\..\..\Engine\Script\CVSNLuaScript.h" />
+    <ClInclude Include="..\..\..\Engine\Script\CVSNPythonScript.h" />
+    <ClInclude Include="..\..\..\Engine\Script\CVSNScript.h" />
+    <ClInclude Include="..\..\..\Engine\Script\CVSNScriptTask.h" />
+    <ClInclude Include="..\..\..\Engine\Script\CVSNSquirrelScript.h" />
+    <ClInclude Include="..\..\..\Engine\Script\IVSNScriptUtilFunc.h" />
+    <ClInclude Include="..\..\..\Engine\SystemTask\CVSNDraw2D.h" />
+    <ClInclude Include="..\..\..\Engine\SystemTask\CVSNDraw3D.h" />
+    <ClInclude Include="..\..\..\Engine\SystemTask\CVSNPointingDevice.h" />
+    <ClInclude Include="..\..\..\Engine\SystemTask\CVSNScriptDriver.h" />
+    <ClInclude Include="..\..\..\Engine\Utility\CVSN3DKVModel.h" />
+    <ClInclude Include="..\..\..\Engine\Utility\CVSN3DLightVecFunc.h" />
+    <ClInclude Include="..\..\..\Engine\Utility\CVSNFontTex.h" />
+    <ClInclude Include="..\..\..\Engine\Utility\CVSNJsonKVObj.h" />
+    <ClInclude Include="..\..\..\Engine\Utility\CVSNKVObj.h" />
+    <ClInclude Include="..\..\..\Engine\Utility\CVSNPNGTex.h" />
+    <ClInclude Include="..\..\..\Engine\Utility\CVSNUtil.h" />
+    <ClInclude Include="..\..\..\Test\CTestEnv.h" />
+    <ClInclude Include="..\..\..\UserTask\CVSNBoneTest.h" />
+    <ClInclude Include="..\..\..\UserTask\CVSNTest2D.h" />
+    <ClInclude Include="..\..\..\UserTask\CVSNTestCamera.h" />
+    <ClInclude Include="..\..\..\UserTask\CVSNTestTask.h" />
+    <ClInclude Include="..\CVSNWin32FS.h" />
+    <ClInclude Include="..\CVSNWin32Thread.h" />
+    <ClInclude Include="..\CWin32GLES2.h" />
+    <ClInclude Include="CVishnuSystem.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="targetver.h" />
+    <ClInclude Include="VishnuDLL.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\Engine\Core\CVSNEngineHeap.cpp" />
+    <ClCompile Include="..\..\..\Engine\Core\CVSNGameEnvironment.cpp" />
+    <ClCompile Include="..\..\..\Engine\Core\CVSNObj.cpp" />
+    <ClCompile Include="..\..\..\Engine\Core\CVSNTask.cpp" />
+    <ClCompile Include="..\..\..\Engine\Draw\CGLAlloc.cpp" />
+    <ClCompile Include="..\..\..\Engine\Draw\CGLBase.cpp" />
+    <ClCompile Include="..\..\..\Engine\Draw\CGLEnv.cpp" />
+    <ClCompile Include="..\..\..\Engine\Draw\CGLObj.cpp" />
+    <ClCompile Include="..\..\..\Engine\Draw\CGLShader.cpp" />
+    <ClCompile Include="..\..\..\Engine\Draw\CGLTex.cpp" />
+    <ClCompile Include="..\..\..\Engine\Draw\GLES2_2D\C2DDefaultShader.cpp" />
+    <ClCompile Include="..\..\..\Engine\Draw\GLES2_2D\C2DDrawEnv.cpp" />
+    <ClCompile Include="..\..\..\Engine\Draw\GLES2_2D\C2DDrawQueue.cpp" />
+    <ClCompile Include="..\..\..\Engine\Draw\GLES2_2D\C2DNullObj.cpp" />
+    <ClCompile Include="..\..\..\Engine\Draw\GLES2_2D\C2DObj.cpp" />
+    <ClCompile Include="..\..\..\Engine\Draw\GLES2_2D\C2DQueueItem.cpp" />
+    <ClCompile Include="..\..\..\Engine\Draw\GLES2_2D\C2DSprite.cpp" />
+    <ClCompile Include="..\..\..\Engine\Draw\GLES2_2D\C2DTexOT.cpp" />
+    <ClCompile Include="..\..\..\Engine\Draw\GLES2_3D\C3DCameraObj.cpp" />
+    <ClCompile Include="..\..\..\Engine\Draw\GLES2_3D\C3DCelestialSphereShader.cpp" />
+    <ClCompile Include="..\..\..\Engine\Draw\GLES2_3D\C3DCharacter.cpp" />
+    <ClCompile Include="..\..\..\Engine\Draw\GLES2_3D\C3DDefaultShader.cpp" />
+    <ClCompile Include="..\..\..\Engine\Draw\GLES2_3D\C3DDrawable.cpp" />
+    <ClCompile Include="..\..\..\Engine\Draw\GLES2_3D\C3DDrawEnv.cpp" />
+    <ClCompile Include="..\..\..\Engine\Draw\GLES2_3D\C3DMaterial.cpp" />
+    <ClCompile Include="..\..\..\Engine\Draw\GLES2_3D\C3DModel.cpp" />
+    <ClCompile Include="..\..\..\Engine\Draw\GLES2_3D\C3DNullObj.cpp" />
+    <ClCompile Include="..\..\..\Engine\Draw\GLES2_3D\C3DObj.cpp" />
+    <ClCompile Include="..\..\..\Engine\Draw\Types2D.cpp" />
+    <ClCompile Include="..\..\..\Engine\Draw\Types3D.cpp" />
+    <ClCompile Include="..\..\..\Engine\Platform\CVSNPlatform.cpp" />
+    <ClCompile Include="..\..\..\Engine\Platform\CVSNPointing.cpp" />
+    <ClCompile Include="..\..\..\Engine\Platform\CVSNStorage.cpp" />
+    <ClCompile Include="..\..\..\Engine\Platform\CVSNThread.cpp" />
+    <ClCompile Include="..\..\..\Engine\Script\CVSNLuaScript.cpp" />
+    <ClCompile Include="..\..\..\Engine\Script\CVSNPythonScript.cpp" />
+    <ClCompile Include="..\..\..\Engine\Script\CVSNScript.cpp" />
+    <ClCompile Include="..\..\..\Engine\Script\CVSNScriptTask.cpp" />
+    <ClCompile Include="..\..\..\Engine\Script\CVSNSquirrelScript.cpp" />
+    <ClCompile Include="..\..\..\Engine\Script\IVSNScriptUtilFunc.cpp" />
+    <ClCompile Include="..\..\..\Engine\SystemTask\CVSNDraw2D.cpp" />
+    <ClCompile Include="..\..\..\Engine\SystemTask\CVSNDraw3D.cpp" />
+    <ClCompile Include="..\..\..\Engine\SystemTask\CVSNPointingDevice.cpp" />
+    <ClCompile Include="..\..\..\Engine\SystemTask\CVSNScriptDriver.cpp" />
+    <ClCompile Include="..\..\..\Engine\Utility\CVSN3DKVModel.cpp" />
+    <ClCompile Include="..\..\..\Engine\Utility\CVSN3DLightVecFunc.cpp" />
+    <ClCompile Include="..\..\..\Engine\Utility\CVSNJsonKVObj.cpp" />
+    <ClCompile Include="..\..\..\Engine\Utility\CVSNKVObj.cpp" />
+    <ClCompile Include="..\..\..\Engine\Utility\CVSNPNGTex.cpp" />
+    <ClCompile Include="..\..\..\Engine\Utility\CVSNUtil.cpp" />
+    <ClCompile Include="..\..\..\Test\CTestEnv.cpp" />
+    <ClCompile Include="..\..\..\UserTask\CVSNBoneTest.cpp" />
+    <ClCompile Include="..\..\..\UserTask\CVSNTest2D.cpp" />
+    <ClCompile Include="..\..\..\UserTask\CVSNTestCamera.cpp" />
+    <ClCompile Include="..\..\..\UserTask\CVSNTestTask.cpp" />
+    <ClCompile Include="..\CVSNWin32FS.cpp" />
+    <ClCompile Include="..\CVSNWin32Thread.cpp" />
+    <ClCompile Include="..\CWin32GLES2.cpp" />
+    <ClCompile Include="CVishnuSystem.cpp" />
+    <ClCompile Include="dllmain.cpp">
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</CompileAsManaged>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </PrecompiledHeader>
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</CompileAsManaged>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="VishnuDLL.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

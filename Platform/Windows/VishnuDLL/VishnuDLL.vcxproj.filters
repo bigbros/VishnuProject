@@ -1,0 +1,513 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="ソース ファイル">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="ヘッダー ファイル">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="リソース ファイル">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="ソース ファイル\Engine">
+      <UniqueIdentifier>{b026e537-7503-4cb1-86a0-8eb90070d7ed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Engine\Core">
+      <UniqueIdentifier>{798a89c1-0bbc-48c9-9261-4e5d2d94c788}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Engine\Draw">
+      <UniqueIdentifier>{f1630095-c091-4aef-bdf2-91c248d99a5e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Engine\Draw\GLES2_2D">
+      <UniqueIdentifier>{55171c02-c149-453f-8c5e-72158fe5e0bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Engine\Draw\GLES2_3D">
+      <UniqueIdentifier>{b7a35622-ee03-445a-abb5-5cd2b55679f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Engine\Platform">
+      <UniqueIdentifier>{87f1411e-9bbf-4e2c-a2ce-6be6004c8d44}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Engine\Script">
+      <UniqueIdentifier>{962c2011-3a58-4bad-8231-5620d5e03afb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Engine\SystemTask">
+      <UniqueIdentifier>{e067e235-4dfb-4099-9a2a-edb18be1a004}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Engine\Utility">
+      <UniqueIdentifier>{5de324d0-3b8c-44b4-9b2f-f39e9b45a1f5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Engine">
+      <UniqueIdentifier>{df257b7c-5f9b-46dd-b2d8-bf3443a9db98}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Engine\Core">
+      <UniqueIdentifier>{ed982be9-cb9c-4f22-bef4-f608417ead8f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Engine\Draw">
+      <UniqueIdentifier>{5b265c76-8e5c-49fa-824d-76314cd528a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Engine\Utility">
+      <UniqueIdentifier>{8178f3e5-660c-4397-a8bf-28ad74c3bb47}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Engine\SystemTask">
+      <UniqueIdentifier>{c8a45705-dae9-4720-8ef7-86b3cfde1d9c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Engine\Script">
+      <UniqueIdentifier>{a9bf2599-8ffe-4697-9d7e-6374bf8f11a4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Engine\Platform">
+      <UniqueIdentifier>{59a27e1c-3060-45fa-a297-02a3082f99a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Engine\Draw\GLES2_2D">
+      <UniqueIdentifier>{0cc9303c-526b-44ef-9873-ec4d3556383f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Engine\Draw\GLES2_3D">
+      <UniqueIdentifier>{f1deaecb-97cc-4de4-b3e8-666de9e23bca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\UserTask">
+      <UniqueIdentifier>{a4402624-8036-409d-9f75-c796990b4e28}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\UserTask">
+      <UniqueIdentifier>{00ca5f60-d97c-4576-a40c-c04373a9ab44}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Windows">
+      <UniqueIdentifier>{c56f2f25-49e1-45c1-9965-c8b75b0ac9e4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Windows">
+      <UniqueIdentifier>{96312e77-8c55-4392-916d-9f5c33d05f45}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Test">
+      <UniqueIdentifier>{779c290e-61d2-492b-81e9-90595a43b2bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Test">
+      <UniqueIdentifier>{3df434b0-33ed-43fc-8e12-e6df5fca761c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Engine\Collision">
+      <UniqueIdentifier>{2787403a-b2f8-47c8-a97b-35634d6b1188}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Engine\Collision">
+      <UniqueIdentifier>{9591990c-da08-4288-aaa3-c8f941bdc79c}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="VishnuDLL.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\Core\include\CVSNPropertyFunc.h">
+      <Filter>ヘッダー ファイル\Engine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\Core\include\CVSNTask.h">
+      <Filter>ヘッダー ファイル\Engine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\Core\include\CVSNEngineHeap.h">
+      <Filter>ヘッダー ファイル\Engine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\Core\include\CVSNGameEnvironment.h">
+      <Filter>ヘッダー ファイル\Engine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\Core\include\CVSNObj.h">
+      <Filter>ヘッダー ファイル\Engine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\Draw\CGLBase.h">
+      <Filter>ヘッダー ファイル\Engine\Draw</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\Draw\CGLEnv.h">
+      <Filter>ヘッダー ファイル\Engine\Draw</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\Draw\CGLObj.h">
+      <Filter>ヘッダー ファイル\Engine\Draw</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\Draw\CGLShader.h">
+      <Filter>ヘッダー ファイル\Engine\Draw</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\Draw\CGLTex.h">
+      <Filter>ヘッダー ファイル\Engine\Draw</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\Draw\dtypes.h">
+      <Filter>ヘッダー ファイル\Engine\Draw</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\Draw\Types2D.h">
+      <Filter>ヘッダー ファイル\Engine\Draw</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\Draw\Types3D.h">
+      <Filter>ヘッダー ファイル\Engine\Draw</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\Draw\CGLAlloc.h">
+      <Filter>ヘッダー ファイル\Engine\Draw</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\Draw\GLES2_2D\C2DRenderer.h">
+      <Filter>ヘッダー ファイル\Engine\Draw\GLES2_2D</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\Draw\GLES2_2D\C2DSprite.h">
+      <Filter>ヘッダー ファイル\Engine\Draw\GLES2_2D</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\Draw\GLES2_2D\C2DTexOT.h">
+      <Filter>ヘッダー ファイル\Engine\Draw\GLES2_2D</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\Draw\GLES2_2D\C2DDefaultShader.h">
+      <Filter>ヘッダー ファイル\Engine\Draw\GLES2_2D</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\Draw\GLES2_2D\C2DDrawEnv.h">
+      <Filter>ヘッダー ファイル\Engine\Draw\GLES2_2D</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\Draw\GLES2_2D\C2DDrawQueue.h">
+      <Filter>ヘッダー ファイル\Engine\Draw\GLES2_2D</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\Draw\GLES2_2D\c2dgles.h">
+      <Filter>ヘッダー ファイル\Engine\Draw\GLES2_2D</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\Draw\GLES2_2D\C2DNullObj.h">
+      <Filter>ヘッダー ファイル\Engine\Draw\GLES2_2D</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\Draw\GLES2_2D\C2DObj.h">
+      <Filter>ヘッダー ファイル\Engine\Draw\GLES2_2D</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\Draw\GLES2_2D\C2DQueueItem.h">
+      <Filter>ヘッダー ファイル\Engine\Draw\GLES2_2D</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\Draw\GLES2_3D\C3DModel.h">
+      <Filter>ヘッダー ファイル\Engine\Draw\GLES2_3D</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\Draw\GLES2_3D\C3DNullObj.h">
+      <Filter>ヘッダー ファイル\Engine\Draw\GLES2_3D</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\Draw\GLES2_3D\C3DObj.h">
+      <Filter>ヘッダー ファイル\Engine\Draw\GLES2_3D</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\Draw\GLES2_3D\C3DCameraObj.h">
+      <Filter>ヘッダー ファイル\Engine\Draw\GLES2_3D</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\Draw\GLES2_3D\C3DCharacter.h">
+      <Filter>ヘッダー ファイル\Engine\Draw\GLES2_3D</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\Draw\GLES2_3D\C3DDefaultShader.h">
+      <Filter>ヘッダー ファイル\Engine\Draw\GLES2_3D</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\Draw\GLES2_3D\C3DDrawable.h">
+      <Filter>ヘッダー ファイル\Engine\Draw\GLES2_3D</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\Draw\GLES2_3D\C3DDrawEnv.h">
+      <Filter>ヘッダー ファイル\Engine\Draw\GLES2_3D</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\Draw\GLES2_3D\C3DGLDrawObj.h">
+      <Filter>ヘッダー ファイル\Engine\Draw\GLES2_3D</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\Draw\GLES2_3D\c3dgles.h">
+      <Filter>ヘッダー ファイル\Engine\Draw\GLES2_3D</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\Draw\GLES2_3D\C3DLog.h">
+      <Filter>ヘッダー ファイル\Engine\Draw\GLES2_3D</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\Utility\CVSNFontTex.h">
+      <Filter>ヘッダー ファイル\Engine\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\Utility\CVSNJsonKVObj.h">
+      <Filter>ヘッダー ファイル\Engine\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\Utility\CVSNKVObj.h">
+      <Filter>ヘッダー ファイル\Engine\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\Utility\CVSNPNGTex.h">
+      <Filter>ヘッダー ファイル\Engine\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\Utility\CVSNUtil.h">
+      <Filter>ヘッダー ファイル\Engine\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\Utility\CVSN3DKVModel.h">
+      <Filter>ヘッダー ファイル\Engine\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\Utility\CVSN3DLightVecFunc.h">
+      <Filter>ヘッダー ファイル\Engine\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\SystemTask\CVSNDraw3D.h">
+      <Filter>ヘッダー ファイル\Engine\SystemTask</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\SystemTask\CVSNPointingDevice.h">
+      <Filter>ヘッダー ファイル\Engine\SystemTask</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\SystemTask\CVSNScriptDriver.h">
+      <Filter>ヘッダー ファイル\Engine\SystemTask</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\SystemTask\CVSNDraw2D.h">
+      <Filter>ヘッダー ファイル\Engine\SystemTask</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\Script\CVSNScriptTask.h">
+      <Filter>ヘッダー ファイル\Engine\Script</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\Script\CVSNSquirrelScript.h">
+      <Filter>ヘッダー ファイル\Engine\Script</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\Script\IVSNScriptUtilFunc.h">
+      <Filter>ヘッダー ファイル\Engine\Script</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\Script\CVSNLuaScript.h">
+      <Filter>ヘッダー ファイル\Engine\Script</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\Script\CVSNPythonScript.h">
+      <Filter>ヘッダー ファイル\Engine\Script</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\Script\CVSNScript.h">
+      <Filter>ヘッダー ファイル\Engine\Script</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\Platform\CVSNThread.h">
+      <Filter>ヘッダー ファイル\Engine\Platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\Platform\CVSNTouchPanel.h">
+      <Filter>ヘッダー ファイル\Engine\Platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\Platform\platform.h">
+      <Filter>ヘッダー ファイル\Engine\Platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\Platform\PlatformUtil.h">
+      <Filter>ヘッダー ファイル\Engine\Platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\Platform\CVSNPlatform.h">
+      <Filter>ヘッダー ファイル\Engine\Platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\Platform\CVSNPointing.h">
+      <Filter>ヘッダー ファイル\Engine\Platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\Platform\CVSNStorage.h">
+      <Filter>ヘッダー ファイル\Engine\Platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\UserTask\CVSNBoneTest.h">
+      <Filter>ヘッダー ファイル\UserTask</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\UserTask\CVSNTest2D.h">
+      <Filter>ヘッダー ファイル\UserTask</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\UserTask\CVSNTestCamera.h">
+      <Filter>ヘッダー ファイル\UserTask</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\UserTask\CVSNTestTask.h">
+      <Filter>ヘッダー ファイル\UserTask</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CVSNWin32Thread.h">
+      <Filter>ヘッダー ファイル\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CWin32GLES2.h">
+      <Filter>ヘッダー ファイル\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CVSNWin32FS.h">
+      <Filter>ヘッダー ファイル\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Test\CTestEnv.h">
+      <Filter>ヘッダー ファイル\Test</Filter>
+    </ClInclude>
+    <ClInclude Include="CVishnuSystem.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\Draw\GLES2_3D\C3DMaterial.h">
+      <Filter>ヘッダー ファイル\Engine\Draw\GLES2_3D</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\Collision\Collision3D.h">
+      <Filter>ヘッダー ファイル\Engine\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\Collision\Collision2D.h">
+      <Filter>ヘッダー ファイル\Engine\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\Draw\GLES2_3D\C3DCelestialSphereShader.h">
+      <Filter>ヘッダー ファイル\Engine\Draw\GLES2_3D</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="VishnuDLL.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="dllmain.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\Core\CVSNEngineHeap.cpp">
+      <Filter>ソース ファイル\Engine\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\Core\CVSNGameEnvironment.cpp">
+      <Filter>ソース ファイル\Engine\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\Core\CVSNObj.cpp">
+      <Filter>ソース ファイル\Engine\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\Core\CVSNTask.cpp">
+      <Filter>ソース ファイル\Engine\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\Draw\CGLAlloc.cpp">
+      <Filter>ソース ファイル\Engine\Draw</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\Draw\CGLBase.cpp">
+      <Filter>ソース ファイル\Engine\Draw</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\Draw\CGLEnv.cpp">
+      <Filter>ソース ファイル\Engine\Draw</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\Draw\CGLObj.cpp">
+      <Filter>ソース ファイル\Engine\Draw</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\Draw\CGLShader.cpp">
+      <Filter>ソース ファイル\Engine\Draw</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\Draw\CGLTex.cpp">
+      <Filter>ソース ファイル\Engine\Draw</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\Draw\Types2D.cpp">
+      <Filter>ソース ファイル\Engine\Draw</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\Draw\Types3D.cpp">
+      <Filter>ソース ファイル\Engine\Draw</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\Draw\GLES2_2D\C2DDrawQueue.cpp">
+      <Filter>ソース ファイル\Engine\Draw\GLES2_2D</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\Draw\GLES2_2D\C2DNullObj.cpp">
+      <Filter>ソース ファイル\Engine\Draw\GLES2_2D</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\Draw\GLES2_2D\C2DObj.cpp">
+      <Filter>ソース ファイル\Engine\Draw\GLES2_2D</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\Draw\GLES2_2D\C2DQueueItem.cpp">
+      <Filter>ソース ファイル\Engine\Draw\GLES2_2D</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\Draw\GLES2_2D\C2DSprite.cpp">
+      <Filter>ソース ファイル\Engine\Draw\GLES2_2D</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\Draw\GLES2_2D\C2DTexOT.cpp">
+      <Filter>ソース ファイル\Engine\Draw\GLES2_2D</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\Draw\GLES2_2D\C2DDefaultShader.cpp">
+      <Filter>ソース ファイル\Engine\Draw\GLES2_2D</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\Draw\GLES2_2D\C2DDrawEnv.cpp">
+      <Filter>ソース ファイル\Engine\Draw\GLES2_2D</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\Draw\GLES2_3D\C3DCameraObj.cpp">
+      <Filter>ソース ファイル\Engine\Draw\GLES2_3D</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\Draw\GLES2_3D\C3DCharacter.cpp">
+      <Filter>ソース ファイル\Engine\Draw\GLES2_3D</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\Draw\GLES2_3D\C3DDefaultShader.cpp">
+      <Filter>ソース ファイル\Engine\Draw\GLES2_3D</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\Draw\GLES2_3D\C3DDrawable.cpp">
+      <Filter>ソース ファイル\Engine\Draw\GLES2_3D</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\Draw\GLES2_3D\C3DDrawEnv.cpp">
+      <Filter>ソース ファイル\Engine\Draw\GLES2_3D</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\Draw\GLES2_3D\C3DModel.cpp">
+      <Filter>ソース ファイル\Engine\Draw\GLES2_3D</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\Draw\GLES2_3D\C3DNullObj.cpp">
+      <Filter>ソース ファイル\Engine\Draw\GLES2_3D</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\Draw\GLES2_3D\C3DObj.cpp">
+      <Filter>ソース ファイル\Engine\Draw\GLES2_3D</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\Utility\CVSN3DLightVecFunc.cpp">
+      <Filter>ソース ファイル\Engine\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\Utility\CVSNJsonKVObj.cpp">
+      <Filter>ソース ファイル\Engine\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\Utility\CVSNKVObj.cpp">
+      <Filter>ソース ファイル\Engine\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\Utility\CVSNPNGTex.cpp">
+      <Filter>ソース ファイル\Engine\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\Utility\CVSNUtil.cpp">
+      <Filter>ソース ファイル\Engine\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\Utility\CVSN3DKVModel.cpp">
+      <Filter>ソース ファイル\Engine\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\SystemTask\CVSNDraw3D.cpp">
+      <Filter>ソース ファイル\Engine\SystemTask</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\SystemTask\CVSNPointingDevice.cpp">
+      <Filter>ソース ファイル\Engine\SystemTask</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\SystemTask\CVSNScriptDriver.cpp">
+      <Filter>ソース ファイル\Engine\SystemTask</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\SystemTask\CVSNDraw2D.cpp">
+      <Filter>ソース ファイル\Engine\SystemTask</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\Script\CVSNScript.cpp">
+      <Filter>ソース ファイル\Engine\Script</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\Script\CVSNScriptTask.cpp">
+      <Filter>ソース ファイル\Engine\Script</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\Script\CVSNSquirrelScript.cpp">
+      <Filter>ソース ファイル\Engine\Script</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\Script\IVSNScriptUtilFunc.cpp">
+      <Filter>ソース ファイル\Engine\Script</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\Script\CVSNLuaScript.cpp">
+      <Filter>ソース ファイル\Engine\Script</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\Script\CVSNPythonScript.cpp">
+      <Filter>ソース ファイル\Engine\Script</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\Platform\CVSNPlatform.cpp">
+      <Filter>ソース ファイル\Engine\Platform</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\Platform\CVSNPointing.cpp">
+      <Filter>ソース ファイル\Engine\Platform</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\Platform\CVSNStorage.cpp">
+      <Filter>ソース ファイル\Engine\Platform</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\Platform\CVSNThread.cpp">
+      <Filter>ソース ファイル\Engine\Platform</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\UserTask\CVSNBoneTest.cpp">
+      <Filter>ソース ファイル\UserTask</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\UserTask\CVSNTest2D.cpp">
+      <Filter>ソース ファイル\UserTask</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\UserTask\CVSNTestCamera.cpp">
+      <Filter>ソース ファイル\UserTask</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\UserTask\CVSNTestTask.cpp">
+      <Filter>ソース ファイル\UserTask</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CVSNWin32FS.cpp">
+      <Filter>ソース ファイル\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CVSNWin32Thread.cpp">
+      <Filter>ソース ファイル\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CWin32GLES2.cpp">
+      <Filter>ソース ファイル\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Test\CTestEnv.cpp">
+      <Filter>ソース ファイル\Test</Filter>
+    </ClCompile>
+    <ClCompile Include="CVishnuSystem.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\Draw\GLES2_3D\C3DMaterial.cpp">
+      <Filter>ソース ファイル\Engine\Draw\GLES2_3D</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\Draw\GLES2_3D\C3DCelestialSphereShader.cpp">
+      <Filter>ソース ファイル\Engine\Draw\GLES2_3D</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

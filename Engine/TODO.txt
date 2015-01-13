@@ -1,0 +1,73 @@
+
+予定作業(思いつくたび書く)
+
+
+高水準入力システムタスク
+	ダブルクリック(タップ)、長押し、フリック、スワイプ、各種ゼスチャなどをポインティングデバイスの入力に従って認識し、登録リスナに通知する
+
+別スクリプト言語対応
+	Python
+	Squirrel
+
+
+
+KVS読み込み
+	MsgPack
+	PythonTable
+
+		Utility
+		Android
+		PSvita
+
+
+	keychainモジュール
+		Windows(emulation)
+		iOS
+		Android
+		PSvita
+
+	HTTPモジュール
+		Windows
+		iOS
+		Android
+		PSvita
+
+	Socketモジュール
+		Windows
+		iOS
+		Android
+		PSvita
+
+	threadモジュール
+		Windows
+		iOS
+		Android
+		PSvita
+
+		※各platform上でthreadを扱うためのモジュール。iOS/Androidはpthread使用、WindowsはWinThread。vitaは不明。
+
+	UIモジュール
+		テキストテクスチャ
+			Windows
+			iOS
+			Android
+			PSvita
+
+		※各platform間でのLook&feelが概ね一緒になるように、各種UI部品(label,textbox等)はGLES2で実装。
+		　キーボード表示のon/offや、UIが見えなくなるようであればViewを持ち上げる、GLESでテキストを表示できるように、
+		　文字列をテクスチャに使えるビットマップに変換する、などのAPIを用意。
+
+	ローカルDB
+		sqlite3
+
+	Windows開発環境
+		C#処理系との連携
+		統合環境
+			Pause/Resume動作のエミュレーション
+			ゲーム側ヒープビジュアライザ
+			フレーム送り処理
+			2D scenegraph
+				UI form
+
+			3D scenegraph
+				stage layout
