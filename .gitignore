@@ -15,6 +15,8 @@ Platform/AndroidNative/bin/
 Platform/AndroidNative/gen/
 Platform/AndroidNative/.settings/
 
+[Dd]esktop.ini
+
 # -----[ Visual Studio / Android Eclipse generated ]---
 *.obj
 *.exe
