@@ -321,6 +321,9 @@
     <ClInclude Include="..\..\..\Engine\Draw\GLES2_3D\C3DCelestialSphereShader.h">
       <Filter>ヘッダー ファイル\Engine\Draw\GLES2_3D</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\Engine\Draw\GLES2_3D\C3DCelestialSphere.h">
+      <Filter>ヘッダー ファイル\Engine\Draw\GLES2_3D</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -507,6 +510,9 @@
       <Filter>ソース ファイル\Engine\Draw\GLES2_3D</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\Engine\Draw\GLES2_3D\C3DCelestialSphereShader.cpp">
+      <Filter>ソース ファイル\Engine\Draw\GLES2_3D</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\Draw\GLES2_3D\C3DCelestialSphere.cpp">
       <Filter>ソース ファイル\Engine\Draw\GLES2_3D</Filter>
     </ClCompile>
   </ItemGroup>

@@ -109,6 +109,7 @@
     <ClInclude Include="..\..\..\Engine\Draw\GLES2_2D\C2DSprite.h" />
     <ClInclude Include="..\..\..\Engine\Draw\GLES2_2D\C2DTexOT.h" />
     <ClInclude Include="..\..\..\Engine\Draw\GLES2_3D\C3DCameraObj.h" />
+    <ClInclude Include="..\..\..\Engine\Draw\GLES2_3D\C3DCelestialSphere.h" />
     <ClInclude Include="..\..\..\Engine\Draw\GLES2_3D\C3DCelestialSphereShader.h" />
     <ClInclude Include="..\..\..\Engine\Draw\GLES2_3D\C3DCharacter.h" />
     <ClInclude Include="..\..\..\Engine\Draw\GLES2_3D\C3DDefaultShader.h" />
@@ -180,6 +181,7 @@
     <ClCompile Include="..\..\..\Engine\Draw\GLES2_2D\C2DSprite.cpp" />
     <ClCompile Include="..\..\..\Engine\Draw\GLES2_2D\C2DTexOT.cpp" />
     <ClCompile Include="..\..\..\Engine\Draw\GLES2_3D\C3DCameraObj.cpp" />
+    <ClCompile Include="..\..\..\Engine\Draw\GLES2_3D\C3DCelestialSphere.cpp" />
     <ClCompile Include="..\..\..\Engine\Draw\GLES2_3D\C3DCelestialSphereShader.cpp" />
     <ClCompile Include="..\..\..\Engine\Draw\GLES2_3D\C3DCharacter.cpp" />
     <ClCompile Include="..\..\..\Engine\Draw\GLES2_3D\C3DDefaultShader.cpp" />
