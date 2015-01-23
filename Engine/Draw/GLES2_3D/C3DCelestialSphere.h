@@ -3,10 +3,15 @@
 
 #include "C3DMaterial.h"
 #include "C3DDrawable.h"
+#include "C3DCelestialSphereShader.h"
 
 class C3DCelestialModel : public C3DDrawable
 {
 private:
+	enum {
+		H_RESO = 24,
+		V_RESO = 12
+	};
 	// メッシュ頂点情報。後で増えることがあるので、構造体にしておく。
 	struct VEC3 {
 		float	x;
@@ -29,7 +34,8 @@ private:
 	u16			m_idxnum;		// 頂点indexの数
 
 	// マテリアル情報
-	C3DMaterial * m_material;	// マテリアル情報
+	CGLTex						*	m_texture;	// 天球テクスチャは直接指定する
+	C3DCelestialSphereShader	*	m_shader;	// 天球シェーダ
 
 	GLuint		m_idxVert;		// 頂点バッファ
 	GLuint		m_idxIndex;		// インデックスバッファ
@@ -53,7 +59,7 @@ public:
 protected:
 	bool newVertices(int num = 0);
 	bool newIndices(int num = 0);
-	inline void setMaterial(C3DMaterial * material) { m_material = material; }
+	inline void setTexture(CGLTex * texture) { m_texture = texture; }
 
 	void setBuffer();
 
@@ -62,10 +68,15 @@ protected:
 class C3DCelestialSphere : public C3DDrawObj
 {
 private:
-	C3DCelestialModel	*	m_model;
+	C3DCelestialModel			*	m_model;
+	C3DCelestialSphereShader	*	m_shader;
 public:
 	C3DCelestialSphere();
 	virtual ~C3DCelestialSphere();
+
+	inline void setShader(C3DCelestialSphereShader * shader) throw() {
+		m_shader = shader;
+	}
 
 protected:
 	// このオブジェクトのマトリクス計算後に行う処理を記述
