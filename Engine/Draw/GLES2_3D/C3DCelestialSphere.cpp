@@ -36,7 +36,7 @@ C3DCelestialModel::~C3DCelestialModel()
 void
 C3DCelestialModel::setup(C3DDrawEnv * env)
 {
-	C3DCelestialSphereShader * shader;
+	C3DCelestialSphereShader * shader = 0;	// 天球用シェーダをどこに持たせようか思案中…
 
 	// テクスチャが設定されていれば、そのテクスチャを有効にする。
 	if (m_texture) {
