@@ -17,6 +17,7 @@ C3DCelestialModel::C3DCelestialModel(float r, const char * modelName)
 		char * buf = new char[len + 1];
 		strcpy(buf, modelName);
 		m_modelName = buf;
+		createVertex();
 	}
 	catch (std::bad_alloc& ex) {
 		delete[] buf;
@@ -134,4 +135,32 @@ C3DCelestialModel::setBuffer()
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 
 	m_ready = true;
+}
+
+// 頂点リストおよびインデックスリストを作る。
+void
+C3DCelestialModel::createVertex()
+{
+	// 頂点の作成
+	newVertices((V_RESO + 1) * (H_RESO + 1));
+	for (int v = 0; v <= V_RESO; v++) {
+		float z = cosf(F_PI * v / (2.0f * H_RESO));
+		for (int h = 0; h <= H_RESO; h++) {
+			float theta = 2.0f * F_PI * h / H_RESO;
+			float x = cosf(theta);
+			float y = sinf(theta);
+
+			VERTEX * vert = m_vertices + v * (H_RESO + 1) + h;
+			vert->vert.x = x;
+			vert->vert.y = y;
+			vert->vert.z = z;
+			vert->uv.u = (float)h / (float)H_RESO;
+			vert->uv.v = (float)v / (float)V_RESO;
+		}
+	}
+
+	// インデックスの作成
+
+
+
 }

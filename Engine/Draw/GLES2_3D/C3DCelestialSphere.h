@@ -63,6 +63,8 @@ protected:
 
 	void setBuffer();
 
+	void createVertex();
+
 };
 
 class C3DCelestialSphere : public C3DDrawObj
