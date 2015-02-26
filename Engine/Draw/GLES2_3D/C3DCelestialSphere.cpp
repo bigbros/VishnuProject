@@ -160,7 +160,14 @@ C3DCelestialModel::createVertex()
 	}
 
 	// インデックスの作成
-
-
-
+	newIndices((V_RESO + 1) * (H_RESO + 1));
+	int idx = 0;
+	for (int v = 0; v < V_RESO; v++) {
+		m_indices[idx++] = H_RESO * v;
+		m_indices[idx++] = H_RESO * (v + 1);
+		for (int h = 1; h <= H_RESO; h++) {
+			m_indices[idx++] = H_RESO * v + h;
+			m_indices[idx++] = H_RESO * (v + 1) + h;
+		}
+	}
 }
