@@ -14,6 +14,7 @@ namespace VishnuDev
     {
         private bool running = false;
         private bool background = false;
+        private Timer watchTimer = null;
 
         public Form1()
         {
@@ -50,6 +51,14 @@ namespace VishnuDev
             return false;
         }
 
+
+        protected void OnWatch(Object sender, EventArgs args)
+        {
+            double fps = GLES2View.nowFps;
+            lblFPS.Text = string.Format("{0}[fps]", fps.ToString("0.00"));
+        }
+
+
         private bool gameRun()
         {
             if (running) return true;
@@ -63,6 +72,14 @@ namespace VishnuDev
             VishnuSystem.Instance.Start();
             GLES2View.Start();
             running = true;
+
+            if (watchTimer == null)
+            {
+                watchTimer = new Timer();
+                watchTimer.Tick += OnWatch;
+            }
+            watchTimer.Interval = 500;  // 0.5秒
+            watchTimer.Start();
             return true;
         }
 
@@ -75,6 +92,8 @@ namespace VishnuDev
                 background = false;
             }
             GLES2View.Stop();
+            watchTimer.Stop();
+            lblFPS.Text = "";
             VishnuSystem.Instance.Stop();
             GLES2View.DestroyGLES2();
             running = false;
@@ -167,6 +186,11 @@ namespace VishnuDev
         private void btnDirectory_Click(object sender, EventArgs e)
         {
             selectPath();
+        }
+
+        private void lblFPS_Click(object sender, EventArgs e)
+        {
+
         }
 
     }

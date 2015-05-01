@@ -84,8 +84,6 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\Engine\Collision\Collision2D.h" />
-    <ClInclude Include="..\..\..\Engine\Collision\Collision3D.h" />
     <ClInclude Include="..\..\..\Engine\Core\include\CVSNEngineHeap.h" />
     <ClInclude Include="..\..\..\Engine\Core\include\CVSNGameEnvironment.h" />
     <ClInclude Include="..\..\..\Engine\Core\include\CVSNObj.h" />
@@ -97,6 +95,8 @@
     <ClInclude Include="..\..\..\Engine\Draw\CGLObj.h" />
     <ClInclude Include="..\..\..\Engine\Draw\CGLShader.h" />
     <ClInclude Include="..\..\..\Engine\Draw\CGLTex.h" />
+    <ClInclude Include="..\..\..\Engine\Draw\Collision\Collision2D.h" />
+    <ClInclude Include="..\..\..\Engine\Draw\Collision\Collision3D.h" />
     <ClInclude Include="..\..\..\Engine\Draw\dtypes.h" />
     <ClInclude Include="..\..\..\Engine\Draw\GLES2_2D\C2DDefaultShader.h" />
     <ClInclude Include="..\..\..\Engine\Draw\GLES2_2D\C2DDrawEnv.h" />

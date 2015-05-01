@@ -85,11 +85,8 @@
     <Filter Include="ヘッダー ファイル\Test">
       <UniqueIdentifier>{3df434b0-33ed-43fc-8e12-e6df5fca761c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ヘッダー ファイル\Engine\Collision">
-      <UniqueIdentifier>{2787403a-b2f8-47c8-a97b-35634d6b1188}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\Engine\Collision">
-      <UniqueIdentifier>{9591990c-da08-4288-aaa3-c8f941bdc79c}</UniqueIdentifier>
+    <Filter Include="ヘッダー ファイル\Engine\Draw\Collision">
+      <UniqueIdentifier>{df5032ec-f93a-4f91-88ce-d2c2089e5b1a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -312,17 +309,17 @@
     <ClInclude Include="..\..\..\Engine\Draw\GLES2_3D\C3DMaterial.h">
       <Filter>ヘッダー ファイル\Engine\Draw\GLES2_3D</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Engine\Collision\Collision3D.h">
-      <Filter>ヘッダー ファイル\Engine\Collision</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Engine\Collision\Collision2D.h">
-      <Filter>ヘッダー ファイル\Engine\Collision</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\Engine\Draw\GLES2_3D\C3DCelestialSphereShader.h">
       <Filter>ヘッダー ファイル\Engine\Draw\GLES2_3D</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Engine\Draw\GLES2_3D\C3DCelestialSphere.h">
       <Filter>ヘッダー ファイル\Engine\Draw\GLES2_3D</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\Draw\Collision\Collision3D.h">
+      <Filter>ヘッダー ファイル\Engine\Draw\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\Draw\Collision\Collision2D.h">
+      <Filter>ヘッダー ファイル\Engine\Draw\Collision</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

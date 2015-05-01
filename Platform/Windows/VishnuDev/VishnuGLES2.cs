@@ -17,6 +17,12 @@ namespace VishnuDev
 {
     public partial class VishnuGLES2 : UserControl
     {
+        [DllImport("kernel32.dll")]
+        static extern bool QueryPerformanceCounter(ref long lpPerformanceCount);
+  
+        [DllImport("kernel32.dll")]
+        static extern bool QueryPerformanceFrequency(ref long lpFrequency);
+
         [DllImport("VishnuDLL.dll", CallingConvention = CallingConvention.Cdecl)]
         private static extern IntPtr gles2CreateWindow(IntPtr hWnd);
 
@@ -116,9 +122,22 @@ namespace VishnuDev
             DestroySurface();
         }
 
+        private long start = 0;
+        private long freq = 0;
+        private double fps = 0;
+        public double nowFps {
+            get { return fps; }
+        }
         protected void OnUpdate(Object sender, EventArgs args)
         {
+            bool disp = (freq > 0);
+            long stop = 0;
+            QueryPerformanceCounter(ref stop);
+            freq = 0;
+            QueryPerformanceFrequency(ref freq);
             Update();
+            fps = (disp) ? (1000.0 / ((stop - start) * 1000.0 / freq)) : 0.0;
+            start = stop;
         }
 
         public void Update()
@@ -142,13 +161,18 @@ namespace VishnuDev
                 updateTimer.Tick += OnUpdate;
             }
             sizeChanged = true;
-            updateTimer.Interval = 16;
+            updateTimer.Interval = 5;
+            freq = 0L;
+            fps = 0L;
             updateTimer.Start();
+            QueryPerformanceCounter(ref start);
         }
 
         public void Stop()
         {
             updateTimer.Stop();
+            freq = 0L;
+            fps = 0L;
         }
     }
 }

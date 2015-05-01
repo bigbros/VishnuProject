@@ -35,6 +35,7 @@
             this.btnStep = new System.Windows.Forms.Button();
             this.logText = new System.Windows.Forms.TextBox();
             this.btnDirectory = new System.Windows.Forms.Button();
+            this.lblFPS = new System.Windows.Forms.Label();
             this.GLES2View = new VishnuDev.VishnuGLES2();
             this.SuspendLayout();
             // 
@@ -44,10 +45,9 @@
             this.btnBackground.Appearance = System.Windows.Forms.Appearance.Button;
             this.btnBackground.Enabled = false;
             this.btnBackground.Font = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.btnBackground.Location = new System.Drawing.Point(878, 516);
-            this.btnBackground.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.btnBackground.Location = new System.Drawing.Point(527, 344);
             this.btnBackground.Name = "btnBackground";
-            this.btnBackground.Size = new System.Drawing.Size(142, 39);
+            this.btnBackground.Size = new System.Drawing.Size(85, 26);
             this.btnBackground.TabIndex = 5;
             this.btnBackground.Text = "Foreground";
             this.btnBackground.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -60,10 +60,10 @@
             this.btnPlay.Appearance = System.Windows.Forms.Appearance.Button;
             this.btnPlay.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnPlay.Image = ((System.Drawing.Image)(resources.GetObject("btnPlay.Image")));
-            this.btnPlay.Location = new System.Drawing.Point(878, 468);
-            this.btnPlay.Margin = new System.Windows.Forms.Padding(0, 4, 0, 4);
+            this.btnPlay.Location = new System.Drawing.Point(527, 312);
+            this.btnPlay.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.btnPlay.Name = "btnPlay";
-            this.btnPlay.Size = new System.Drawing.Size(43, 39);
+            this.btnPlay.Size = new System.Drawing.Size(26, 26);
             this.btnPlay.TabIndex = 1;
             this.btnPlay.UseVisualStyleBackColor = true;
             this.btnPlay.CheckedChanged += new System.EventHandler(this.btnPlay_CheckedChanged);
@@ -74,10 +74,10 @@
             this.btnPause.Appearance = System.Windows.Forms.Appearance.Button;
             this.btnPause.Enabled = false;
             this.btnPause.Image = ((System.Drawing.Image)(resources.GetObject("btnPause.Image")));
-            this.btnPause.Location = new System.Drawing.Point(928, 468);
-            this.btnPause.Margin = new System.Windows.Forms.Padding(0, 4, 0, 4);
+            this.btnPause.Location = new System.Drawing.Point(557, 312);
+            this.btnPause.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.btnPause.Name = "btnPause";
-            this.btnPause.Size = new System.Drawing.Size(43, 39);
+            this.btnPause.Size = new System.Drawing.Size(26, 26);
             this.btnPause.TabIndex = 2;
             this.btnPause.UseVisualStyleBackColor = true;
             this.btnPause.CheckedChanged += new System.EventHandler(this.btnPause_CheckedChanged);
@@ -87,10 +87,10 @@
             this.btnStep.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnStep.Enabled = false;
             this.btnStep.Image = ((System.Drawing.Image)(resources.GetObject("btnStep.Image")));
-            this.btnStep.Location = new System.Drawing.Point(977, 468);
-            this.btnStep.Margin = new System.Windows.Forms.Padding(0, 4, 0, 4);
+            this.btnStep.Location = new System.Drawing.Point(586, 312);
+            this.btnStep.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.btnStep.Name = "btnStep";
-            this.btnStep.Size = new System.Drawing.Size(43, 39);
+            this.btnStep.Size = new System.Drawing.Size(26, 26);
             this.btnStep.TabIndex = 3;
             this.btnStep.UseVisualStyleBackColor = true;
             this.btnStep.Click += new System.EventHandler(this.btnStep_Click);
@@ -99,13 +99,12 @@
             // 
             this.logText.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.logText.Location = new System.Drawing.Point(20, 468);
-            this.logText.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.logText.Location = new System.Drawing.Point(12, 312);
             this.logText.Multiline = true;
             this.logText.Name = "logText";
             this.logText.ReadOnly = true;
             this.logText.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.logText.Size = new System.Drawing.Size(846, 142);
+            this.logText.Size = new System.Drawing.Size(509, 96);
             this.logText.TabIndex = 6;
             this.logText.TextChanged += new System.EventHandler(this.logText_TextChanged);
             // 
@@ -113,13 +112,24 @@
             // 
             this.btnDirectory.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnDirectory.Image = ((System.Drawing.Image)(resources.GetObject("btnDirectory.Image")));
-            this.btnDirectory.Location = new System.Drawing.Point(977, 572);
-            this.btnDirectory.Margin = new System.Windows.Forms.Padding(0, 4, 0, 4);
+            this.btnDirectory.Location = new System.Drawing.Point(586, 381);
+            this.btnDirectory.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.btnDirectory.Name = "btnDirectory";
-            this.btnDirectory.Size = new System.Drawing.Size(43, 39);
+            this.btnDirectory.Size = new System.Drawing.Size(26, 26);
             this.btnDirectory.TabIndex = 7;
             this.btnDirectory.UseVisualStyleBackColor = true;
             this.btnDirectory.Click += new System.EventHandler(this.btnDirectory_Click);
+            // 
+            // lblFPS
+            // 
+            this.lblFPS.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblFPS.AutoSize = true;
+            this.lblFPS.Location = new System.Drawing.Point(528, 394);
+            this.lblFPS.Name = "lblFPS";
+            this.lblFPS.Size = new System.Drawing.Size(29, 12);
+            this.lblFPS.TabIndex = 8;
+            this.lblFPS.Text = "(fps)";
+            this.lblFPS.Click += new System.EventHandler(this.lblFPS_Click);
             // 
             // GLES2View
             // 
@@ -127,17 +137,17 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.GLES2View.BackColor = System.Drawing.SystemColors.Desktop;
-            this.GLES2View.Location = new System.Drawing.Point(20, 18);
-            this.GLES2View.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.GLES2View.Location = new System.Drawing.Point(12, 12);
             this.GLES2View.Name = "GLES2View";
-            this.GLES2View.Size = new System.Drawing.Size(1000, 440);
+            this.GLES2View.Size = new System.Drawing.Size(600, 293);
             this.GLES2View.TabIndex = 0;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1040, 630);
+            this.ClientSize = new System.Drawing.Size(624, 420);
+            this.Controls.Add(this.lblFPS);
             this.Controls.Add(this.btnDirectory);
             this.Controls.Add(this.btnBackground);
             this.Controls.Add(this.btnStep);
@@ -145,7 +155,6 @@
             this.Controls.Add(this.btnPause);
             this.Controls.Add(this.logText);
             this.Controls.Add(this.GLES2View);
-            this.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.Name = "Form1";
             this.Text = "VishnuDevelop";
             this.ResumeLayout(false);
@@ -162,6 +171,7 @@
         private System.Windows.Forms.CheckBox btnBackground;
         private System.Windows.Forms.TextBox logText;
         private System.Windows.Forms.Button btnDirectory;
+        private System.Windows.Forms.Label lblFPS;
 
 
     }
