@@ -5,6 +5,4 @@
 
 
 
-
-
 #endif // Collision3D_h
