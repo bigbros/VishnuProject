@@ -5,7 +5,7 @@
 
 CVishnuSystem::CVishnuSystem(const char * path, int width, int height)
 {
-	m_heapSize = MEGA(4);
+	m_heapSize = MEGA(VISHNU_MEMORY);
 	m_heapBuf = malloc(m_heapSize);
 	m_env = new CTestEnv(m_heapBuf, m_heapSize, width, height);
 	m_Pointing = new CVSNPointing();

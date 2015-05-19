@@ -22,8 +22,9 @@ public:
 	void on_surface();
 	void on_detach();
 private:
-	C3DDrawEnv*				m_env;
-	C3DDefaultShader	*	m_shader;
+	C3DDrawEnv*						m_env;
+	C3DDefaultShader			*	m_shader;
+	C3DCelestialSphereShader	*	m_celestial;
 };
 
 #endif // CVSNDraw3D_h

@@ -20,8 +20,8 @@ class CGLEnv : public CGLBase
 	friend class CGLObj;
 public:
 	enum ENVID {
-		C3D,
-		C2D,
+		C3D,	// 手近な3Dオブジェクト描画
+		C2D,	// 2Dオブジェクト描画
 		ENV_MAX
 	};
 private:

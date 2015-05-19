@@ -324,6 +324,9 @@
     <ClInclude Include="..\..\..\Engine\Draw\GLES2_3D\C3DCelestialSphere.h">
       <Filter>ヘッダー ファイル\Engine\Draw\GLES2_3D</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\Engine\SystemTask\CVSNCelestialSphere.h">
+      <Filter>ヘッダー ファイル\Engine\SystemTask</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -514,6 +517,9 @@
     </ClCompile>
     <ClCompile Include="..\..\..\Engine\Draw\GLES2_3D\C3DCelestialSphere.cpp">
       <Filter>ソース ファイル\Engine\Draw\GLES2_3D</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\SystemTask\CVSNCelestialSphere.cpp">
+      <Filter>ソース ファイル\Engine\SystemTask</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

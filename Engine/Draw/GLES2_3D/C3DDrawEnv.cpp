@@ -5,6 +5,8 @@
 #include "C3DDrawable.h"
 #include "CGLAlloc.h"
 
+#include "C3DCelestialSphere.h"
+
 #define DEFAULT_NEAR	20.0f
 #define DEFAULT_FAR		300.0f
 #define DEFAULT_ANGLE	(F_PI / 2.0f)
@@ -31,6 +33,7 @@ C3DRootObj::destroyChildren()
 C3DDrawEnv::C3DDrawEnv()
 	: IGLDrawEnv()
 	, m_objRoot(0)
+	, m_objCelestialSphere(0)
 	, m_objCamera(0)
 	, m_shader(0)
 	, m_lightVec(1.0f, 0.0f, 0.0f)
@@ -60,9 +63,10 @@ C3DDrawEnv::setAmbient(float r, float g, float b, float a)
 }
 
 bool
-C3DDrawEnv::init(C3DDefaultShader * pShader)
+C3DDrawEnv::init(C3DDefaultShader * pShader, C3DCelestialSphereShader * pCelestial)
 {
 	m_shader = pShader;
+	m_celestialShader = pCelestial;
 	if (!m_objRoot) m_objRoot = new C3DRootObj();
 
 	return true;
@@ -97,11 +101,23 @@ C3DDrawEnv::Render()
 	// zバッファを無効にする
 	glDisable(GL_DEPTH_TEST);
 
+	// このフレームにおけるcamera->view->projection行列を一つにまとめたものをプロジェクション用に送る
+	C3DMat proj = m_objCamera->m_cameraInvert * (m_objCamera->m_view * m_projection);
+
 	// 天球の描画
 	// 天球はカメラを中心とした半径rの球体で、法線はすべて内側を向いている。
 	// 常にカメラを中心として描画されるため、カメラは絶対に天球の外側に出ることはできない。
 	// また、常にカメラを中心として描画されるため、カメラの位置は意味を持たず、その向きだけが描画範囲に関係する。
-	
+	if (m_objCelestialSphere) {
+		m_celestialShader->useProgram();
+		glUniformMatrix4fv(m_celestialShader->m_u_projection, 1, GL_FALSE, (const GLfloat *)&proj);
+
+		// カメラ逆行列を送っておく。その回転成分のみを用いて天球を回転させることで、常にカメラを中心として天球が回転する
+		glUniformMatrix4fv(m_celestialShader->m_u_camera, 1, GL_FALSE, (const GLfloat *)&(m_objCamera->m_cameraInvert));
+
+		m_objCelestialSphere->render(this);	// 天球は他のオブジェクトヒエラルキーとは独立している。
+		glUseProgram(0);
+	}
 
 
 	// パノラマ(遠景)の描画
@@ -127,7 +143,6 @@ C3DDrawEnv::Render()
 	glUniform4fv(m_shader->m_u_ambient,	1, (GLfloat *)&m_ambientColor);	// 環境色
 
 	// このフレームにおけるcamera->view->projection行列を一つにまとめたものをプロジェクション用に送る
-	C3DMat proj = m_objCamera->m_cameraInvert * (m_objCamera->m_view * m_projection);
 	glUniformMatrix4fv(m_shader->m_u_projection, 1, GL_FALSE, (const GLfloat *)&proj);
 
 	// スペキュラ処理のためカメラ逆行列を送っておく。

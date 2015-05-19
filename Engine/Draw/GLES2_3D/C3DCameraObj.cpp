@@ -30,6 +30,16 @@ C3DCameraObj::calcProcedure(bool is_recalc)
 void
 C3DCameraObj::render(){}
 
+float
+C3DCameraObj::angleDiagonal2Horizontal(float d_angle, float width, float height)
+{
+	d_angle = d_angle / 2.0f;
+	float dlen = sqrtf(width*width + height*height);
+	float dist = dlen * cosf(d_angle) / sin(d_angle);
+	float h_angle = atanf(width / dist) * 2.0f;
+	return h_angle;
+}
+
 void
 C3DCameraObj::setView(float angle, float aspect, float clip_near, float clip_far)
 {

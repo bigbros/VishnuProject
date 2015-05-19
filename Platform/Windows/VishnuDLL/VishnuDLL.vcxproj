@@ -137,6 +137,7 @@
     <ClInclude Include="..\..\..\Engine\Script\CVSNScriptTask.h" />
     <ClInclude Include="..\..\..\Engine\Script\CVSNSquirrelScript.h" />
     <ClInclude Include="..\..\..\Engine\Script\IVSNScriptUtilFunc.h" />
+    <ClInclude Include="..\..\..\Engine\SystemTask\CVSNCelestialSphere.h" />
     <ClInclude Include="..\..\..\Engine\SystemTask\CVSNDraw2D.h" />
     <ClInclude Include="..\..\..\Engine\SystemTask\CVSNDraw3D.h" />
     <ClInclude Include="..\..\..\Engine\SystemTask\CVSNPointingDevice.h" />
@@ -203,6 +204,7 @@
     <ClCompile Include="..\..\..\Engine\Script\CVSNScriptTask.cpp" />
     <ClCompile Include="..\..\..\Engine\Script\CVSNSquirrelScript.cpp" />
     <ClCompile Include="..\..\..\Engine\Script\IVSNScriptUtilFunc.cpp" />
+    <ClCompile Include="..\..\..\Engine\SystemTask\CVSNCelestialSphere.cpp" />
     <ClCompile Include="..\..\..\Engine\SystemTask\CVSNDraw2D.cpp" />
     <ClCompile Include="..\..\..\Engine\SystemTask\CVSNDraw3D.cpp" />
     <ClCompile Include="..\..\..\Engine\SystemTask\CVSNPointingDevice.cpp" />

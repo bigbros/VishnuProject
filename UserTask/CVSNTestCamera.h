@@ -17,6 +17,9 @@ public:
 	void on_change();
 
 private:
+	// w’è‚³‚ê‚½‘ÎŠpü‹–ìŠp‚©‚ç…•½‹–ìŠp‚ğŒvZ‚·‚é
+	float calc_view(float angle);
+
 	int					m_width;
 	int					m_height;
 
@@ -27,6 +30,8 @@ private:
 	int					m_preX;
 	int					m_preY;
 	C3DVec				m_preRot;
+
+	float				m_eyeAngle;
 };
 
 

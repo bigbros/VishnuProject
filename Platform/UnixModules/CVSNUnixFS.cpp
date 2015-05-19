@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <errno.h>
 #include <memory>
 #include "CVSNUnixFS.h"
 #include <unistd.h>

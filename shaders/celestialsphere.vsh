@@ -15,5 +15,5 @@ void main(void)
 	vw = u_projection * vw;
 
 	v_uv = vec3(a_uv.x/vw.w, a_uv.y/vw.w, 1.0/vw.w);
-	gl_Position = vw / vw.w;;
+	gl_Position = vw / vw.w;
 }

@@ -8,6 +8,9 @@
 
 class CVishnuSystem
 {
+	enum {
+		VISHNU_MEMORY = 16
+	};
 public:
 	CVishnuSystem(const char * path, int width, int height);
 	virtual ~CVishnuSystem();

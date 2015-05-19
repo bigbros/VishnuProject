@@ -89,7 +89,7 @@ CVSNTest2D::update(int deltaT)
 
 	m_rot_deg += 3;
 	m_rot_deg %= 360;
-	float rot = (float)m_rot_deg * M_PI / 180.0f;
+	float rot = (float)m_rot_deg * F_PI / 180.0f;
 	m_ctrl->setRotation(rot);
 
 	int wide = (m_width < m_height) ? m_width : m_height;

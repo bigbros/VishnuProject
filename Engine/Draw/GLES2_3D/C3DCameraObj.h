@@ -22,6 +22,7 @@ public:
 	bool calcProcedure(bool is_recalc);
 	void render();
 
+	float angleDiagonal2Horizontal(float h_angle, float width, float height);
 	void setView(float angle, float aspect, float clip_near, float clip_far);
 	void lookAt(C3DObj * pObj = 0) { m_lookAt = pObj; }
 

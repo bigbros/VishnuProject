@@ -3,14 +3,18 @@
 
 #include "C3DMaterial.h"
 #include "C3DDrawable.h"
+
 #include "C3DCelestialSphereShader.h"
+
+class C3DCelestialSphere;
 
 class C3DCelestialModel : public C3DDrawable
 {
+	friend class C3DCelestialSphere;
 private:
 	enum {
-		H_RESO = 24,
-		V_RESO = 12
+		V_RESO		=	12,
+		H_RESO		=	24
 	};
 	// メッシュ頂点情報。後で増えることがあるので、構造体にしておく。
 	struct VEC3 {
@@ -34,12 +38,16 @@ private:
 	u16			m_idxnum;		// 頂点indexの数
 
 	// マテリアル情報
-	CGLTex						*	m_texture;	// 天球テクスチャは直接指定する
-	C3DCelestialSphereShader	*	m_shader;	// 天球シェーダ
+	CGLTex	*	m_texture;	// 天球テクスチャは直接指定する
 
 	GLuint		m_idxVert;		// 頂点バッファ
 	GLuint		m_idxIndex;		// インデックスバッファ
 	bool		m_ready;		// バッファ転送済み
+
+	int			m_reso_v;		// 緯度方向分割数
+	int			m_reso_h;		// 経度方向分割数
+
+	float		m_r;			// 半径(便宜上)
 
 	const char	*	m_modelName;
 
@@ -47,7 +55,7 @@ private:
 
 public:
 
-	C3DCelestialModel(float r, const char * modelName = 0);
+	C3DCelestialModel(float r, CGLTex * pTex, const char * modelName = 0, int h_reso = H_RESO, int v_reso = V_RESO);
 	virtual ~C3DCelestialModel();
 
 	void setup(C3DDrawEnv * env);
@@ -70,15 +78,14 @@ protected:
 class C3DCelestialSphere : public C3DDrawObj
 {
 private:
-	C3DCelestialModel			*	m_model;
-	C3DCelestialSphereShader	*	m_shader;
+	C3DCelestialModel		*	m_model;
+	CGLTex					*	m_tex;
+	C3DVec						m_color;
 public:
-	C3DCelestialSphere();
+	C3DCelestialSphere(CGLTex * pTex);
 	virtual ~C3DCelestialSphere();
 
-	inline void setShader(C3DCelestialSphereShader * shader) throw() {
-		m_shader = shader;
-	}
+	void render(C3DDrawEnv * env);
 
 protected:
 	// このオブジェクトのマトリクス計算後に行う処理を記述

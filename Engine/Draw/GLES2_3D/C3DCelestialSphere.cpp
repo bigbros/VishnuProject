@@ -1,15 +1,18 @@
 #include "C3DCelestialSphere.h"
 #include "CGLTex.h"
 
-C3DCelestialModel::C3DCelestialModel(float r, const char * modelName)
+C3DCelestialModel::C3DCelestialModel(float r, CGLTex * pTex, const char * modelName, int h_reso, int v_reso)
 	: C3DDrawable()
 	, m_vertices(0)
 	, m_indices(0)
 	, m_vertnum(0)
 	, m_idxnum(0)
 	, m_modelName(0)
-	, m_texture(0)
+	, m_texture(pTex)
 	, m_ready(false)
+	, m_r(r)
+	, m_reso_v(v_reso)
+	, m_reso_h(h_reso)
 {
 	char * buf = 0;
 	try {
@@ -31,13 +34,14 @@ C3DCelestialModel::~C3DCelestialModel()
 	delete[] m_modelName;
 	delete[] m_vertices;
 	delete[] m_indices;
-	delete m_texture;
 }
 
 void
 C3DCelestialModel::setup(C3DDrawEnv * env)
 {
-	C3DCelestialSphereShader * shader = 0;	// 天球用シェーダをどこに持たせようか思案中…
+	C3DCelestialSphereShader * shader = env->getCelestialShader();	// 天球用シェーダをどこに持たせようか思案中…
+
+	shader->useProgram();
 
 	// テクスチャが設定されていれば、そのテクスチャを有効にする。
 	if (m_texture) {
@@ -53,9 +57,6 @@ C3DCelestialModel::setup(C3DDrawEnv * env)
 
 	// インデックスバッファを有効にする
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_idxIndex);
-
-	// ここまでの処理は、同じモデルを用いるすべてのオブジェクト描画直前に1回だけやれば良い。
-
 }
 
 void
@@ -141,33 +142,92 @@ C3DCelestialModel::setBuffer()
 void
 C3DCelestialModel::createVertex()
 {
-	// 頂点の作成
-	newVertices((V_RESO + 1) * (H_RESO + 1));
-	for (int v = 0; v <= V_RESO; v++) {
-		float z = cosf(F_PI * v / (2.0f * H_RESO));
-		for (int h = 0; h <= H_RESO; h++) {
-			float theta = 2.0f * F_PI * h / H_RESO;
-			float x = cosf(theta);
-			float y = sinf(theta);
+	// 頂点およびインデックス領域の生成
+	newVertices((m_reso_v + 1) * (m_reso_h + 1));
+	newIndices((m_reso_v) * (m_reso_h + 1) * 2);
 
-			VERTEX * vert = m_vertices + v * (H_RESO + 1) + h;
-			vert->vert.x = x;
-			vert->vert.y = y;
-			vert->vert.z = z;
-			vert->uv.u = (float)h / (float)H_RESO;
-			vert->uv.v = (float)v / (float)V_RESO;
+
+	for (int i = 0; i <= m_reso_v; i++) {
+		float t = (F_PI * i) / (2.0f * m_reso_v);
+		float y = m_r * sinf(t) - 10.0f;
+		float r = m_r * cosf(t);
+
+		float tr = 0.5f * (float)(m_reso_v - i) / (float)m_reso_v;
+
+		for (int j = 0; j <= m_reso_h; j++) {
+			float theta = 2.0f * F_PI * j / m_reso_h;
+			float cos_h = cosf(theta);
+			float sin_h = sinf(theta);
+			float x = r * cos_h;
+			float z = r * sin_h;
+
+			float u = 0.5f + tr * cos_h;
+			float v = 0.5f + tr * sin_h;
+
+			int idx = (i * (m_reso_h + 1) + j);
+			if (idx >= m_vertnum) {
+				LOG("*******BAD INDEX*********");
+			}
+			VERTEX * vertex = m_vertices + idx;
+			vertex->vert.x = x;
+			vertex->vert.y = y;
+			vertex->vert.z = z;
+			vertex->uv.u = u;
+			vertex->uv.v = v;
 		}
 	}
 
-	// インデックスの作成
-	newIndices((V_RESO + 1) * (H_RESO + 1));
 	int idx = 0;
-	for (int v = 0; v < V_RESO; v++) {
-		m_indices[idx++] = H_RESO * v;
-		m_indices[idx++] = H_RESO * (v + 1);
-		for (int h = 1; h <= H_RESO; h++) {
-			m_indices[idx++] = H_RESO * v + h;
-			m_indices[idx++] = H_RESO * (v + 1) + h;
+	for (int i = 0; i < m_reso_v; i++) {
+		for (int j = 0; j <= m_reso_h; j++) {
+			int base = i * (m_reso_h + 1) + j;
+			if (base >= m_vertnum || idx >= m_idxnum) {
+				LOG("*******BAD INDEX*********");
+			}
+			m_indices[idx++] = base;
+			m_indices[idx++] = base + m_reso_h + 1;
 		}
 	}
+}
+C3DCelestialSphere::C3DCelestialSphere(CGLTex * pTex)
+	: C3DDrawObj()
+	, m_model(0)
+	, m_tex(pTex)
+	, m_color(1.0f, 1.0f, 1.0f, 1.0f)
+{
+	try {
+		m_model = new C3DCelestialModel(200.0f, m_tex, "celestial_sphere");
+		m_model->setBuffer();
+		useDrawable(m_model);
+		
+	} catch (std::bad_alloc& ex) {
+		delete m_model;
+		throw ex;
+	}
+}
+
+C3DCelestialSphere::~C3DCelestialSphere()
+{
+	delete m_model;
+}
+
+void
+C3DCelestialSphere::render(C3DDrawEnv * env)
+{
+	C3DCelestialModel * model = getDrawable<C3DCelestialModel>();
+	C3DCelestialSphereShader * shader = env->getCelestialShader();
+
+	model->setup(env);
+
+	// 描画の際、全体の頂点色にかけるRGBA値を転送する
+	glUniform4fv(shader->m_u_rgba, 1, (GLfloat *)&m_color);
+
+	// 転送済みの頂点とインデックス、マトリクスで描画する。
+	glDrawElements(GL_TRIANGLE_STRIP, model->m_idxnum, GL_UNSIGNED_SHORT, 0);
+}
+
+bool
+C3DCelestialSphere::calcProcedure(bool is_recalc)
+{
+	return true;
 }

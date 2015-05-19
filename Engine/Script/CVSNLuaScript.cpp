@@ -562,6 +562,10 @@ CVSNScriptTask *
 CVSNLuaScriptArgs::getTask(int idx)
 {
 	CVSNScriptTask::TASKINFO * pInfo = (CVSNScriptTask::TASKINFO *)lua_touserdata(m_luaState, idx + 1);
+	if (!pInfo) {
+		
+		return 0;	// そもそもuserdataではない場合、ここではnullが帰る。未定義変数をタスクとして渡した場合の防御策。
+	}
 	if (pInfo->objhdr.id != VSNSCROBJ::TASK) return 0;
 	CVSNScriptTask * pTask = pInfo->pTask;
 	return pTask;
