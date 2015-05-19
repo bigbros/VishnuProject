@@ -1,3 +1,4 @@
+#include "C3DDrawEnv.h"
 #include "C3DMaterial.h"
 #include "CGLTex.h"
 

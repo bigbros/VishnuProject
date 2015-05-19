@@ -1,16 +1,16 @@
-#ifndef C3DCelestialSphere_h
-#define C3DCelestialSphere_h
+#ifndef C3DSkyDome_h
+#define C3DSkyDome_h
 
 #include "C3DMaterial.h"
 #include "C3DDrawable.h"
 
-#include "C3DCelestialSphereShader.h"
+#include "C3DSkyDomeShader.h"
 
-class C3DCelestialSphere;
+class C3DSkyDome;
 
-class C3DCelestialModel : public C3DDrawable
+class C3DSkyDomeModel : public C3DDrawable
 {
-	friend class C3DCelestialSphere;
+	friend class C3DSkyDome;
 private:
 	enum {
 		V_RESO		=	12,
@@ -55,11 +55,11 @@ private:
 
 public:
 
-	C3DCelestialModel(float r, CGLTex * pTex, const char * modelName = 0, int h_reso = H_RESO, int v_reso = V_RESO);
-	virtual ~C3DCelestialModel();
+	C3DSkyDomeModel(C3DSkyDomeShader * shader, float r, CGLTex * pTex, const char * modelName = 0, int h_reso = H_RESO, int v_reso = V_RESO);
+	virtual ~C3DSkyDomeModel();
 
-	void setup(C3DDrawEnv * env);
-	void cleanup(C3DDrawEnv * env);
+	void setup(C3DShader * pShader);
+	void cleanup(C3DShader * pShader);
 
 	bool recovery();
 	bool destruction();
@@ -75,21 +75,21 @@ protected:
 
 };
 
-class C3DCelestialSphere : public C3DDrawObj
+class C3DSkyDome : public C3DDrawObj
 {
 private:
-	C3DCelestialModel		*	m_model;
-	CGLTex					*	m_tex;
-	C3DVec						m_color;
+	C3DSkyDomeModel		*	m_model;
+	CGLTex				*	m_tex;
+	C3DVec					m_color;
 public:
-	C3DCelestialSphere(CGLTex * pTex);
-	virtual ~C3DCelestialSphere();
+	C3DSkyDome(C3DSkyDomeShader * shader, CGLTex * pTex);
+	virtual ~C3DSkyDome();
 
-	void render(C3DDrawEnv * env);
+	void render(C3DShader * pShader);
 
 protected:
 	// このオブジェクトのマトリクス計算後に行う処理を記述
 	bool calcProcedure(bool is_recalc);
 };
 
-#endif // C3DCelestialSphere_h
+#endif // C3DSkyDome_h

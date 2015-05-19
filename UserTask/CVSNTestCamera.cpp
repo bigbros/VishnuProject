@@ -36,7 +36,7 @@ CVSNTestCamera::init(CVSNScriptArgs& args)
 	m_camera->connectParent(m_shaft);
 
 	m_eyeAngle = F_PI / 2.0f;
-	float angle = m_camera->angleDiagonal2Horizontal(m_eyeAngle, m_width, m_height);
+	float angle = m_camera->angleDiagonal2Horizontal(m_eyeAngle, (float)m_width, (float)m_height);
 	m_camera->setView(angle, 1.0f, 10.0f, 300.0f);
 	m_camera->setPosition(camera);
 	m_shaft->setPosition(C3DVec(0.0f, 0.0f, 0.0f));
@@ -98,7 +98,7 @@ CVSNTestCamera::on_change()
 	m_width = CGLEnv::getInstance().width();
 	m_height = CGLEnv::getInstance().height();
 
-	float angle = m_camera->angleDiagonal2Horizontal(m_eyeAngle, m_width, m_height);
+	float angle = m_camera->angleDiagonal2Horizontal(m_eyeAngle, (float)m_width, (float)m_height);
 	m_camera->setView(angle, 1.0f, 10.0f, 300.0f);
 }
 

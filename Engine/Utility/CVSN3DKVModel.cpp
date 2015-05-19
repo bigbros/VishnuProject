@@ -3,8 +3,8 @@
 #include "CVSNPNGTex.h"
 #include "platform.h"
 
-CVSN3DKVModel::CVSN3DKVModel(const char * modelName, CVSNKVObj * kvObj)
-	: C3DModel(modelName)
+CVSN3DKVModel::CVSN3DKVModel(C3DDefaultShader * shader, const char * modelName, CVSNKVObj * kvObj)
+	: C3DModel(shader, modelName)
 {
 	if (!loadModel(*kvObj)) throw std::bad_alloc();
 }

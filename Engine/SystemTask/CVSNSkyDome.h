@@ -2,22 +2,24 @@
 #define CVSNCelestialSphere_h
 
 #include "CVSNScriptTask.h"
-#include "C3DCelestialSphere.h"
+#include "C3DSkyDome.h"
+#include "C3DSkyDomeShader.h"
 
 #include "CVSNPNGTex.h"
 
-class CVSNCelestialSphere : public CVSNScriptTask
+class CVSNSkyDome : public CVSNScriptTask
 {
 public:
-	CVSNCelestialSphere();
-	virtual ~CVSNCelestialSphere();
+	CVSNSkyDome();
+	virtual ~CVSNSkyDome();
 
 	bool init(CVSNScriptArgs& args);
 	void update(int deltaT);
 	void die();
 
 private:
-	C3DCelestialSphere	*	m_sphere;
-	CVSNPNGTex			*	m_pTex;
+	C3DSkyDomeShader	*	m_shader;
+	C3DSkyDome	*	m_skydome;
+	CVSNPNGTex	*	m_pTex;
 };
 #endif // CVSNCelestialSphere_h

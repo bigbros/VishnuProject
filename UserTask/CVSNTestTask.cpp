@@ -44,8 +44,11 @@ CVSNTestTask::init(CVSNScriptArgs& args)
 	m_anime = false;
 	if (args.argc() > 2) m_anime = args.getBool(2);
 
-	m_model = new CVSN3DKVModel("test", kvModel.get());
-	C3DObj * root = CGLEnv::getInstance().DrawEnv<C3DDrawEnv>(CGLEnv::C3D)->getRootObj();
+	C3DDrawEnv * env = CGLEnv::getInstance().DrawEnv<C3DDrawEnv>(CGLEnv::C3D);
+	C3DDefaultShader * shader = (C3DDefaultShader *)env->findShader(C3DDefaultShader::SID_DEFAULT);
+
+	m_model = new CVSN3DKVModel(shader, "test", kvModel.get());
+	C3DObj * root = env->getRootObj();
 	m_chara = new C3DCharacter(m_model);
 	m_chara->connectParent(root);
 	m_chara->setPosition(C3DVec(0.0f, 0.0f, 0.0f));

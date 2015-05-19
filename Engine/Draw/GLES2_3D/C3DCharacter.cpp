@@ -73,10 +73,10 @@ C3DCharacter::setBoneRotation(int bone, C3DQuat& rot)
 }
 
 void
-C3DCharacter::render(C3DDrawEnv * env)
+C3DCharacter::render(C3DShader * pShader)
 {
 	C3DModel * model = getDrawable<C3DModel>();
-	C3DDefaultShader * shader = env->getDefaultShader();
+	C3DDefaultShader * shader = (C3DDefaultShader *)pShader;
 	// 描画の際、全体の頂点色にかけるRGBA値を転送する
 	glUniform4fv(shader->m_u_modelcol, 1, (GLfloat *)&m_color);
 

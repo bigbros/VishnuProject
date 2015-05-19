@@ -7,7 +7,7 @@
 class CVSN3DKVModel : public C3DModel
 {
 public:
-	CVSN3DKVModel(const char * modelName, CVSNKVObj * kvObj);
+	CVSN3DKVModel(C3DDefaultShader * shader, const char * modelName, CVSNKVObj * kvObj);
 	virtual ~CVSN3DKVModel();
 
 	bool loadModel(CVSNKVObj& kvObj);

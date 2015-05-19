@@ -68,11 +68,11 @@ public:
 	// œŠi”‚ğ•Ô‚·
 	inline int getBoneSize() throw() { return m_bonenum; }
 
-	C3DModel(const char * modelName = 0);
+	C3DModel(C3DShader * shader, const char * modelName = 0);
 	virtual ~C3DModel();
 
-	void setup(C3DDrawEnv * env);
-	void cleanup(C3DDrawEnv * env);
+	void setup(C3DShader * env);
+	void cleanup(C3DShader * env);
 
 	bool recovery();
 	bool destruction();

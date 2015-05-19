@@ -6,6 +6,7 @@
 #include "C3DDrawEnv.h"
 
 class C3DDrawable;
+class C3DShader;
 
 class C3DDrawObj : public C3DObj
 {
@@ -25,7 +26,7 @@ public:
 	void useDrawable(C3DDrawable * drawable);
 
 	// このオブジェクトをレンダリングする
-	virtual void render(C3DDrawEnv * env) = 0;
+	virtual void render(C3DShader * pShader) = 0;
 
 protected:
 	template<typename T>
@@ -37,7 +38,7 @@ protected:
 class C3DDrawable : public CGLObj
 {
 	friend class C3DDrawObj;
-	friend class C3DDrawEnv;
+	friend class C3DShader;
 private:
 	struct USER {
 		USER();
@@ -52,16 +53,16 @@ private:
 
 	USER			m_users;
 	LINK			m_sisters;
-	C3DDrawEnv	*	m_env;
+	C3DShader	*	m_shader;
 
 public:
-	C3DDrawable();
+	C3DDrawable(C3DShader * shader);
 	virtual ~C3DDrawable();
 
 	void registUser(C3DDrawObj * pObj);
 
-	virtual void setup(C3DDrawEnv * env) = 0;
-	virtual void cleanup(C3DDrawEnv * env) = 0;
+	virtual void setup(C3DShader * pShader) = 0;
+	virtual void cleanup(C3DShader * pShader) = 0;
 
 	void Render();
 };

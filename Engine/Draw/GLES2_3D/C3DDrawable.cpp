@@ -56,37 +56,37 @@ C3DDrawObj::useDrawable(C3DDrawable * drawable)
 C3DDrawable::USER::USER() : begin(0), end(0) {}
 C3DDrawable::LINK::LINK() : prev(0), next(0) {}
 
-C3DDrawable::C3DDrawable()
+C3DDrawable::C3DDrawable(C3DShader * shader)
 	: CGLObj()
 	, m_users()
 	, m_sisters()
-	, m_env(CGLEnv::getInstance().DrawEnv<C3DDrawEnv>(CGLEnv::C3D))
+	, m_shader(shader)
 {
-	// •`‰æŠÂ‹«‚ÉŽ©g‚ð“o˜^
-	m_sisters.prev = m_env->m_end;
+	// Žw’è‚³‚ê‚½shader‚ÉŽ©g‚ð“o˜^
+	m_sisters.prev = m_shader->m_end;
 	if (m_sisters.prev) {
 		m_sisters.prev->m_sisters.next = this;
 	}
 	else {
-		m_env->m_begin = this;
+		m_shader->m_begin = this;
 	}
-	m_env->m_end = this;
+	m_shader->m_end = this;
 }
 
 C3DDrawable::~C3DDrawable()
 {
-	// •`‰æŠÂ‹«‘¤‚Ì“o˜^‚ðíœ
+	// shader‘¤‚Ì“o˜^‚ðíœ
 	if (m_sisters.prev) {
 		m_sisters.prev->m_sisters.next = m_sisters.next;
 	}
 	else {
-		m_env->m_begin = m_sisters.next;
+		m_shader->m_begin = m_sisters.next;
 	}
 	if (m_sisters.next) {
 		m_sisters.next->m_sisters.prev = m_sisters.prev;
 	}
 	else {
-		m_env->m_end = m_sisters.prev;
+		m_shader->m_end = m_sisters.prev;
 	}
 
 	// Ž©g‚ð—˜—p‚µ‚Ä‚¢‚½ƒIƒuƒWƒFƒNƒg‚©‚çAŽ©g‚Ì—˜—pÝ’è‚ð‰ðœ‚·‚é
@@ -111,10 +111,10 @@ C3DDrawable::Render()
 	C3DDrawObj * pObj = m_users.begin;
 	if (!pObj) return;
 
-	setup(m_env);
+	setup(m_shader);
 	while (pObj) {
-		pObj->render(m_env);
+		pObj->render(m_shader);
 		pObj = pObj->m_drawlink.next;
 	}
-	cleanup(m_env);
+	cleanup(m_shader);
 }

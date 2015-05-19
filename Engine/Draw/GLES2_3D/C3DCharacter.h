@@ -24,7 +24,7 @@ public:
 	inline const C3DQuat& getBoneRotation(int bone) { return m_motion[bone]; }
 	void setBoneRotation(int bone, C3DQuat& rot);
 
-	void render(C3DDrawEnv * env);
+	void render(C3DShader * pShader);
 };
 
 

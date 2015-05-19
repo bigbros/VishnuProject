@@ -1,10 +1,14 @@
 #ifndef C3DDefaultShader_h
 #define C3DDefaultShader_h
 
-#include "CGLShader.h"
+#include "C3DShader.h"
 
-class C3DDefaultShader : public CGLShader
+class C3DDefaultShader : public C3DShader
 {
+public:
+	enum {
+		SID_DEFAULT = SID_SYSTEM | 0x00000001
+	};
 public:
 	// uniforms
 	GLint				m_u_light;
@@ -30,8 +34,10 @@ public:
 	GLint				m_a_wght;
 
 public:
-	C3DDefaultShader();
+	C3DDefaultShader(C3DDrawEnv * env);
 	virtual ~C3DDefaultShader();
+
+	void preConfig(C3DVec * lightVec, C3DVec * lightCol, C3DVec * ambientCol, C3DMat * projection, C3DMat * cameraInvert);
 
 protected:
 	void setShaderParams(GLuint program);

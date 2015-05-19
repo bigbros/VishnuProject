@@ -29,13 +29,16 @@ CVSNBoneTest::init(CVSNScriptArgs& args)
 	m_anime = false;
 	if (args.argc() > 3) m_anime = args.getBool(3);
 
+	C3DDrawEnv * env = CGLEnv::getInstance().DrawEnv<C3DDrawEnv>(CGLEnv::C3D);
+	
 	if (!m_model) {
+		C3DDefaultShader * shader = (C3DDefaultShader *)env->findShader(C3DDefaultShader::SID_DEFAULT);
 		std::auto_ptr<CVSNKVObj> kvModel(args.getTable(2));
-		m_model = new CVSN3DKVModel("test", kvModel.get());
+		m_model = new CVSN3DKVModel(shader, "test", kvModel.get());
 	}
 	m_model_use++;
 
-	C3DObj * root = CGLEnv::getInstance().DrawEnv<C3DDrawEnv>(CGLEnv::C3D)->getRootObj();
+	C3DObj * root = env->getRootObj();
 	m_null = new C3DNullObj();
 	m_null->connectParent(root);
 	m_null->setPosition(C3DVec(0.0f, 0.0f, 0.0f));

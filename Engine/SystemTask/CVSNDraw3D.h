@@ -3,6 +3,7 @@
 
 #include "CVSNTask.h"
 #include "C3DDrawEnv.h"
+#include "C3DDefaultShader.h"
 
 class CVSNDraw3D : public CVSNTask
 {
@@ -22,9 +23,8 @@ public:
 	void on_surface();
 	void on_detach();
 private:
-	C3DDrawEnv*						m_env;
-	C3DDefaultShader			*	m_shader;
-	C3DCelestialSphereShader	*	m_celestial;
+	C3DDrawEnv			*	m_env;
+	C3DDefaultShader	*	m_shader;
 };
 
 #endif // CVSNDraw3D_h

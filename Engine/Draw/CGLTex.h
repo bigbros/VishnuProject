@@ -1,5 +1,5 @@
-#ifndef C3DTex_h
-#define C3DTex_h
+#ifndef CGLTex_h
+#define CGLTex_h
 
 #include "c3dgles.h"
 #include "CGLObj.h"

@@ -1,5 +1,5 @@
-#ifndef C3DShader_h
-#define C3DShader_h
+#ifndef CGLShader_h
+#define CGLShader_h
 
 #include <GLES2/gl2.h>
 #include "CGLObj.h"

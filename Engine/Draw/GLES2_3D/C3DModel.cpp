@@ -7,8 +7,8 @@
 
 #include "CGLTex.h"
 
-C3DModel::C3DModel(const char * modelName)
-	: C3DDrawable()
+C3DModel::C3DModel(C3DShader * shader, const char * modelName)
+	: C3DDrawable(shader)
 	, m_vertices(0)
 	, m_indices(0)
 	, m_vertnum(0)
@@ -114,9 +114,9 @@ C3DModel::setBuffer()
 }
 
 void
-C3DModel::setup(C3DDrawEnv * env)
+C3DModel::setup(C3DShader * pShader)
 {
-	C3DDefaultShader * shader = env->getDefaultShader();
+	C3DDefaultShader * shader = (C3DDefaultShader *)pShader;
 
 	// テクスチャが設定されていれば、そのテクスチャを有効にする。
 	if (m_material) {
@@ -147,7 +147,7 @@ C3DModel::setup(C3DDrawEnv * env)
 }
 
 void
-C3DModel::cleanup(C3DDrawEnv * env)
+C3DModel::cleanup(C3DShader * env)
 {
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);

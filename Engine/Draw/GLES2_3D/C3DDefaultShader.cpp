@@ -1,7 +1,27 @@
+#include "C3DDrawEnv.h"
 #include "C3DDefaultShader.h"
 
-C3DDefaultShader::C3DDefaultShader() : CGLShader() {}
+C3DDefaultShader::C3DDefaultShader(C3DDrawEnv * env) : C3DShader(SID_DEFAULT, env, C3DShader::DP_OBJECT) {}
 C3DDefaultShader::~C3DDefaultShader() {}
+
+void
+C3DDefaultShader::preConfig(C3DVec * lightVec, C3DVec * lightCol, C3DVec * ambientCol, C3DMat * projection, C3DMat * cameraInvert)
+{
+	glEnable(GL_DEPTH_TEST);
+	glDepthFunc(GL_LESS);
+
+	// 光源方向、光源色、環境光色を設定する
+	glUniform4fv(m_u_light, 1, (GLfloat *)lightVec);			// 光源ベクトル
+	glUniform4fv(m_u_rgba, 1, (GLfloat *)lightCol);		// 光源色
+	glUniform4fv(m_u_ambient, 1, (GLfloat *)ambientCol);	// 環境色
+
+	// このフレームにおけるcamera->view->projection行列を一つにまとめたものをプロジェクション用に送る
+	glUniformMatrix4fv(m_u_projection, 1, GL_FALSE, (const GLfloat *)projection);
+
+	// スペキュラ処理のためカメラ逆行列を送っておく。
+	glUniformMatrix4fv(m_u_camera, 1, GL_FALSE, (const GLfloat *)cameraInvert);
+}
+
 
 void
 C3DDefaultShader::setShaderParams(GLuint program)

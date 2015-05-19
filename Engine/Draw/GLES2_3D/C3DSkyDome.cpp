@@ -1,8 +1,9 @@
-#include "C3DCelestialSphere.h"
+#include "C3DDrawEnv.h"
+#include "C3DSkyDome.h"
 #include "CGLTex.h"
 
-C3DCelestialModel::C3DCelestialModel(float r, CGLTex * pTex, const char * modelName, int h_reso, int v_reso)
-	: C3DDrawable()
+C3DSkyDomeModel::C3DSkyDomeModel(C3DSkyDomeShader * shader, float r, CGLTex * pTex, const char * modelName, int h_reso, int v_reso)
+	: C3DDrawable(shader)
 	, m_vertices(0)
 	, m_indices(0)
 	, m_vertnum(0)
@@ -28,7 +29,7 @@ C3DCelestialModel::C3DCelestialModel(float r, CGLTex * pTex, const char * modelN
 	}
 }
 
-C3DCelestialModel::~C3DCelestialModel()
+C3DSkyDomeModel::~C3DSkyDomeModel()
 {
 	destruction();
 	delete[] m_modelName;
@@ -37,9 +38,9 @@ C3DCelestialModel::~C3DCelestialModel()
 }
 
 void
-C3DCelestialModel::setup(C3DDrawEnv * env)
+C3DSkyDomeModel::setup(C3DShader * pShader)
 {
-	C3DCelestialSphereShader * shader = env->getCelestialShader();	// 天球用シェーダをどこに持たせようか思案中…
+	C3DSkyDomeShader * shader = (C3DSkyDomeShader *)pShader;	// 天球用シェーダをどこに持たせようか思案中…
 
 	shader->useProgram();
 
@@ -60,7 +61,7 @@ C3DCelestialModel::setup(C3DDrawEnv * env)
 }
 
 void
-C3DCelestialModel::cleanup(C3DDrawEnv * env)
+C3DSkyDomeModel::cleanup(C3DShader * pShader)
 {
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
@@ -68,14 +69,14 @@ C3DCelestialModel::cleanup(C3DDrawEnv * env)
 }
 
 bool
-C3DCelestialModel::recovery()
+C3DSkyDomeModel::recovery()
 {
 	setBuffer();
 	return true;
 }
 
 bool
-C3DCelestialModel::destruction()
+C3DSkyDomeModel::destruction()
 {
 	if (m_ready) {
 		GLuint bufIdx[2];
@@ -89,7 +90,7 @@ C3DCelestialModel::destruction()
 
 
 bool
-C3DCelestialModel::newVertices(int num)
+C3DSkyDomeModel::newVertices(int num)
 {
 	try {
 		VERTEX * p = new VERTEX[num];
@@ -105,7 +106,7 @@ C3DCelestialModel::newVertices(int num)
 
 
 bool
-C3DCelestialModel::newIndices(int num)
+C3DSkyDomeModel::newIndices(int num)
 {
 	try {
 		u16 * p = new u16[num];
@@ -120,7 +121,7 @@ C3DCelestialModel::newIndices(int num)
 }
 
 void
-C3DCelestialModel::setBuffer()
+C3DSkyDomeModel::setBuffer()
 {
 	GLuint bufIdx[2];
 	glGenBuffers(2, bufIdx);
@@ -140,7 +141,7 @@ C3DCelestialModel::setBuffer()
 
 // 頂点リストおよびインデックスリストを作る。
 void
-C3DCelestialModel::createVertex()
+C3DSkyDomeModel::createVertex()
 {
 	// 頂点およびインデックス領域の生成
 	newVertices((m_reso_v + 1) * (m_reso_h + 1));
@@ -189,14 +190,14 @@ C3DCelestialModel::createVertex()
 		}
 	}
 }
-C3DCelestialSphere::C3DCelestialSphere(CGLTex * pTex)
+C3DSkyDome::C3DSkyDome(C3DSkyDomeShader * shader, CGLTex * pTex)
 	: C3DDrawObj()
 	, m_model(0)
 	, m_tex(pTex)
 	, m_color(1.0f, 1.0f, 1.0f, 1.0f)
 {
 	try {
-		m_model = new C3DCelestialModel(200.0f, m_tex, "celestial_sphere");
+		m_model = new C3DSkyDomeModel(shader, 200.0f, m_tex, "celestial_sphere");
 		m_model->setBuffer();
 		useDrawable(m_model);
 		
@@ -206,18 +207,18 @@ C3DCelestialSphere::C3DCelestialSphere(CGLTex * pTex)
 	}
 }
 
-C3DCelestialSphere::~C3DCelestialSphere()
+C3DSkyDome::~C3DSkyDome()
 {
 	delete m_model;
 }
 
 void
-C3DCelestialSphere::render(C3DDrawEnv * env)
+C3DSkyDome::render(C3DShader * pShader)
 {
-	C3DCelestialModel * model = getDrawable<C3DCelestialModel>();
-	C3DCelestialSphereShader * shader = env->getCelestialShader();
+	C3DSkyDomeModel * model = getDrawable<C3DSkyDomeModel>();
+	C3DSkyDomeShader * shader = (C3DSkyDomeShader *)pShader;
 
-	model->setup(env);
+	model->setup(shader);
 
 	// 描画の際、全体の頂点色にかけるRGBA値を転送する
 	glUniform4fv(shader->m_u_rgba, 1, (GLfloat *)&m_color);
@@ -227,7 +228,7 @@ C3DCelestialSphere::render(C3DDrawEnv * env)
 }
 
 bool
-C3DCelestialSphere::calcProcedure(bool is_recalc)
+C3DSkyDome::calcProcedure(bool is_recalc)
 {
 	return true;
 }

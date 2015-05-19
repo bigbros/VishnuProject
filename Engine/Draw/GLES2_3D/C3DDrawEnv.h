@@ -2,17 +2,15 @@
 #define C3DDrawEnv_h
 
 #include "Types3D.h"
-#include "dtypes.h"
 #include "C3DObj.h"
 #include "CGLObj.h"
 #include "C3DCameraObj.h"
-#include "C3DDefaultShader.h"
-#include "C3DCelestialSphereShader.h"
 #include "CGLEnv.h"
+#include "C3DShader.h"
 
-class C3DDrawEnv;
-class C3DDrawable;
-class C3DCelestialSphere;
+//class C3DDrawEnv;
+//class C3DDrawable;
+//class C3DShader;
 
 class C3DRootObj : public C3DObj
 {
@@ -31,9 +29,8 @@ class C3DDrawEnv : public IGLDrawEnv
 {
 	friend class C3DDrawable;
 private:
-	C3DMat				m_rootMatrix;
-	C3DRootObj			*	m_objRoot;
-	C3DCelestialSphere	*	m_objCelestialSphere;
+	C3DMat			m_rootMatrix;
+	C3DRootObj	*	m_objRoot;
 
 	C3DCameraObj	*	m_objCamera;
 	C3DMat				m_projection;
@@ -47,14 +44,16 @@ private:
 	float				m_farClip;
 	float				m_angle;
 
-	// デフォルトで用いる shader object
-	C3DDefaultShader			*	m_shader;			// オブジェクト用
-	C3DCelestialSphereShader	*	m_celestialShader;	// 天球用
 
+private:
 
-	// C3DDrawableのリスト
-	C3DDrawable			*	m_begin;
-	C3DDrawable			*	m_end;
+	struct SHADER {
+		C3DShader		*	begin;
+		C3DShader		*	end;
+	};
+
+	SHADER			m_shaders[C3DShader::DP_MAX];
+
 public:
 	C3DDrawEnv();
 	~C3DDrawEnv();
@@ -88,12 +87,11 @@ public:
 	inline void CalcWorld() { m_objRoot->recalcMatrix(&m_rootMatrix, false); }
 
 	// デフォルトシェーダの設定とRootObjectの生成
-	bool init(C3DDefaultShader * pShader, C3DCelestialSphereShader * pCelestial);
-	inline C3DDefaultShader * getDefaultShader() { return m_shader; }
-	inline C3DCelestialSphereShader * getCelestialShader() { return m_celestialShader; }
-	inline void setCelestialSphere(C3DCelestialSphere * pSphere) {
-		m_objCelestialSphere = pSphere;
-	}
+	bool init();
+	void setShader(C3DShader::DRAWPHASE phase, C3DShader * shader);
+	void removeShader(C3DShader * shader);
+
+	C3DShader * findShader(int sid);
 };
 
 
