@@ -82,7 +82,7 @@ private:
 	CGLTex				*	m_tex;
 	C3DVec					m_color;
 public:
-	C3DSkyDome(C3DSkyDomeShader * shader, CGLTex * pTex);
+	C3DSkyDome(C3DSkyDomeShader * shader, CGLTex * pTex, float r);
 	virtual ~C3DSkyDome();
 
 	void render(C3DShader * pShader);

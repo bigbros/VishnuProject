@@ -37,9 +37,6 @@
     <Filter Include="ソース ファイル\Engine\SystemTask">
       <UniqueIdentifier>{e067e235-4dfb-4099-9a2a-edb18be1a004}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\Engine\Utility">
-      <UniqueIdentifier>{5de324d0-3b8c-44b4-9b2f-f39e9b45a1f5}</UniqueIdentifier>
-    </Filter>
     <Filter Include="ヘッダー ファイル\Engine">
       <UniqueIdentifier>{df257b7c-5f9b-46dd-b2d8-bf3443a9db98}</UniqueIdentifier>
     </Filter>
@@ -90,6 +87,9 @@
     </Filter>
     <Filter Include="ソース ファイル\Engine\Collision">
       <UniqueIdentifier>{9591990c-da08-4288-aaa3-c8f941bdc79c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Utility">
+      <UniqueIdentifier>{5de324d0-3b8c-44b4-9b2f-f39e9b45a1f5}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -423,22 +423,22 @@
       <Filter>ソース ファイル\Engine\Draw\GLES2_3D</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\Engine\Utility\CVSN3DLightVecFunc.cpp">
-      <Filter>ソース ファイル\Engine\Utility</Filter>
+      <Filter>ソース ファイル\Utility</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\Engine\Utility\CVSNJsonKVObj.cpp">
-      <Filter>ソース ファイル\Engine\Utility</Filter>
+      <Filter>ソース ファイル\Utility</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\Engine\Utility\CVSNKVObj.cpp">
-      <Filter>ソース ファイル\Engine\Utility</Filter>
+      <Filter>ソース ファイル\Utility</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\Engine\Utility\CVSNPNGTex.cpp">
-      <Filter>ソース ファイル\Engine\Utility</Filter>
+      <Filter>ソース ファイル\Utility</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\Engine\Utility\CVSNUtil.cpp">
-      <Filter>ソース ファイル\Engine\Utility</Filter>
+      <Filter>ソース ファイル\Utility</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\Engine\Utility\CVSN3DKVModel.cpp">
-      <Filter>ソース ファイル\Engine\Utility</Filter>
+      <Filter>ソース ファイル\Utility</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\Engine\SystemTask\CVSNDraw3D.cpp">
       <Filter>ソース ファイル\Engine\SystemTask</Filter>

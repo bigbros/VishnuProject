@@ -190,14 +190,14 @@ C3DSkyDomeModel::createVertex()
 		}
 	}
 }
-C3DSkyDome::C3DSkyDome(C3DSkyDomeShader * shader, CGLTex * pTex)
+C3DSkyDome::C3DSkyDome(C3DSkyDomeShader * shader, CGLTex * pTex, float r)
 	: C3DDrawObj()
 	, m_model(0)
 	, m_tex(pTex)
 	, m_color(1.0f, 1.0f, 1.0f, 1.0f)
 {
 	try {
-		m_model = new C3DSkyDomeModel(shader, 200.0f, m_tex, "celestial_sphere");
+		m_model = new C3DSkyDomeModel(shader, r, m_tex, "celestial_sphere");
 		m_model->setBuffer();
 		useDrawable(m_model);
 		

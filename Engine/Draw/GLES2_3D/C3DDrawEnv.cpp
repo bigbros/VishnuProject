@@ -108,7 +108,7 @@ C3DDrawEnv::Render()
 	if (!m_objCamera) return;
 
 	// このフレームにおけるcamera->view->projection行列を一つにまとめたものをプロジェクション用に送る
-	C3DMat proj = m_objCamera->m_cameraInvert * (m_objCamera->m_view * m_projection);
+	C3DMat proj = (m_objCamera->m_view * m_projection);
 
 	// ここから通常オブジェクトの描画
 	for (int i = 0; i < C3DShader::DP_MAX; i++) {
@@ -116,6 +116,7 @@ C3DDrawEnv::Render()
 			pShader->useProgram();
 			pShader->preConfig(&m_lightVec, &m_lightColor, &m_ambientColor, &proj, &(m_objCamera->m_cameraInvert));
 			pShader->render();
+			pShader->after();
 		}
 	}
 }

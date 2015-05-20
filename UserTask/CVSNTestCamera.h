@@ -32,6 +32,10 @@ private:
 	C3DVec				m_preRot;
 
 	float				m_eyeAngle;
+	float				m_eyeNear;
+	float				m_eyeFar;
+	float				m_eyeAspect;
+
 };
 
 

@@ -26,6 +26,7 @@ public:
 	virtual ~C3DShader();
 
 	virtual void preConfig(C3DVec * lightVec, C3DVec * lightCol, C3DVec * ambientCol, C3DMat * projection, C3DMat * cameraInvert) = 0;
+	virtual void after() = 0;
 	void render();
 
 private:

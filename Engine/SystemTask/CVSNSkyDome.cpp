@@ -5,7 +5,7 @@
 #include "CVSNStorage.h"
 
 // CVSNSkyDome型タスクの起動をタスク名 "sysCelestialSphere" で登録する
-static CVSNFactory<CVSNSkyDome> factory("sysCelestialSphere");
+static CVSNFactory<CVSNSkyDome> factory("sysSkyDome");
 
 CVSNSkyDome::CVSNSkyDome() : CVSNScriptTask(), m_skydome(0), m_pTex(0), m_shader(0) {}
 CVSNSkyDome::~CVSNSkyDome() {}
@@ -15,6 +15,7 @@ CVSNSkyDome::init(CVSNScriptArgs& args)
 {
 	bool result = true;
 	const char * tex_name = args.getString(1);
+	float r = args.getFloat(2);
 
 	try {
 
@@ -31,7 +32,7 @@ CVSNSkyDome::init(CVSNScriptArgs& args)
 			m_shader->init(srcVertex, srcFragment);
 
 			m_pTex = new CVSNPNGTex("tex", tex_name);
-			m_skydome = new C3DSkyDome(m_shader, m_pTex);
+			m_skydome = new C3DSkyDome(m_shader, m_pTex, r);
 		}
 	}
 	catch (std::bad_alloc& ex) {

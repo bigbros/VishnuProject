@@ -9,7 +9,7 @@ void
 C3DSkyDomeShader::preConfig(C3DVec * lightVec, C3DVec * lightCol, C3DVec * ambientCol, C3DMat * projection, C3DMat * cameraInvert)
 {
 	// zバッファを無効にする
-	glDisable(GL_DEPTH_TEST);
+	glEnable(GL_DEPTH_TEST);
 
 	glUniform4fv(m_u_rgba, 1, (GLfloat *)lightCol);		// 光源色
 
@@ -20,6 +20,11 @@ C3DSkyDomeShader::preConfig(C3DVec * lightVec, C3DVec * lightCol, C3DVec * ambie
 	glUniformMatrix4fv(m_u_camera, 1, GL_FALSE, (const GLfloat *)cameraInvert);
 }
 
+void
+C3DSkyDomeShader::after()
+{
+	glClear(GL_DEPTH_BUFFER_BIT);
+}
 void
 C3DSkyDomeShader::setShaderParams(GLuint program)
 {

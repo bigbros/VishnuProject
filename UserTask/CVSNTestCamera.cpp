@@ -20,12 +20,23 @@ CVSNTestCamera::init(CVSNScriptArgs& args)
 
 	m_width = CGLEnv::getInstance().width();
 	m_height = CGLEnv::getInstance().height();
-
-	std::auto_ptr<CVSNKVObj> camera_pos(args.getTable(1));
+	
+	std::auto_ptr<CVSNKVObj> camera_param(args.getTable(1));
+	std::auto_ptr<CVSNKVObj> camera_pos(args.getTable(2));
 	m_anime = false;
-	if(args.argc() > 2) m_anime = args.getBool(2);
+	if(args.argc() > 3) m_anime = args.getBool(3);
 
 	C3DVec camera((*camera_pos)["x"], (*camera_pos)["y"], (*camera_pos)["z"], 1.0f);
+
+	m_eyeAngle = F_PI / 2.0f;
+	m_eyeNear = 10.0f;
+	m_eyeFar = 300.0f;
+	m_eyeAspect = 1.0f;
+	if ((*camera_param).ContainsKey("angle")) m_eyeAngle = (*camera_param)["angle"];
+	if ((*camera_param).ContainsKey("near")) m_eyeNear = (*camera_param)["near"];
+	if ((*camera_param).ContainsKey("far")) m_eyeFar = (*camera_param)["far"];
+	if ((*camera_param).ContainsKey("aspect")) m_eyeAspect = (*camera_param)["aspect"];
+
 
 	C3DDrawEnv * env3d = CGLEnv::getInstance().DrawEnv<C3DDrawEnv>(CGLEnv::C3D);
 	C3DObj * root = env3d->getRootObj();
@@ -35,9 +46,8 @@ CVSNTestCamera::init(CVSNScriptArgs& args)
 	m_camera = new C3DCameraObj();
 	m_camera->connectParent(m_shaft);
 
-	m_eyeAngle = F_PI / 2.0f;
 	float angle = m_camera->angleDiagonal2Horizontal(m_eyeAngle, (float)m_width, (float)m_height);
-	m_camera->setView(angle, 1.0f, 10.0f, 300.0f);
+	m_camera->setView(angle, m_eyeAspect, m_eyeNear, m_eyeFar);
 	m_camera->setPosition(camera);
 	m_shaft->setPosition(C3DVec(0.0f, 0.0f, 0.0f));
 
@@ -71,10 +81,10 @@ CVSNTestCamera::update(int deltaT)
 			int deltaY = item->y - m_preY;
 			if (!deltaX && !deltaY) break;
 
-			C3DVec pole((float)-deltaY, (float)-deltaX, 0.0f);
-			float theta = F_PI * pole.len() / (float)wide;
+			C3DVec pole((float)deltaY, (float)deltaX, 0.0f);
+			float theta = pole.len() * F_PI / (float)wide;
 			C3DQuat rot(pole.unit(), theta);
-			rot = rot * m_preRot;
+			rot = m_preRot * rot;
 			pObj->setRotation(rot);
 		}
 		case IVSNPointListener::PT_RELEASE: {
@@ -99,7 +109,7 @@ CVSNTestCamera::on_change()
 	m_height = CGLEnv::getInstance().height();
 
 	float angle = m_camera->angleDiagonal2Horizontal(m_eyeAngle, (float)m_width, (float)m_height);
-	m_camera->setView(angle, 1.0f, 10.0f, 300.0f);
+	m_camera->setView(angle, m_eyeAspect, m_eyeNear, m_eyeFar);
 }
 
 float
