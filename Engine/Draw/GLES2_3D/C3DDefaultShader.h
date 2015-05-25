@@ -23,6 +23,7 @@ public:
 	GLint				m_u_modelcol;
 	GLint				m_u_shininess;
 	GLint				m_u_switch;
+	GLint				m_u_offset;
 
 	// attribs
 	GLint				m_a_vert;

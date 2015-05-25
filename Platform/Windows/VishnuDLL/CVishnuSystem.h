@@ -4,6 +4,7 @@
 #include "CTestEnv.h"
 #include "CVSNWin32FS.h"
 #include "CVSNWin32Thread.h"
+#include "CVSNWin32Tracking.h"
 #include "CWin32GLES2.h"
 
 class CVishnuSystem
@@ -24,15 +25,16 @@ public:
 	void OnSurface();
 
 private:
-	CVSNPointing	*	m_Pointing;
-	CVSNWin32FS		*	m_Storage;
-	CVSNWin32Thread	*	m_Thread;
-	CTestEnv		*	m_env;
+	CVSNPointing		*	m_Pointing;
+	CVSNWin32FS			*	m_Storage;
+	CVSNWin32Thread		*	m_Thread;
+	CVSNWin32Tracking	*	m_Tracking;
+	CTestEnv			*	m_env;
 
-	void			*	m_heapBuf;
-	size_t				m_heapSize;
+	void				*	m_heapBuf;
+	size_t					m_heapSize;
 
-	DWORD				m_prevTime;
+	DWORD					m_prevTime;
 };
 
 

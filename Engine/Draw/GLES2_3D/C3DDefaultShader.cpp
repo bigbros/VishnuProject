@@ -16,8 +16,7 @@ C3DDefaultShader::preConfig(C3DVec * lightVec, C3DVec * lightCol, C3DVec * ambie
 	glUniform4fv(m_u_ambient, 1, (GLfloat *)ambientCol);	// 環境色
 
 	// このフレームにおけるcamera->view->projection行列を一つにまとめたものをプロジェクション用に送る
-	C3DMat proj = *(cameraInvert)* *(projection);
-	glUniformMatrix4fv(m_u_projection, 1, GL_FALSE, (const GLfloat *)&proj);
+	glUniformMatrix4fv(m_u_projection, 1, GL_FALSE, (const GLfloat *)projection);
 
 	// スペキュラ処理のためカメラ逆行列を送っておく。
 	glUniformMatrix4fv(m_u_camera, 1, GL_FALSE, (const GLfloat *)cameraInvert);
@@ -45,6 +44,7 @@ C3DDefaultShader::setShaderParams(GLuint program)
 	m_u_modelcol = glGetUniformLocation(program, "u_modelcol");
 	m_u_shininess = glGetUniformLocation(program, "u_shininess");
 	m_u_switch = glGetUniformLocation(program, "u_switch");
+	m_u_offset = glGetUniformLocation(program, "u_offset");
 
 	// shaderの各attribに相当する値を取得しておく。
 	m_a_vert = glGetAttribLocation(program, "a_vert");

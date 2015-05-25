@@ -11,11 +11,13 @@ CVishnuSystem::CVishnuSystem(const char * path, int width, int height)
 	m_Pointing = new CVSNPointing();
 	m_Storage = new CVSNWin32FS(path);
 	m_Thread = new CVSNWin32Thread();
+	m_Tracking = new CVSNWin32Tracking();
 
 	CVSNPlatform& platform = CVSNPlatform::getInstance();
 	platform.registModule(m_Pointing);
 	platform.registModule(m_Storage);
 	platform.registModule(m_Thread);
+	platform.registModule(m_Tracking);
 
 	m_env->Startup("shaders", "LuaScripts", "startup");
 }
@@ -23,6 +25,7 @@ CVishnuSystem::CVishnuSystem(const char * path, int width, int height)
 CVishnuSystem::~CVishnuSystem() 
 {
 	delete m_env;
+	delete m_Tracking;
 	delete m_Thread;
 	delete m_Storage;
 	delete m_Pointing;

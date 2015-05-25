@@ -6,15 +6,17 @@ function Init()
 	vsnUtil("3d_light_col", {r=1,g=1,b=1})				-- light col
 	vsnUtil("3d_ambient", {r=0.08,g=0.08,b=0.08})		-- ambient col
 
+	tracking = vsnTaskCreate("tracking");
+	
 	celestialSphere = vsnTaskCreate("sysSkyDome", "LuaScripts/SkyDome.png", 340.0)
 
 	local skinning = false
 	local camerarot = true
 
 	camera = vsnTaskCreate("camera",
-							{angle=math.pi/3, near=0.05, far=350.0},
+							{angle=math.pi/2, near=0.05, far=350.0},
 							{x=0, y=1.65, z=2.0}, camerarot)			-- camera position
-	task1 = vsnTaskCreate("test2", {x=0, y=0.72, z=0}, model, skinning)
+	task1 = vsnTaskCreate("test2", {x=0, y=1.0, z=0}, model, skinning)
 --[[
 	task2 = vsnTaskCreate("test2", {x=25, y=0, z=0}, model, skinning)
 	task3 = vsnTaskCreate("test2", {x=-25, y=0, z=0}, model, skinning)
@@ -40,6 +42,7 @@ function Leave()
 	vsnTaskKill(task4)
 	vsnTaskKill(task5)
 	vsnTaskKill(celestialSphere)
+	vsnTaskKill(tracking)
 end
 
 function OnPause()

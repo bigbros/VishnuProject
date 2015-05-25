@@ -9,6 +9,7 @@ attribute mediump vec4 a_wght;
 uniform highp mat4 u_camera;
 uniform highp mat4 u_projection;
 uniform highp vec4 u_light;
+uniform highp vec3 u_offset;
 
 uniform mat4 u_bone[32];
 uniform vec4 u_bonepos[32];
@@ -19,6 +20,7 @@ varying vec3 v_norm;
 varying vec3 v_uv;
 varying vec3 v_normlight;
 varying vec3 v_viewvec;
+varying vec3 v_pos;
 
 void main(void)
 {
@@ -51,7 +53,11 @@ void main(void)
 
 	mat3 m3camera = mat3(u_camera);
 	vec3 pos = normalize(m3camera * vec3(vw));
-
+	vw = u_camera * vw;
+	v_pos = vw.xyz / vw.w;
+	vw.x += u_offset.x;
+	vw.y += u_offset.y;
+	vw.z += u_offset.z;
 	vw = u_projection * vw;
 
 	n = normalize(n);
@@ -72,9 +78,10 @@ void main(void)
 	v_viewvec.z = dot(n, pos);
 	v_viewvec = normalize(v_viewvec);
 
-
 	v_color = a_rgba;
 	v_norm = n;
 	v_uv = vec3(a_uv.x/vw.w, a_uv.y/vw.w, 1.0/vw.w);
-	gl_Position = vw / vw.w;;
+	if(v_pos.z <= 0.0) {
+		gl_Position = vw / vw.w;
+	}
 }

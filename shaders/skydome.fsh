@@ -3,7 +3,7 @@ uniform vec4 u_rgba;
 uniform sampler2D u_tex;
 
 varying vec3 v_uv;
-
+varying vec3 v_pos;
 
 vec4 grayScale(vec4 color)
 {
@@ -21,8 +21,12 @@ vec4 filters(vec4 color)
 
 void main(void)
 {
-	vec2 uv = vec2(v_uv / v_uv.z);
-	vec4 color = texture2D(u_tex, uv);
-	color = color * u_rgba;
-	gl_FragColor = filters(color);
+	if(v_pos.z > 0.0) {
+		discard;
+	} else {
+		vec2 uv = vec2(v_uv / v_uv.z);
+		vec4 color = texture2D(u_tex, uv);
+		color = color * u_rgba;
+		gl_FragColor = filters(color);
+	}
 }

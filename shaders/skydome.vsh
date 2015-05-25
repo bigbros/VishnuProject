@@ -5,12 +5,14 @@ uniform highp mat4 u_camera;
 uniform highp mat4 u_projection;
 
 varying vec3 v_uv;
+varying vec3 v_pos;
 
 void main(void)
 {
 	// Celestial Sphere is rotation only.
 	mat3 camera = mat3(u_camera);
 	vec3 v = camera * a_vert;
+	v_pos = v;
 	vec4 vw = vec4(v, 1.0);
 	vw = u_projection * vw;
 

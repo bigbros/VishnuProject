@@ -75,6 +75,8 @@ public:
 		m_objCamera->setVisible(true);
 	}
 
+	inline C3DCameraObj * getCamera() { return m_objCamera; }
+
 	// ŒõŒ¹İ’è
 	inline void setLightVec(C3DVec& v) {
 		m_lightVec = v.unit();

@@ -41,8 +41,8 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>..\;..\..\..\Test;..\..\..\Engine\Core\include;..\..\..\Engine\Draw;..\..\..\Engine\Draw\GLES2_2D;..\..\..\Engine\Draw\GLES2_3D;..\..\..\Engine\Platform;..\..\..\Engine\Script;..\..\..\Engine\SystemTask;..\..\..\Engine\Utility;..\extern\yajl-1.0.12\include;..\extern\Lua;..\extern\libpng\include;..\extern\freetype2\include;..\extern\OpenGLES\include;$(IncludePath)</IncludePath>
-    <LibraryPath>..\extern\Lua;..\extern\OpenGLES\lib;..\extern\libpng;..\extern\yajl-1.0.12\lib;..\extern\freetype2;$(LibraryPath)</LibraryPath>
+    <IncludePath>..\;..\..\..\Test;..\..\..\Engine\Core\include;..\..\..\Engine\Draw;..\..\..\Engine\Draw\GLES2_2D;..\..\..\Engine\Draw\GLES2_3D;..\..\..\Engine\Platform;..\..\..\Engine\Script;..\..\..\Engine\SystemTask;..\..\..\Engine\Utility;..\extern\yajl-1.0.12\include;..\extern\Lua;..\extern\libpng\include;..\extern\freetype2\include;..\extern\OpenGLES\include;C:\Projects\OculusSDK\LibOVR\Include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Projects\OculusSDK\LibOVR\Lib\Windows\Win32\Debug\VS2013;..\extern\Lua;..\extern\OpenGLES\lib;..\extern\libpng;..\extern\yajl-1.0.12\lib;..\extern\freetype2;$(LibraryPath)</LibraryPath>
     <OutDir>..\VishnuDev\Package</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -60,7 +60,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>libEGL.lib;libGLESv2.lib;Lua.lib;yajl.lib;libpng16.lib;zlib.lib;freetype253_D.lib;Winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>LibOVR.lib;libEGL.lib;libGLESv2.lib;Lua.lib;yajl.lib;libpng16.lib;zlib.lib;freetype253_D.lib;Winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -86,6 +86,7 @@
   <ItemGroup>
     <ClInclude Include="..\..\..\Engine\Core\include\CVSNEngineHeap.h" />
     <ClInclude Include="..\..\..\Engine\Core\include\CVSNGameEnvironment.h" />
+    <ClInclude Include="..\..\..\Engine\Core\include\CVSNHeapMap.h" />
     <ClInclude Include="..\..\..\Engine\Core\include\CVSNObj.h" />
     <ClInclude Include="..\..\..\Engine\Core\include\CVSNPropertyFunc.h" />
     <ClInclude Include="..\..\..\Engine\Core\include\CVSNTask.h" />
@@ -129,6 +130,7 @@
     <ClInclude Include="..\..\..\Engine\Platform\CVSNStorage.h" />
     <ClInclude Include="..\..\..\Engine\Platform\CVSNThread.h" />
     <ClInclude Include="..\..\..\Engine\Platform\CVSNTouchPanel.h" />
+    <ClInclude Include="..\..\..\Engine\Platform\CVSNTracking.h" />
     <ClInclude Include="..\..\..\Engine\Platform\platform.h" />
     <ClInclude Include="..\..\..\Engine\Platform\PlatformUtil.h" />
     <ClInclude Include="..\..\..\Engine\Script\CVSNLuaScript.h" />
@@ -154,8 +156,10 @@
     <ClInclude Include="..\..\..\UserTask\CVSNTest2D.h" />
     <ClInclude Include="..\..\..\UserTask\CVSNTestCamera.h" />
     <ClInclude Include="..\..\..\UserTask\CVSNTestTask.h" />
+    <ClInclude Include="..\..\..\UserTask\CVSNTrackTest.h" />
     <ClInclude Include="..\CVSNWin32FS.h" />
     <ClInclude Include="..\CVSNWin32Thread.h" />
+    <ClInclude Include="..\CVSNWin32Tracking.h" />
     <ClInclude Include="..\CWin32GLES2.h" />
     <ClInclude Include="CVishnuSystem.h" />
     <ClInclude Include="stdafx.h" />
@@ -199,6 +203,7 @@
     <ClCompile Include="..\..\..\Engine\Platform\CVSNPointing.cpp" />
     <ClCompile Include="..\..\..\Engine\Platform\CVSNStorage.cpp" />
     <ClCompile Include="..\..\..\Engine\Platform\CVSNThread.cpp" />
+    <ClCompile Include="..\..\..\Engine\Platform\CVSNTracking.cpp" />
     <ClCompile Include="..\..\..\Engine\Script\CVSNLuaScript.cpp" />
     <ClCompile Include="..\..\..\Engine\Script\CVSNPythonScript.cpp" />
     <ClCompile Include="..\..\..\Engine\Script\CVSNScript.cpp" />
@@ -221,8 +226,10 @@
     <ClCompile Include="..\..\..\UserTask\CVSNTest2D.cpp" />
     <ClCompile Include="..\..\..\UserTask\CVSNTestCamera.cpp" />
     <ClCompile Include="..\..\..\UserTask\CVSNTestTask.cpp" />
+    <ClCompile Include="..\..\..\UserTask\CVSNTrackTest.cpp" />
     <ClCompile Include="..\CVSNWin32FS.cpp" />
     <ClCompile Include="..\CVSNWin32Thread.cpp" />
+    <ClCompile Include="..\CVSNWin32Tracking.cpp" />
     <ClCompile Include="..\CWin32GLES2.cpp" />
     <ClCompile Include="CVishnuSystem.cpp" />
     <ClCompile Include="dllmain.cpp">

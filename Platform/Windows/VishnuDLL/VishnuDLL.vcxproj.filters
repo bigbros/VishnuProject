@@ -327,6 +327,18 @@
     <ClInclude Include="..\..\..\Engine\SystemTask\CVSNSkyDome.h">
       <Filter>ヘッダー ファイル\Engine\SystemTask</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\Engine\Core\include\CVSNHeapMap.h">
+      <Filter>ヘッダー ファイル\Engine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CVSNWin32Tracking.h">
+      <Filter>ヘッダー ファイル\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\Platform\CVSNTracking.h">
+      <Filter>ヘッダー ファイル\Engine\Platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\UserTask\CVSNTrackTest.h">
+      <Filter>ヘッダー ファイル\UserTask</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -523,6 +535,15 @@
     </ClCompile>
     <ClCompile Include="..\..\..\Engine\SystemTask\CVSNSkyDome.cpp">
       <Filter>ソース ファイル\Engine\SystemTask</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\Platform\CVSNTracking.cpp">
+      <Filter>ソース ファイル\Engine\Platform</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CVSNWin32Tracking.cpp">
+      <Filter>ソース ファイル\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\UserTask\CVSNTrackTest.cpp">
+      <Filter>ソース ファイル\UserTask</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

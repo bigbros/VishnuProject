@@ -14,6 +14,7 @@ varying vec3 v_norm;
 varying vec3 v_uv;
 varying vec3 v_normlight;
 varying vec3 v_viewvec;
+varying vec3 v_pos;
 
 #define TEXTURE  0x00000001
 #define NORMAL   0x00000002
@@ -36,17 +37,21 @@ vec4 filters(vec4 color)
 
 void main(void)
 {
-	vec2 uv = vec2(v_uv / v_uv.z);
-	vec3 norm = vec3(texture2D(u_normmap, uv)) * 2.0 - 1.0;
-	//vec3 light = normalize(vec3(v_light));
-	float diffuse = max(dot(v_normlight, norm), 0.0); // max(dot(light, v_norm), 0.0);
+	if(v_pos.z >= 0.0) {
+		discard;
+	} else {
+		vec2 uv = vec2(v_uv / v_uv.z);
+		vec3 norm = vec3(texture2D(u_normmap, uv)) * 2.0 - 1.0;
+		//vec3 light = normalize(vec3(v_light));
+		float diffuse = max(dot(v_normlight, norm), 0.0); // max(dot(light, v_norm), 0.0);
 
-	vec3 view = normalize(-v_viewvec);
-	vec3 refvec = reflect(norm, v_normlight);
-	float specular = pow(max(dot(view, refvec), 0.0), u_shininess);
-	vec4 spcol = u_rgba * specular;
+		vec3 view = normalize(-v_viewvec);
+		vec3 refvec = reflect(norm, v_normlight);
+		float specular = pow(max(dot(view, refvec), 0.0), u_shininess);
+		vec4 spcol = u_rgba * specular;
 	
-	vec4 color = texture2D(u_tex, uv); // : vec4(1.0, 1.0, 1.0, 1.0);
-	color = color * v_color * u_modelcol * u_rgba * diffuse + u_ambient * (1.0 - diffuse) + spcol;
-	gl_FragColor = filters(color);
+		vec4 color = texture2D(u_tex, uv); // : vec4(1.0, 1.0, 1.0, 1.0);
+		color = color * v_color * u_modelcol * u_rgba * diffuse + u_ambient * (1.0 - diffuse) + spcol;
+		gl_FragColor = filters(color);
+	}
 }

@@ -3,8 +3,12 @@
 
 #include <stddef.h>
 
+class CVSNHeapMap;
+
 class CVSNEngineHeap
 {
+	friend class CVSNHeapMap;
+
 private:
 	size_t			m_heapSize;
 	char		*	m_heapBuffer;
