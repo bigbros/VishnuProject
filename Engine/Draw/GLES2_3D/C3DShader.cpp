@@ -25,3 +25,9 @@ C3DShader::render()
 		draw->Render();
 	}
 }
+
+GLuint
+C3DShader::uniformOffset()
+{
+	return -1;
+}

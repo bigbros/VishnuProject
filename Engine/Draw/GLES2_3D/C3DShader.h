@@ -5,6 +5,7 @@
 #include "C3DDrawable.h"
 
 class C3DDrawEnv;
+class C3DDrawable;
 
 class C3DShader : public CGLShader
 {
@@ -24,7 +25,7 @@ public:
 
 	C3DShader(int id, C3DDrawEnv * env, DRAWPHASE phase);
 	virtual ~C3DShader();
-
+	virtual GLuint uniformOffset();
 	virtual void preConfig(C3DVec * lightVec, C3DVec * lightCol, C3DVec * ambientCol, C3DMat * projection, C3DMat * cameraInvert) = 0;
 	virtual void after() = 0;
 	void render();

@@ -33,10 +33,11 @@ private:
 protected:
 	virtual bool initDraw3D();
 	virtual bool initDraw2D();
+	virtual CGLFBO * createFBO();
 	virtual CVSNScript * createScriptSystem() = 0;
 	virtual bool initUserTask() = 0;
 
-private:
+protected:
 	void				*	m_pHeapBuffer;
 	size_t					m_sizeHeap;
 

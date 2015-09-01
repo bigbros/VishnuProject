@@ -7,13 +7,13 @@ CVSNDraw3D::~CVSNDraw3D() {}
 
 
 bool
-CVSNDraw3D::init(const char * shaderPath)
+CVSNDraw3D::init(const char * shaderPath, CGLFBO * fbo)
 {
 	bool result = false;
 
 	// 3D•`‰æŠÂ‹«‚ðÝ’è
 	m_env = new C3DDrawEnv();
-	m_env->init();
+	m_env->init(fbo);
 	CGLEnv::getInstance().setDrawEnv(CGLEnv::C3D, m_env);
 
 	CVSNStorage * storage = CVSNPlatform::getInstance().Module<CVSNStorage>(PF_STORAGE, "DATA");

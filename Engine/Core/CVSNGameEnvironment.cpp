@@ -7,7 +7,7 @@
 #include "CVSNTask.h"
 
 #include "CGLEnv.h"
-
+#include "C3DFBO.h"
 #include "CVSN3DLightVecFunc.h"
 #include "CGLAlloc.h"
 
@@ -200,5 +200,12 @@ CVSNGameEnvironment::initDraw3D()
 	static CVSN3DLightVecFunc lightvec;
 	static CVSN3DLightColFunc lightcol;
 	static CVSN3DAmbientFunc  ambient;
-	return (m_draw3d = new CVSNDraw3D())->init(m_pathShaders);
+	CGLFBO * fbo = createFBO();
+	return (m_draw3d = new CVSNDraw3D())->init(m_pathShaders, fbo);
+}
+
+CGLFBO *
+CVSNGameEnvironment::createFBO()
+{
+	return new C3DFBO(m_pathShaders, m_width, m_height);
 }

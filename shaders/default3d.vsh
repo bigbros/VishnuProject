@@ -9,10 +9,10 @@ attribute mediump vec4 a_wght;
 uniform highp mat4 u_camera;
 uniform highp mat4 u_projection;
 uniform highp vec4 u_light;
-uniform highp vec3 u_offset;
+uniform highp vec4 u_offset;
 
-uniform mat4 u_bone[32];
-uniform vec4 u_bonepos[32];
+uniform mat4 u_bone[40];
+uniform vec4 u_bonepos[40];
 
 varying mediump vec4 v_color;
 varying mediump vec4 v_light;
@@ -54,10 +54,12 @@ void main(void)
 	mat3 m3camera = mat3(u_camera);
 	vec3 pos = normalize(m3camera * vec3(vw));
 	vw = u_camera * vw;
+	
+	vw.x += u_offset.x * vw.w;
+	vw.y += u_offset.y * vw.w;
+	vw.z += u_offset.z * vw.w;
+	
 	v_pos = vw.xyz / vw.w;
-	vw.x += u_offset.x;
-	vw.y += u_offset.y;
-	vw.z += u_offset.z;
 	vw = u_projection * vw;
 
 	n = normalize(n);

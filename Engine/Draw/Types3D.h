@@ -45,6 +45,9 @@ struct C3DVec
 		float l = len();
 		return C3DVec(x / l, y / l, z / l, w);
 	}
+	inline const C3DVec rate(float rt) {
+		return C3DVec(x * rt, y * rt, z * rt, w);
+	}
 	inline const C3DVec& adjust() {
 		x /= w;
 		y /= w;

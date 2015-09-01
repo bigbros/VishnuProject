@@ -4,7 +4,7 @@
 #include "CTestEnv.h"
 #include "CVSNWin32FS.h"
 #include "CVSNWin32Thread.h"
-#include "CVSNWin32Tracking.h"
+//#include "CVSNWin32Tracking.h"
 #include "CWin32GLES2.h"
 
 class CVishnuSystem
@@ -28,7 +28,7 @@ private:
 	CVSNPointing		*	m_Pointing;
 	CVSNWin32FS			*	m_Storage;
 	CVSNWin32Thread		*	m_Thread;
-	CVSNWin32Tracking	*	m_Tracking;
+//	CVSNWin32Tracking	*	m_Tracking;
 	CTestEnv			*	m_env;
 
 	void				*	m_heapBuf;

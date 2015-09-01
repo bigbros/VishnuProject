@@ -100,13 +100,13 @@
             // 
             this.logText.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.logText.Location = new System.Drawing.Point(20, 468);
+            this.logText.Location = new System.Drawing.Point(21, 468);
             this.logText.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.logText.Multiline = true;
             this.logText.Name = "logText";
             this.logText.ReadOnly = true;
             this.logText.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.logText.Size = new System.Drawing.Size(846, 142);
+            this.logText.Size = new System.Drawing.Size(852, 142);
             this.logText.TabIndex = 6;
             this.logText.TextChanged += new System.EventHandler(this.logText_TextChanged);
             // 

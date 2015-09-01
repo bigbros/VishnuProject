@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include <exception>
+#include <GLES2/gl2.h>
 
 class CGLException : public std::exception
 {

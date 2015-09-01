@@ -5,9 +5,17 @@
       <Configuration>Debug</Configuration>
       <Platform>Win32</Platform>
     </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
     <ProjectConfiguration Include="Release|Win32">
       <Configuration>Release</Configuration>
       <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
@@ -22,7 +30,20 @@
     <PlatformToolset>v120</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v120</PlatformToolset>
@@ -35,17 +56,31 @@
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>..\;..\..\..\Test;..\..\..\Engine\Core\include;..\..\..\Engine\Draw;..\..\..\Engine\Draw\GLES2_2D;..\..\..\Engine\Draw\GLES2_3D;..\..\..\Engine\Platform;..\..\..\Engine\Script;..\..\..\Engine\SystemTask;..\..\..\Engine\Utility;..\extern\yajl-1.0.12\include;..\extern\Lua;..\extern\libpng\include;..\extern\freetype2\include;..\extern\OpenGLES\include;C:\Projects\OculusSDK\LibOVR\Include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Projects\OculusSDK\LibOVR\Lib\Windows\Win32\Debug\VS2013;..\extern\Lua;..\extern\OpenGLES\lib;..\extern\libpng;..\extern\yajl-1.0.12\lib;..\extern\freetype2;$(LibraryPath)</LibraryPath>
-    <OutDir>..\VishnuDev\Package</OutDir>
+    <IncludePath>..\;..\..\..\Test;..\..\..\Engine\Core\include;..\..\..\Engine\Collision;..\..\..\Engine\Collision\Collision3D;..\..\..\Engine\Draw;..\..\..\Engine\Draw\GLES2_2D;..\..\..\Engine\Draw\GLES2_3D;..\..\..\Engine\Platform;C:\Projects\VishnuProject\Platform\Oculus;..\..\..\Engine\Script;..\..\..\Engine\SystemTask;..\..\..\Engine\Utility;..\extern\yajl-1.0.12\include;..\extern\Lua;..\extern\libpng\include;..\extern\freetype2\include;..\extern\OpenGLES\include;$(OCULUS_SDK)\LibOVR\Include;$(LEAPMOTION_SDK)\include;$(IncludePath)</IncludePath>
+    <LibraryPath>..\extern\Lua;..\extern\OpenGLES\lib;..\extern\libpng;..\extern\yajl-1.0.12\lib;..\extern\freetype2;$(LEAPMOTION_SDK)\lib\x86;$(OCULUS_SDK)\LibOVR\Lib\Windows\Win32\Debug\VS2013;$(LibraryPath)</LibraryPath>
+    <OutDir>..\VishnuDev\Package\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>..\;..\..\..\Test;..\..\..\Engine\Core\include;..\..\..\Engine\Draw;..\..\..\Engine\Draw\GLES2_2D;..\..\..\Engine\Draw\GLES2_3D;..\..\..\Engine\Platform;..\..\..\Engine\Script;..\..\..\Engine\SystemTask;..\..\..\Engine\Utility;..\extern\yajl-1.0.12\include;..\extern\Lua;..\extern\libpng\include;..\extern\freetype2\include;..\extern\OpenGLES\include;$(OCULUS_SDK)\LibOVR\Include;$(LEAPMOTION_SDK)\include;$(IncludePath)</IncludePath>
+    <LibraryPath>..\extern\Lua;..\extern\OpenGLES\lib;..\extern\libpng;..\extern\yajl-1.0.12\lib;..\extern\freetype2;$(LEAPMOTION_SDK)\lib\x86;$(OCULUS_SDK)\LibOVR\Lib\Windows\Win32\Debug\VS2013;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -60,10 +95,42 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>LibOVR.lib;libEGL.lib;libGLESv2.lib;Lua.lib;yajl.lib;libpng16.lib;zlib.lib;freetype253_D.lib;Winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>LibOVR.lib;libEGL.lib;libGLESv2.lib;yajl.lib;libpng16.lib;zlib.lib;freetype253_D.lib;Winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;_CRT_SECURE_NO_WARNINGS;VISHNUDLL_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <CompileAsWinRT>false</CompileAsWinRT>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>Leap.lib;LibOVR.lib;libEGL.lib;libGLESv2.lib;yajl.lib;libpng16.lib;zlib.lib;freetype253_D.lib;Winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;VISHNUDLL_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <PrecompiledHeader>Use</PrecompiledHeader>
@@ -84,6 +151,11 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\Engine\Collision\CColAlloc.h" />
+    <ClInclude Include="..\..\..\Engine\Collision\CColBase.h" />
+    <ClInclude Include="..\..\..\Engine\Collision\Collision3D\CCol3DGroup.h" />
+    <ClInclude Include="..\..\..\Engine\Collision\Collision3D\CCol3DCollision.h" />
+    <ClInclude Include="..\..\..\Engine\Collision\Collision3D\CCol3DTypes.h" />
     <ClInclude Include="..\..\..\Engine\Core\include\CVSNEngineHeap.h" />
     <ClInclude Include="..\..\..\Engine\Core\include\CVSNGameEnvironment.h" />
     <ClInclude Include="..\..\..\Engine\Core\include\CVSNHeapMap.h" />
@@ -93,6 +165,7 @@
     <ClInclude Include="..\..\..\Engine\Draw\CGLAlloc.h" />
     <ClInclude Include="..\..\..\Engine\Draw\CGLBase.h" />
     <ClInclude Include="..\..\..\Engine\Draw\CGLEnv.h" />
+    <ClInclude Include="..\..\..\Engine\Draw\CGLFBO.h" />
     <ClInclude Include="..\..\..\Engine\Draw\CGLObj.h" />
     <ClInclude Include="..\..\..\Engine\Draw\CGLShader.h" />
     <ClInclude Include="..\..\..\Engine\Draw\CGLTex.h" />
@@ -110,6 +183,7 @@
     <ClInclude Include="..\..\..\Engine\Draw\GLES2_2D\C2DSprite.h" />
     <ClInclude Include="..\..\..\Engine\Draw\GLES2_2D\C2DTexOT.h" />
     <ClInclude Include="..\..\..\Engine\Draw\GLES2_3D\C3DCameraObj.h" />
+    <ClInclude Include="..\..\..\Engine\Draw\GLES2_3D\C3DFBO.h" />
     <ClInclude Include="..\..\..\Engine\Draw\GLES2_3D\C3DSkyDome.h" />
     <ClInclude Include="..\..\..\Engine\Draw\GLES2_3D\C3DSkyDomeShader.h" />
     <ClInclude Include="..\..\..\Engine\Draw\GLES2_3D\C3DCharacter.h" />
@@ -125,6 +199,7 @@
     <ClInclude Include="..\..\..\Engine\Draw\GLES2_3D\C3DShader.h" />
     <ClInclude Include="..\..\..\Engine\Draw\Types2D.h" />
     <ClInclude Include="..\..\..\Engine\Draw\Types3D.h" />
+    <ClInclude Include="..\..\..\Engine\Platform\CVSNLeapMotion.h" />
     <ClInclude Include="..\..\..\Engine\Platform\CVSNPlatform.h" />
     <ClInclude Include="..\..\..\Engine\Platform\CVSNPointing.h" />
     <ClInclude Include="..\..\..\Engine\Platform\CVSNStorage.h" />
@@ -151,15 +226,41 @@
     <ClInclude Include="..\..\..\Engine\Utility\CVSNKVObj.h" />
     <ClInclude Include="..\..\..\Engine\Utility\CVSNPNGTex.h" />
     <ClInclude Include="..\..\..\Engine\Utility\CVSNUtil.h" />
+    <ClInclude Include="..\..\..\External\lua5.2.3\lapi.h" />
+    <ClInclude Include="..\..\..\External\lua5.2.3\lauxlib.h" />
+    <ClInclude Include="..\..\..\External\lua5.2.3\lcode.h" />
+    <ClInclude Include="..\..\..\External\lua5.2.3\lctype.h" />
+    <ClInclude Include="..\..\..\External\lua5.2.3\ldebug.h" />
+    <ClInclude Include="..\..\..\External\lua5.2.3\ldo.h" />
+    <ClInclude Include="..\..\..\External\lua5.2.3\lfunc.h" />
+    <ClInclude Include="..\..\..\External\lua5.2.3\lgc.h" />
+    <ClInclude Include="..\..\..\External\lua5.2.3\llex.h" />
+    <ClInclude Include="..\..\..\External\lua5.2.3\llimits.h" />
+    <ClInclude Include="..\..\..\External\lua5.2.3\lmem.h" />
+    <ClInclude Include="..\..\..\External\lua5.2.3\lobject.h" />
+    <ClInclude Include="..\..\..\External\lua5.2.3\lopcodes.h" />
+    <ClInclude Include="..\..\..\External\lua5.2.3\lparser.h" />
+    <ClInclude Include="..\..\..\External\lua5.2.3\lstate.h" />
+    <ClInclude Include="..\..\..\External\lua5.2.3\lstring.h" />
+    <ClInclude Include="..\..\..\External\lua5.2.3\ltable.h" />
+    <ClInclude Include="..\..\..\External\lua5.2.3\ltm.h" />
+    <ClInclude Include="..\..\..\External\lua5.2.3\lua.h" />
+    <ClInclude Include="..\..\..\External\lua5.2.3\lua.hpp" />
+    <ClInclude Include="..\..\..\External\lua5.2.3\luaconf.h" />
+    <ClInclude Include="..\..\..\External\lua5.2.3\lualib.h" />
+    <ClInclude Include="..\..\..\External\lua5.2.3\lundump.h" />
+    <ClInclude Include="..\..\..\External\lua5.2.3\lvm.h" />
+    <ClInclude Include="..\..\..\External\lua5.2.3\lzio.h" />
     <ClInclude Include="..\..\..\Test\CTestEnv.h" />
     <ClInclude Include="..\..\..\UserTask\CVSNBoneTest.h" />
     <ClInclude Include="..\..\..\UserTask\CVSNTest2D.h" />
     <ClInclude Include="..\..\..\UserTask\CVSNTestCamera.h" />
     <ClInclude Include="..\..\..\UserTask\CVSNTestTask.h" />
     <ClInclude Include="..\..\..\UserTask\CVSNTrackTest.h" />
+    <ClInclude Include="..\..\Oculus\C3DVRFBO.h" />
+    <ClInclude Include="..\..\Oculus\CVSNWin32Tracking.h" />
     <ClInclude Include="..\CVSNWin32FS.h" />
     <ClInclude Include="..\CVSNWin32Thread.h" />
-    <ClInclude Include="..\CVSNWin32Tracking.h" />
     <ClInclude Include="..\CWin32GLES2.h" />
     <ClInclude Include="CVishnuSystem.h" />
     <ClInclude Include="stdafx.h" />
@@ -167,6 +268,11 @@
     <ClInclude Include="VishnuDLL.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\Engine\Collision\CColAlloc.cpp" />
+    <ClCompile Include="..\..\..\Engine\Collision\CColBase.cpp" />
+    <ClCompile Include="..\..\..\Engine\Collision\Collision3D\CCol3DGroup.cpp" />
+    <ClCompile Include="..\..\..\Engine\Collision\Collision3D\CCol3DCollision.cpp" />
+    <ClCompile Include="..\..\..\Engine\Collision\Collision3D\CCol3DTypes.cpp" />
     <ClCompile Include="..\..\..\Engine\Core\CVSNEngineHeap.cpp" />
     <ClCompile Include="..\..\..\Engine\Core\CVSNGameEnvironment.cpp" />
     <ClCompile Include="..\..\..\Engine\Core\CVSNObj.cpp" />
@@ -174,6 +280,7 @@
     <ClCompile Include="..\..\..\Engine\Draw\CGLAlloc.cpp" />
     <ClCompile Include="..\..\..\Engine\Draw\CGLBase.cpp" />
     <ClCompile Include="..\..\..\Engine\Draw\CGLEnv.cpp" />
+    <ClCompile Include="..\..\..\Engine\Draw\CGLFBO.cpp" />
     <ClCompile Include="..\..\..\Engine\Draw\CGLObj.cpp" />
     <ClCompile Include="..\..\..\Engine\Draw\CGLShader.cpp" />
     <ClCompile Include="..\..\..\Engine\Draw\CGLTex.cpp" />
@@ -186,6 +293,7 @@
     <ClCompile Include="..\..\..\Engine\Draw\GLES2_2D\C2DSprite.cpp" />
     <ClCompile Include="..\..\..\Engine\Draw\GLES2_2D\C2DTexOT.cpp" />
     <ClCompile Include="..\..\..\Engine\Draw\GLES2_3D\C3DCameraObj.cpp" />
+    <ClCompile Include="..\..\..\Engine\Draw\GLES2_3D\C3DFBO.cpp" />
     <ClCompile Include="..\..\..\Engine\Draw\GLES2_3D\C3DSkyDome.cpp" />
     <ClCompile Include="..\..\..\Engine\Draw\GLES2_3D\C3DSkyDomeShader.cpp" />
     <ClCompile Include="..\..\..\Engine\Draw\GLES2_3D\C3DCharacter.cpp" />
@@ -199,6 +307,7 @@
     <ClCompile Include="..\..\..\Engine\Draw\GLES2_3D\C3DShader.cpp" />
     <ClCompile Include="..\..\..\Engine\Draw\Types2D.cpp" />
     <ClCompile Include="..\..\..\Engine\Draw\Types3D.cpp" />
+    <ClCompile Include="..\..\..\Engine\Platform\CVSNLeapMotion.cpp" />
     <ClCompile Include="..\..\..\Engine\Platform\CVSNPlatform.cpp" />
     <ClCompile Include="..\..\..\Engine\Platform\CVSNPointing.cpp" />
     <ClCompile Include="..\..\..\Engine\Platform\CVSNStorage.cpp" />
@@ -221,28 +330,69 @@
     <ClCompile Include="..\..\..\Engine\Utility\CVSNKVObj.cpp" />
     <ClCompile Include="..\..\..\Engine\Utility\CVSNPNGTex.cpp" />
     <ClCompile Include="..\..\..\Engine\Utility\CVSNUtil.cpp" />
+    <ClCompile Include="..\..\..\External\lua5.2.3\lapi.c" />
+    <ClCompile Include="..\..\..\External\lua5.2.3\lauxlib.c" />
+    <ClCompile Include="..\..\..\External\lua5.2.3\lbaselib.c" />
+    <ClCompile Include="..\..\..\External\lua5.2.3\lbitlib.c" />
+    <ClCompile Include="..\..\..\External\lua5.2.3\lcode.c" />
+    <ClCompile Include="..\..\..\External\lua5.2.3\lcorolib.c" />
+    <ClCompile Include="..\..\..\External\lua5.2.3\lctype.c" />
+    <ClCompile Include="..\..\..\External\lua5.2.3\ldblib.c" />
+    <ClCompile Include="..\..\..\External\lua5.2.3\ldebug.c" />
+    <ClCompile Include="..\..\..\External\lua5.2.3\ldo.c" />
+    <ClCompile Include="..\..\..\External\lua5.2.3\ldump.c" />
+    <ClCompile Include="..\..\..\External\lua5.2.3\lfunc.c" />
+    <ClCompile Include="..\..\..\External\lua5.2.3\lgc.c" />
+    <ClCompile Include="..\..\..\External\lua5.2.3\linit.c" />
+    <ClCompile Include="..\..\..\External\lua5.2.3\liolib.c" />
+    <ClCompile Include="..\..\..\External\lua5.2.3\llex.c" />
+    <ClCompile Include="..\..\..\External\lua5.2.3\lmathlib.c" />
+    <ClCompile Include="..\..\..\External\lua5.2.3\lmem.c" />
+    <ClCompile Include="..\..\..\External\lua5.2.3\loadlib.c" />
+    <ClCompile Include="..\..\..\External\lua5.2.3\lobject.c" />
+    <ClCompile Include="..\..\..\External\lua5.2.3\lopcodes.c" />
+    <ClCompile Include="..\..\..\External\lua5.2.3\loslib.c" />
+    <ClCompile Include="..\..\..\External\lua5.2.3\lparser.c" />
+    <ClCompile Include="..\..\..\External\lua5.2.3\lstate.c" />
+    <ClCompile Include="..\..\..\External\lua5.2.3\lstring.c" />
+    <ClCompile Include="..\..\..\External\lua5.2.3\lstrlib.c" />
+    <ClCompile Include="..\..\..\External\lua5.2.3\ltable.c" />
+    <ClCompile Include="..\..\..\External\lua5.2.3\ltablib.c" />
+    <ClCompile Include="..\..\..\External\lua5.2.3\ltm.c" />
+    <ClCompile Include="..\..\..\External\lua5.2.3\lundump.c" />
+    <ClCompile Include="..\..\..\External\lua5.2.3\lvm.c" />
+    <ClCompile Include="..\..\..\External\lua5.2.3\lzio.c" />
     <ClCompile Include="..\..\..\Test\CTestEnv.cpp" />
     <ClCompile Include="..\..\..\UserTask\CVSNBoneTest.cpp" />
     <ClCompile Include="..\..\..\UserTask\CVSNTest2D.cpp" />
     <ClCompile Include="..\..\..\UserTask\CVSNTestCamera.cpp" />
     <ClCompile Include="..\..\..\UserTask\CVSNTestTask.cpp" />
     <ClCompile Include="..\..\..\UserTask\CVSNTrackTest.cpp" />
+    <ClCompile Include="..\..\Oculus\C3DVRFBO.cpp" />
+    <ClCompile Include="..\..\Oculus\CVSNWin32Tracking.cpp" />
     <ClCompile Include="..\CVSNWin32FS.cpp" />
     <ClCompile Include="..\CVSNWin32Thread.cpp" />
-    <ClCompile Include="..\CVSNWin32Tracking.cpp" />
     <ClCompile Include="..\CWin32GLES2.cpp" />
     <ClCompile Include="CVishnuSystem.cpp" />
     <ClCompile Include="dllmain.cpp">
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</CompileAsManaged>
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</CompileAsManaged>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
       </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</CompileAsManaged>
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</CompileAsManaged>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
       </PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="VishnuDLL.cpp" />
   </ItemGroup>

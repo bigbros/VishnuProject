@@ -91,6 +91,24 @@
     <Filter Include="ソース ファイル\Utility">
       <UniqueIdentifier>{5de324d0-3b8c-44b4-9b2f-f39e9b45a1f5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Oculus">
+      <UniqueIdentifier>{0aa26f54-d734-4b52-ba3f-532722643d6e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Oculus">
+      <UniqueIdentifier>{1589d71a-d7da-4bb9-8522-6e6e795c3d11}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Lua">
+      <UniqueIdentifier>{744603ef-74ba-4cf2-88b3-8bcb66c35ba5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Lua">
+      <UniqueIdentifier>{37dfaa5c-674c-4668-84c3-a7272c0fec44}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Engine\Collision\Collision3D">
+      <UniqueIdentifier>{5396797c-8764-403c-bfdb-d1b87eeb973d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Engine\Collision\Collision3D">
+      <UniqueIdentifier>{9254dd62-26c3-4a8b-af15-a9f38b4c18d6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -312,9 +330,6 @@
     <ClInclude Include="..\..\..\Engine\Draw\Collision\Collision2D.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Engine\Draw\Collision\Collision3D.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\Engine\Draw\GLES2_3D\C3DShader.h">
       <Filter>ヘッダー ファイル\Engine\Draw\GLES2_3D</Filter>
     </ClInclude>
@@ -330,14 +345,119 @@
     <ClInclude Include="..\..\..\Engine\Core\include\CVSNHeapMap.h">
       <Filter>ヘッダー ファイル\Engine\Core</Filter>
     </ClInclude>
-    <ClInclude Include="..\CVSNWin32Tracking.h">
-      <Filter>ヘッダー ファイル\Windows</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\Engine\Platform\CVSNTracking.h">
       <Filter>ヘッダー ファイル\Engine\Platform</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\UserTask\CVSNTrackTest.h">
       <Filter>ヘッダー ファイル\UserTask</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\Platform\CVSNLeapMotion.h">
+      <Filter>ヘッダー ファイル\Engine\Platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Oculus\CVSNWin32Tracking.h">
+      <Filter>ヘッダー ファイル\Oculus</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\External\lua5.2.3\lapi.h">
+      <Filter>ヘッダー ファイル\Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\External\lua5.2.3\lauxlib.h">
+      <Filter>ヘッダー ファイル\Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\External\lua5.2.3\lcode.h">
+      <Filter>ヘッダー ファイル\Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\External\lua5.2.3\lctype.h">
+      <Filter>ヘッダー ファイル\Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\External\lua5.2.3\ldebug.h">
+      <Filter>ヘッダー ファイル\Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\External\lua5.2.3\ldo.h">
+      <Filter>ヘッダー ファイル\Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\External\lua5.2.3\lfunc.h">
+      <Filter>ヘッダー ファイル\Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\External\lua5.2.3\lgc.h">
+      <Filter>ヘッダー ファイル\Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\External\lua5.2.3\llex.h">
+      <Filter>ヘッダー ファイル\Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\External\lua5.2.3\llimits.h">
+      <Filter>ヘッダー ファイル\Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\External\lua5.2.3\lmem.h">
+      <Filter>ヘッダー ファイル\Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\External\lua5.2.3\lobject.h">
+      <Filter>ヘッダー ファイル\Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\External\lua5.2.3\lopcodes.h">
+      <Filter>ヘッダー ファイル\Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\External\lua5.2.3\lparser.h">
+      <Filter>ヘッダー ファイル\Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\External\lua5.2.3\lstate.h">
+      <Filter>ヘッダー ファイル\Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\External\lua5.2.3\lstring.h">
+      <Filter>ヘッダー ファイル\Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\External\lua5.2.3\ltable.h">
+      <Filter>ヘッダー ファイル\Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\External\lua5.2.3\ltm.h">
+      <Filter>ヘッダー ファイル\Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\External\lua5.2.3\lua.h">
+      <Filter>ヘッダー ファイル\Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\External\lua5.2.3\lua.hpp">
+      <Filter>ヘッダー ファイル\Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\External\lua5.2.3\luaconf.h">
+      <Filter>ヘッダー ファイル\Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\External\lua5.2.3\lualib.h">
+      <Filter>ヘッダー ファイル\Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\External\lua5.2.3\lundump.h">
+      <Filter>ヘッダー ファイル\Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\External\lua5.2.3\lvm.h">
+      <Filter>ヘッダー ファイル\Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\External\lua5.2.3\lzio.h">
+      <Filter>ヘッダー ファイル\Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\Draw\Collision\Collision3D.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\Collision\CColAlloc.h">
+      <Filter>ヘッダー ファイル\Engine\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\Collision\Collision3D\CCol3DCollision.h">
+      <Filter>ヘッダー ファイル\Engine\Collision\Collision3D</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\Collision\Collision3D\CCol3DGroup.h">
+      <Filter>ヘッダー ファイル\Engine\Collision\Collision3D</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\Collision\CColBase.h">
+      <Filter>ヘッダー ファイル\Engine\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\Collision\Collision3D\CCol3DTypes.h">
+      <Filter>ヘッダー ファイル\Engine\Collision\Collision3D</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\Draw\CGLFBO.h">
+      <Filter>ヘッダー ファイル\Engine\Draw</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\Draw\GLES2_3D\C3DFBO.h">
+      <Filter>ヘッダー ファイル\Engine\Draw\GLES2_3D</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Oculus\C3DVRFBO.h">
+      <Filter>ヘッダー ファイル\Oculus</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -539,11 +659,134 @@
     <ClCompile Include="..\..\..\Engine\Platform\CVSNTracking.cpp">
       <Filter>ソース ファイル\Engine\Platform</Filter>
     </ClCompile>
-    <ClCompile Include="..\CVSNWin32Tracking.cpp">
-      <Filter>ソース ファイル\Windows</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\UserTask\CVSNTrackTest.cpp">
       <Filter>ソース ファイル\UserTask</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\Platform\CVSNLeapMotion.cpp">
+      <Filter>ソース ファイル\Engine\Platform</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Oculus\CVSNWin32Tracking.cpp">
+      <Filter>ソース ファイル\Oculus</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\External\lua5.2.3\lapi.c">
+      <Filter>ソース ファイル\Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\External\lua5.2.3\lauxlib.c">
+      <Filter>ソース ファイル\Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\External\lua5.2.3\lbaselib.c">
+      <Filter>ソース ファイル\Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\External\lua5.2.3\lbitlib.c">
+      <Filter>ソース ファイル\Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\External\lua5.2.3\lcode.c">
+      <Filter>ソース ファイル\Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\External\lua5.2.3\lcorolib.c">
+      <Filter>ソース ファイル\Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\External\lua5.2.3\lctype.c">
+      <Filter>ソース ファイル\Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\External\lua5.2.3\ldblib.c">
+      <Filter>ソース ファイル\Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\External\lua5.2.3\ldebug.c">
+      <Filter>ソース ファイル\Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\External\lua5.2.3\ldo.c">
+      <Filter>ソース ファイル\Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\External\lua5.2.3\ldump.c">
+      <Filter>ソース ファイル\Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\External\lua5.2.3\lfunc.c">
+      <Filter>ソース ファイル\Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\External\lua5.2.3\lgc.c">
+      <Filter>ソース ファイル\Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\External\lua5.2.3\linit.c">
+      <Filter>ソース ファイル\Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\External\lua5.2.3\liolib.c">
+      <Filter>ソース ファイル\Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\External\lua5.2.3\llex.c">
+      <Filter>ソース ファイル\Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\External\lua5.2.3\lmathlib.c">
+      <Filter>ソース ファイル\Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\External\lua5.2.3\lmem.c">
+      <Filter>ソース ファイル\Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\External\lua5.2.3\loadlib.c">
+      <Filter>ソース ファイル\Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\External\lua5.2.3\lobject.c">
+      <Filter>ソース ファイル\Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\External\lua5.2.3\lopcodes.c">
+      <Filter>ソース ファイル\Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\External\lua5.2.3\loslib.c">
+      <Filter>ソース ファイル\Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\External\lua5.2.3\lparser.c">
+      <Filter>ソース ファイル\Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\External\lua5.2.3\lstate.c">
+      <Filter>ソース ファイル\Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\External\lua5.2.3\lstring.c">
+      <Filter>ソース ファイル\Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\External\lua5.2.3\lstrlib.c">
+      <Filter>ソース ファイル\Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\External\lua5.2.3\ltable.c">
+      <Filter>ソース ファイル\Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\External\lua5.2.3\ltablib.c">
+      <Filter>ソース ファイル\Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\External\lua5.2.3\ltm.c">
+      <Filter>ソース ファイル\Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\External\lua5.2.3\lundump.c">
+      <Filter>ソース ファイル\Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\External\lua5.2.3\lvm.c">
+      <Filter>ソース ファイル\Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\External\lua5.2.3\lzio.c">
+      <Filter>ソース ファイル\Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\Collision\CColAlloc.cpp">
+      <Filter>ソース ファイル\Engine\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\Collision\Collision3D\CCol3DGroup.cpp">
+      <Filter>ソース ファイル\Engine\Collision\Collision3D</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\Collision\Collision3D\CCol3DCollision.cpp">
+      <Filter>ソース ファイル\Engine\Collision\Collision3D</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\Collision\CColBase.cpp">
+      <Filter>ソース ファイル\Engine\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\Collision\Collision3D\CCol3DTypes.cpp">
+      <Filter>ソース ファイル\Engine\Collision\Collision3D</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\Draw\CGLFBO.cpp">
+      <Filter>ソース ファイル\Engine\Draw</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\Draw\GLES2_3D\C3DFBO.cpp">
+      <Filter>ソース ファイル\Engine\Draw\GLES2_3D</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Oculus\C3DVRFBO.cpp">
+      <Filter>ソース ファイル\Oculus</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

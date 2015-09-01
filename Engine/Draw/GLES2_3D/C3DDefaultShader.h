@@ -40,6 +40,7 @@ public:
 
 	void preConfig(C3DVec * lightVec, C3DVec * lightCol, C3DVec * ambientCol, C3DMat * projection, C3DMat * cameraInvert);
 	void after();
+	GLuint uniformOffset();
 protected:
 	void setShaderParams(GLuint program);
 };

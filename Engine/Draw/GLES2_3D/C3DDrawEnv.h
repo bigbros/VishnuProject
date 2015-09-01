@@ -4,13 +4,14 @@
 #include "Types3D.h"
 #include "C3DObj.h"
 #include "CGLObj.h"
+#include "CGLFBO.h"
 #include "C3DCameraObj.h"
 #include "CGLEnv.h"
 #include "C3DShader.h"
 
-//class C3DDrawEnv;
-//class C3DDrawable;
-//class C3DShader;
+class C3DDrawEnv;
+class C3DDrawable;
+class C3DShader;
 
 class C3DRootObj : public C3DObj
 {
@@ -54,6 +55,8 @@ private:
 
 	SHADER			m_shaders[C3DShader::DP_MAX];
 
+	CGLFBO		*	m_fbo;
+
 public:
 	C3DDrawEnv();
 	~C3DDrawEnv();
@@ -62,8 +65,8 @@ public:
 	void Render();
 	void Clear();
 
-	inline const float getAngle() const { return m_angle;  }
-	inline const float getAspect() const{ return m_aspect; }
+	inline const float getAngle() const { return m_fbo->getAngle(); /* return m_angle; */ }
+	inline const float getAspect() const{ return m_fbo->getAspect();	/* return m_aspect; */ }
 	inline const float getNearClip() const { return m_nearClip; }
 	inline const float getFarClip() const { return m_farClip; }
 
@@ -89,7 +92,7 @@ public:
 	inline void CalcWorld() { m_objRoot->recalcMatrix(&m_rootMatrix, false); }
 
 	// デフォルトシェーダの設定とRootObjectの生成
-	bool init();
+	bool init(CGLFBO * fbo);
 	void setShader(C3DShader::DRAWPHASE phase, C3DShader * shader);
 	void removeShader(C3DShader * shader);
 

@@ -12,6 +12,6 @@ public:
 protected:
 	CVSNScript * createScriptSystem();
 	bool initUserTask();
+	CGLFBO * createFBO();
 };
-
 #endif // CTestEnv_h

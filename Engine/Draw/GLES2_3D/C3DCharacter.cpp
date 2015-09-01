@@ -31,13 +31,17 @@ C3DCharacter::~C3DCharacter()
 bool
 C3DCharacter::calcProcedure(bool recalc)
 {
+	m_flagUpdate = 0;
 	if (!recalc && !m_ismotion) return true;
+	m_flagUpdate = 1;	// オブジェクトのroot matrixは再計算されたので第0bitを1にする。
 
 	// モーションを適用し、各関節のマトリクスを生成
 	C3DModel * model = getDrawable<C3DModel>();
 	if (!model) return true;
 	m_recalcmotion[0] = (recalc) ? 2 : 0;
+	u32 flag = 1;
 	for (int i = 1; i < m_matnum; i++) {
+		flag = flag << 1;
 		int pidx = model->m_boneparent[i];
 		m_recalcmotion[i] &= 1;
 		if (1 & (m_recalcmotion[i] | (m_recalcmotion[pidx] >> 1))) {	// 再計算が必要であれば処理する
@@ -47,8 +51,12 @@ C3DCharacter::calcProcedure(bool recalc)
 			m_matrices[i] += bpos;	// 親boneに対する相対位置に並行移動する
 			m_matrices[i] *= *parent;
 			m_recalcmotion[i] = 2;	// 再計算したので、以下自身を親とするボーンは再計算が必要。
+			m_flagUpdate |= flag;	// 再計算したので記録する
 		}
 	}
+	// m_flagUpdate は、更新されたmatrixに対応するbitが1になっている。
+	// この値は、あたり判定オブジェクトが表示オブジェクトに追随して動くために、
+	// 再計算の必要性を判断するため用いられる。	
 	m_ismotion = false;
 	/*
 		シェーダ側では、各ボーンについての計算を、

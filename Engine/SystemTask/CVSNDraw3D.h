@@ -11,7 +11,7 @@ public:
 	CVSNDraw3D();
 	virtual ~CVSNDraw3D();
 
-	bool init(const char * shaderPath);
+	bool init(const char * shaderPath, CGLFBO * fbo);
 
 	void update(int deltaT);
 	void die();

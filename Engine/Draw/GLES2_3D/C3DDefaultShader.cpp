@@ -11,9 +11,11 @@ C3DDefaultShader::preConfig(C3DVec * lightVec, C3DVec * lightCol, C3DVec * ambie
 	glDepthFunc(GL_LESS);
 
 	// 光源方向、光源色、環境光色を設定する
+	C3DVec offset(0.0f, 0.0f, 0.0f);
 	glUniform4fv(m_u_light, 1, (GLfloat *)lightVec);			// 光源ベクトル
 	glUniform4fv(m_u_rgba, 1, (GLfloat *)lightCol);		// 光源色
 	glUniform4fv(m_u_ambient, 1, (GLfloat *)ambientCol);	// 環境色
+	glUniform4fv(m_u_offset, 1, (GLfloat *)&offset);	// デフォルトのオフセット
 
 	// このフレームにおけるcamera->view->projection行列を一つにまとめたものをプロジェクション用に送る
 	glUniformMatrix4fv(m_u_projection, 1, GL_FALSE, (const GLfloat *)projection);
@@ -26,6 +28,12 @@ void
 C3DDefaultShader::after()
 {
 
+}
+
+GLuint
+C3DDefaultShader::uniformOffset()
+{
+	return m_u_offset;
 }
 
 void

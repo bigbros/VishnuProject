@@ -34,6 +34,7 @@ C3DDrawEnv::C3DDrawEnv()
 	: IGLDrawEnv()
 	, m_objRoot(0)
 	, m_objCamera(0)
+	, m_fbo(0)
 	, m_lightVec(1.0f, 0.0f, 0.0f)
 	, m_lightColor(1.0f, 1.0f, 1.0f)
 	, m_ambientColor(0.0f, 0.0f, 0.0f)
@@ -50,6 +51,7 @@ C3DDrawEnv::C3DDrawEnv()
 C3DDrawEnv::~C3DDrawEnv()
 {
 	Clear();
+	delete m_fbo;
 }
 
 void
@@ -65,18 +67,18 @@ C3DDrawEnv::setAmbient(float r, float g, float b, float a)
 }
 
 bool
-C3DDrawEnv::init()
+C3DDrawEnv::init(CGLFBO * fbo)
 {
 	if (!m_objRoot) m_objRoot = new C3DRootObj();
+	m_fbo = fbo;
 	return true;
 }
 
 void
 C3DDrawEnv::setResolution(int width, int height)
 {
-	m_aspect = 1.0f;
-	m_projection.v[0][0] = (width > height) ? 1.0f : ((float)height / (float)width);
-	m_projection.v[1][1] = (width < height) ? 1.0f : ((float)width / (float)height);
+	m_fbo->setGlobalResolution(width, height);
+	m_aspect = m_fbo->getAspect();
 }
 
 void
@@ -107,18 +109,29 @@ C3DDrawEnv::Render()
 
 	if (!m_objCamera) return;
 
-	// このフレームにおけるcamera->view->projection行列を一つにまとめたものをプロジェクション用に送る
-	C3DMat proj = (m_objCamera->m_view * m_projection);
+	// このフレームにおけるcamera->view->projection行列を一つにまとめたものをプロジェクション用に作る
+	C3DMat proj = (m_objCamera->m_view * m_fbo->getProjection());
+	int lens_num = m_fbo->getLensNum();
+	for (int lens = 0; lens < lens_num; lens++) {	// FBOのレンズ数だけ繰り返す
+		m_fbo->SwitchFBO(lens);		// 描画先FBOの設定
 
-	// ここから通常オブジェクトの描画
-	for (int i = 0; i < C3DShader::DP_MAX; i++) {
-		for (C3DShader * pShader = m_shaders[i].begin; pShader; pShader = pShader->m_sisters.next) {
-			pShader->useProgram();
-			pShader->preConfig(&m_lightVec, &m_lightColor, &m_ambientColor, &proj, &(m_objCamera->m_cameraInvert));
-			pShader->render();
-			pShader->after();
+		glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+		// ここから通常オブジェクトの描画
+		for (int i = 0; i < C3DShader::DP_MAX; i++) {
+			for (C3DShader * pShader = m_shaders[i].begin; pShader; pShader = pShader->m_sisters.next) {
+				pShader->useProgram();
+				pShader->preConfig(&m_lightVec, &m_lightColor, &m_ambientColor, &proj, &(m_objCamera->m_cameraInvert));
+				m_fbo->setLens(lens, pShader->uniformOffset());
+
+				pShader->render();
+				pShader->after();
+			}
 		}
 	}
+	glBindFramebuffer(GL_FRAMEBUFFER, 0);	// global FBO
+	m_fbo->renderGlobal();
 }
 
 void
