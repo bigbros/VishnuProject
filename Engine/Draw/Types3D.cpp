@@ -12,6 +12,7 @@ void	C3DVec::operator delete[](void * p)	{	CGLAlloc::free(p);				}
 C3DVec::C3DVec() : x(0.0f), y(0.0f), z(0.0f), w(1.0f) {}
 C3DVec::C3DVec(float _x, float _y, float _z, float _w) : x(_x), y(_y), z(_z), w(_w) {}
 C3DVec::C3DVec(const C3DVec& vax, float theta) { axis(vax, theta); }
+C3DVec::C3DVec(const C3DVec& q, const C3DVec& r, float rate) { slerp(q, r, rate); }
 C3DVec::C3DVec(const C3DVec& v) : x(v.x), y(v.y), z(v.z), w(v.w) {}
 C3DVec::~C3DVec() {}
 
@@ -26,6 +27,40 @@ C3DVec::axis(const C3DVec& v, float theta) throw()
 	z = t_sin*v.z;
 	w = cosf(hrad);
 	return *this;
+}
+
+const C3DVec&
+C3DVec::slerp(const C3DVec& q, const C3DVec& r, float rate) throw()
+{
+	float qr = q.x*r.x + q.y*r.y + q.z*r.z + q.w*r.w;
+	float ss = 1.0f - qr * qr;
+	float sp;
+
+	if (ss <= 0.0f || (sp = sqrtf(ss)) == 0.0f) {
+		x = q.x;
+		y = q.y;
+		z = q.z;
+		w = q.w;
+	}
+	else {
+		float ph = acosf(qr);
+		float pt = ph * rate;
+		float t1 = sinf(pt) / sp;
+		float t0 = sinf(ph - pt) / sp;
+
+		x = q.x * t0 + r.x * t1;
+		y = q.y * t0 + r.y * t1;
+		z = q.z * t0 + r.z * t1;
+		w = q.w * t0 + r.w * t1;
+	}
+	return *this;
+}
+
+const C3DVec
+C3DVec::slerp(const C3DVec& q, float rate) throw()
+{
+	C3DVec ans(*this, q, rate);
+	return ans;
 }
 
 const C3DVec

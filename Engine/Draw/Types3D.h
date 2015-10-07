@@ -20,7 +20,8 @@ struct C3DVec
 
 	C3DVec();
 	C3DVec(float _x, float _y, float _z, float _w = 1.0f);
-	C3DVec(const C3DVec& axis, float theta);
+	C3DVec(const C3DVec& axis, float theta);	// Quaternion
+	C3DVec(const C3DVec& q, const C3DVec& r, float rate);	// Quaternion
 	C3DVec(const C3DVec& v);
 	~C3DVec();
 
@@ -56,7 +57,12 @@ struct C3DVec
 		return *this;
 	}
 
+	const C3DVec operator *(const C3DMat& m) throw();
+
+	// Quaternion
 	const C3DVec& axis(const C3DVec& v, float theta) throw();
+	const C3DVec& slerp(const C3DVec& q, const C3DVec& r, float rate) throw();
+	const C3DVec slerp(const C3DVec& q, float rate) throw();
 
 	inline const C3DVec conj(const C3DVec& v) throw() { return C3DVec(-x, -y, -z, w); }
 	inline const C3DVec operator *(const C3DVec& q) throw() {
@@ -67,7 +73,6 @@ struct C3DVec
 		ans.z = w*q.z + x*q.y - y*q.x + z*q.w;
 		return ans;
 	}
-	const C3DVec operator *(const C3DMat& m) throw();
 
 	void *	operator new(size_t size);
 	void	operator delete(void * p);
