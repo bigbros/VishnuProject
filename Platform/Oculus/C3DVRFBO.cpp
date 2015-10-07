@@ -14,6 +14,7 @@ C3DVRFBOShader::setShaderParams(GLuint program)
 	m_u_angle = glGetUniformLocation(program, "u_angle");
 	m_u_f = glGetUniformLocation(program, "u_f");
 	m_u_w = glGetUniformLocation(program, "u_w");
+	m_u_vrate = glGetUniformLocation(program, "u_vrate");
 
 	// shader‚ÌŠeattrib‚É‘Š“–‚·‚é’l‚ðŽæ“¾‚µ‚Ä‚¨‚­B
 	m_a_vert = glGetAttribLocation(program, "a_vert");
@@ -25,10 +26,10 @@ C3DVRFBOShader::setShaderParams(GLuint program)
 }
 
 C3DVRFBO::C3DVRFBO(const char * shaderPath, int width, int height)
-	: CGLFBO(2, 512, 512)
+	: CGLFBO(2, 1024, 1024)
 	, m_offsetR(EYE_DISTANCE / 2.0f, 0.0f, 0.0f)
 	, m_offsetL(-EYE_DISTANCE / 2.0f, 0.0f, 0.0f)
-	, m_angle(110.0f * F_PI / 180.0f)
+	, m_angle(90.0f * F_PI / 180.0f)
 {
 	m_f = 1.0f / tanf(m_angle / 2.0f);
 	m_w = 0.5f;
@@ -39,6 +40,7 @@ C3DVRFBO::C3DVRFBO(const char * shaderPath, int width, int height)
 
 C3DVRFBO::~C3DVRFBO()
 {
+	destroyVertex();
 	delete m_shader;
 }
 
@@ -65,6 +67,7 @@ C3DVRFBO::renderGlobal()
 	glUniform1f(m_shader->m_u_angle, m_angle);
 	glUniform1f(m_shader->m_u_f, m_f);
 	glUniform1f(m_shader->m_u_w, m_w);
+	glUniform1f(m_shader->m_u_vrate, m_vrate);
 
 	glBindBuffer(GL_ARRAY_BUFFER, m_idxVert);
 	glVertexAttribPointer(m_shader->m_a_vert, 2, GL_FLOAT, GL_FALSE, sizeof(VEC), (const GLvoid *)(char *)offsetof(VEC, x));
@@ -82,6 +85,7 @@ C3DVRFBO::renderGlobal()
 void
 C3DVRFBO::onChangeGlobalResolution(int width, int height)
 {
+	m_vrate = (float)width / ((float)height * 2.0f);
 }
 
 void
@@ -141,6 +145,14 @@ C3DVRFBO::createVertex()
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 }
 
+void
+C3DVRFBO::destroyVertex()
+{
+	GLuint bufIdx[2];
+	bufIdx[0] = m_idxVert;
+	bufIdx[1] = m_idxIndex;
+	glDeleteBuffers(2, bufIdx);
+}
 float
 C3DVRFBO::getAngle()
 {

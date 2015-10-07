@@ -9,7 +9,6 @@ varying vec3 v_uv;
 
 vec4 barrel(sampler2D tex, float w, float f, vec2 c, vec2 p)
 {
-//	vec2 uv = p * 2.0 - 1.0;
 	vec2 uv = (p - c) / vec2(w, 0.5);
 	float dist = length(uv);
 	float l = u_f * tan(u_angle / 2.0 * dist);

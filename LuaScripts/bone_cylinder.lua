@@ -1,13 +1,9 @@
 function Init()
 
-	local model = makeBoneCylinder(0.2, 1.44, 12, 24)
-
-	vsnUtil("3d_light_vec", {x=0, y=0, z=1})			-- light vec
+	vsnUtil("3d_light_vec", {x=1, y=1, z=1})			-- light vec
 	vsnUtil("3d_light_col", {r=1,g=1,b=1})				-- light col
 	vsnUtil("3d_ambient", {r=0.08,g=0.08,b=0.08})		-- ambient col
 
-	tracking = vsnTaskCreate("tracking");
-	
 	celestialSphere = vsnTaskCreate("sysSkyDome", "LuaScripts/SkyDome.png", 340.0)
 
 	local skinning = false
@@ -15,15 +11,23 @@ function Init()
 
 	camera = vsnTaskCreate("camera",
 							{angle=math.pi/2, near=0.05, far=350.0},
-							{x=0, y=1.65, z=2.0}, camerarot)			-- camera position
-	task1 = vsnTaskCreate("test2", {x=0, y=1.0, z=0}, model, skinning)
---[[
-	task2 = vsnTaskCreate("test2", {x=25, y=0, z=0}, model, skinning)
-	task3 = vsnTaskCreate("test2", {x=-25, y=0, z=0}, model, skinning)
-	task4 = vsnTaskCreate("test2", {x=15, y=-80, z=0}, model, skinning)
-	task5 = vsnTaskCreate("test2", {x=-15, y=-80, z=0}, model, skinning)
-]]
+							{x=0, y=0, z=2.0}, camerarot)			-- camera position
 
+	tracking = vsnTaskCreate("vrcamera")
+	
+	local hand = makeSphere(0.02, 3, 12)
+	leap = vsnTaskCreate("leapmotion", hand)
+
+	local model = makeBoneCylinder(0.2, 1.44, 12, 24)
+	task1 = vsnTaskCreate("test2", {x=0, y=0, z=0}, model, skinning)
+	task2 = vsnTaskCreate("test2", {x=0.3, y=-1.5, z=0}, model, skinning)
+	task3 = vsnTaskCreate("test2", {x=-0.3, y=-1.5, z=0}, model, skinning)
+	task4 = vsnTaskCreate("test2", {x=0.5, y=0, z=0}, model, skinning)
+	task5 = vsnTaskCreate("test2", {x=-0.5, y=0, z=0}, model, skinning)
+
+	hand = nil
+	model = nil
+	
 --[[
 	sprite = vsnTaskCreate("test2d",
 					{x=-300, y=-150, width=200, height=100, r=1, g=1, b=1, a=1.0},
@@ -43,6 +47,7 @@ function Leave()
 	vsnTaskKill(task5)
 	vsnTaskKill(celestialSphere)
 	vsnTaskKill(tracking)
+	vsnTaskKill(leap)
 end
 
 function OnPause()
@@ -51,6 +56,69 @@ end
 
 function OnResume()
 	DebugLog("Script:OnResume()\n");
+end
+
+function makeSphere(r, vsep, hsep)
+	local makeVert = function(x, y, z, u, v)
+		local len = math.sqrt(x*x + y*y + z*z)
+		return {
+			x, y, z,
+			x / len, y / len, z / len,
+			-z / len, 0, x / len,
+			u, v,
+			255,255, 255, 255,
+			0, 0, 0, 0,
+			255, 0, 0, 0 }
+	end
+
+	local t_vert = {}
+	local t_idx = {}
+	local vnum = vsep * 2 + 1
+	local hnum = hsep
+	local vc, hc
+	local x, y, z, u, v, rh, theta
+	
+	--
+	-- vertex buffer
+	--
+	for vc = 0, vsep * 2 do
+		theta = math.pi / (vsep*2) * vc
+		rh = r * math.sin(theta)
+		y = r * math.cos(theta)
+		v = 1.0 - (vc/vsep)
+		for hc = 0, hsep do
+			theta = math.pi * 2 / hsep * hc
+			x = rh * math.cos(theta)
+			z = rh * math.sin(theta);
+			u = hc / hsep
+			table.insert(t_vert, makeVert(x, y, z, u, v))
+		end
+	end
+	
+	--
+	-- index buffer
+	--
+	for vc = 0, vsep * 2 - 1 do
+		for hc = 0, hsep do
+			table.insert(t_idx, vc * (hsep + 1) + hc)
+			table.insert(t_idx, (vc+1)*(hsep+1) + hc)
+		end
+	end
+
+	return {
+		bones = {
+			{ pos = {x = 0, y = 0, z = 0} }
+		},
+		mesh = {
+			vertices = t_vert,
+			indices = t_idx
+		},
+		material = {
+--			texture = "LuaScripts/mars.png",
+--			normal = "LuaScripts/fukusaya_normalmap.png",
+			shiness = 8.0
+		}
+	}
 end
 
 
@@ -116,7 +184,7 @@ function makeBoneCylinder(r, h, vsep, hsep)
 		material = {
 			texture = "LuaScripts/mars.png",
 			normal = "LuaScripts/fukusaya_normalmap.png",
-			shiness = 4.0
+			shiness = 8.0
 		}
 	}
 end

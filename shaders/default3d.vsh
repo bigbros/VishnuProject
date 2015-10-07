@@ -20,6 +20,7 @@ varying vec3 v_norm;
 varying vec3 v_uv;
 varying vec3 v_normlight;
 varying vec3 v_viewvec;
+varying vec3 v_view;
 varying vec3 v_pos;
 
 void main(void)
@@ -72,14 +73,16 @@ void main(void)
 	v_normlight.z = dot(n, lgt);
 	v_normlight = normalize(v_normlight);
 
+	/*
 	n = m3camera * n;
 	t = m3camera * t;
 	b = cross(n, t);
-	v_viewvec.x = dot(t, pos);
-	v_viewvec.y = dot(b, pos);
-	v_viewvec.z = dot(n, pos);
+	*/
+	v_viewvec.x = dot(t, -pos);
+	v_viewvec.y = dot(b, -pos);
+	v_viewvec.z = dot(n, -pos);
 	v_viewvec = normalize(v_viewvec);
-
+	v_view = -pos;
 	v_color = a_rgba;
 	v_norm = n;
 	v_uv = vec3(a_uv.x/vw.w, a_uv.y/vw.w, 1.0/vw.w);

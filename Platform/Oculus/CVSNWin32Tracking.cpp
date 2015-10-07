@@ -34,6 +34,7 @@ CVSNWin32Tracking::init()
 			m_resolution = m_hmd->Resolution;
 
 			ovrBool result = ovrHmd_ConfigureTracking(m_hmd, VSN_OVR_SUPPORT_CAPS, VSN_OVR_REQUIRE_CAPS);
+			ovrHmd_RecenterPose(m_hmd);
 			return (result == ovrTrue);
 		}
 		return false;

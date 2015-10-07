@@ -22,6 +22,7 @@ C3DFBOShader::setShaderParams(GLuint program)
 
 C3DFBO::C3DFBO(const char * shaderPath, int width, int height)
 	: CGLFBO(1, width, height)
+	, m_offset(0.0f, 0.0f, 0.0f)
 {
 	createShader(shaderPath);
 	createVertex();
@@ -29,13 +30,15 @@ C3DFBO::C3DFBO(const char * shaderPath, int width, int height)
 
 C3DFBO::~C3DFBO()
 {
+	destroyVertex();
 	delete m_shader;
 }
 
 void
 C3DFBO::setLens(int lensId, GLint offsetUniform)
 {
-//	glUniform4fv(offsetUniform, 1, ...);
+	if (offsetUniform < 0) return;
+	glUniform4fv(offsetUniform, 1, (GLfloat *)&m_offset);
 }
 
 void
@@ -67,6 +70,8 @@ C3DFBO::onChangeGlobalResolution(int width, int height)
 	m_width = width;
 	m_height = height;
 	makeFrameBuffer();
+	m_projection.v[0][0] = (width > height) ? 1.0f : ((float)height / (float)width);
+	m_projection.v[1][1] = (width < height) ? 1.0f : ((float)width / (float)height);
 }
 
 void
@@ -117,8 +122,23 @@ C3DFBO::createVertex()
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 }
 
+void
+C3DFBO::destroyVertex()
+{
+	GLuint bufIdx[2];
+	bufIdx[0] = m_idxVert;
+	bufIdx[1] = m_idxIndex;
+	glDeleteBuffers(2, bufIdx);
+}
+
 float
 C3DFBO::getAngle()
 {
 	return F_PI / 2.0f;
+}
+
+float
+C3DFBO::getAspect()
+{
+	return (float)m_height / (float)m_width;
 }

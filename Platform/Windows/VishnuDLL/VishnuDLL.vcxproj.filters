@@ -109,6 +109,12 @@
     <Filter Include="ソース ファイル\Engine\Collision\Collision3D">
       <UniqueIdentifier>{9254dd62-26c3-4a8b-af15-a9f38b4c18d6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ヘッダー ファイル\LeapMotion">
+      <UniqueIdentifier>{c6d99611-e688-44f3-9a9d-eeb5149254ac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\LeapMotion">
+      <UniqueIdentifier>{eb8d9028-febf-415b-83ea-43c92f340e8d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -351,9 +357,6 @@
     <ClInclude Include="..\..\..\UserTask\CVSNTrackTest.h">
       <Filter>ヘッダー ファイル\UserTask</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Engine\Platform\CVSNLeapMotion.h">
-      <Filter>ヘッダー ファイル\Engine\Platform</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Oculus\CVSNWin32Tracking.h">
       <Filter>ヘッダー ファイル\Oculus</Filter>
     </ClInclude>
@@ -458,6 +461,12 @@
     </ClInclude>
     <ClInclude Include="..\..\Oculus\C3DVRFBO.h">
       <Filter>ヘッダー ファイル\Oculus</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\LeapMotion\CVSNLeapMotion.h">
+      <Filter>ヘッダー ファイル\LeapMotion</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\UserTask\CVSNLeapTest.h">
+      <Filter>ヘッダー ファイル\UserTask</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -662,9 +671,6 @@
     <ClCompile Include="..\..\..\UserTask\CVSNTrackTest.cpp">
       <Filter>ソース ファイル\UserTask</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\Engine\Platform\CVSNLeapMotion.cpp">
-      <Filter>ソース ファイル\Engine\Platform</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Oculus\CVSNWin32Tracking.cpp">
       <Filter>ソース ファイル\Oculus</Filter>
     </ClCompile>
@@ -787,6 +793,12 @@
     </ClCompile>
     <ClCompile Include="..\..\Oculus\C3DVRFBO.cpp">
       <Filter>ソース ファイル\Oculus</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\LeapMotion\CVSNLeapMotion.cpp">
+      <Filter>ソース ファイル\LeapMotion</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\UserTask\CVSNLeapTest.cpp">
+      <Filter>ソース ファイル\UserTask</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

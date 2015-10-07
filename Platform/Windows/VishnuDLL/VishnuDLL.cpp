@@ -5,6 +5,7 @@
 #include "VishnuDLL.h"
 #include "CWin32GLES2.h"
 #include "CVishnuSystem.h"
+#include <OVR_CAPI.h>
 
 extern "C" {
 
@@ -40,8 +41,8 @@ extern "C" {
 		gles2->Resize(width, height);
 	}
 
-	void * vsnCreate(const char * path, int width, int height) {
-		CVishnuSystem * vsn = new CVishnuSystem(path, width, height);
+	void * vsnCreate(const char * path, int width, int height, int is_vr) {
+		CVishnuSystem * vsn = new CVishnuSystem(path, width, height, is_vr);
 		return vsn;
 	}
 

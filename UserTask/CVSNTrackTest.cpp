@@ -1,7 +1,7 @@
 #include "CVSNTrackTest.h"
 
 
-static CVSNFactory<CVSNTrackTest> factory("tracking");
+static CVSNFactory<CVSNTrackTest> factory("vrcamera");
 
 CVSNTrackTest::CVSNTrackTest() : CVSNScriptTask() {}
 CVSNTrackTest::~CVSNTrackTest() {}

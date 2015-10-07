@@ -14,11 +14,20 @@ namespace VishnuDev
     {
         private bool running = false;
         private bool background = false;
+        private bool is_VR = false;
         private Timer watchTimer = null;
+        private VishnuGLES2 dispTarget = null;
 
         public Form1()
         {
             InitializeComponent();
+            dispTarget = GLES2View;
+
+            //コンボボックスにディスプレイのリストを表示する
+            this.comboDisplay.DropDownStyle = ComboBoxStyle.DropDownList;
+            //デバイス名が表示されるようにする
+            this.comboDisplay.DisplayMember = "DeviceName";
+            this.comboDisplay.DataSource = Screen.AllScreens;
         }
 
         private void LogOutput(string msg)
@@ -54,7 +63,7 @@ namespace VishnuDev
 
         protected void OnWatch(Object sender, EventArgs args)
         {
-            double fps = GLES2View.nowFps;
+            double fps = dispTarget.nowFps;
             lblFPS.Text = string.Format("{0}[fps]", fps.ToString("0.00"));
         }
 
@@ -68,11 +77,11 @@ namespace VishnuDev
             }
             logText.Text = "";
             VishnuSystem.Instance.setLogMethod(LogOutput);
-            GLES2View.RestoreGLES2();
-            VishnuSystem.Instance.Start();
-            GLES2View.Start();
+            dispTarget.RestoreGLES2();
+            VishnuSystem.Instance.Start(is_VR);
+            dispTarget.Start();
             running = true;
-
+            chkVREnv.Enabled = false;
             if (watchTimer == null)
             {
                 watchTimer = new Timer();
@@ -88,32 +97,33 @@ namespace VishnuDev
             if (!running) return;
             if (background)
             {
-                GLES2View.CreateSurface();
+                dispTarget.CreateSurface();
                 background = false;
             }
-            GLES2View.Stop();
+            dispTarget.Stop();
             watchTimer.Stop();
             lblFPS.Text = "";
             VishnuSystem.Instance.Stop();
-            GLES2View.DestroyGLES2();
+            dispTarget.DestroyGLES2();
+            chkVREnv.Enabled = true;
             running = false;
         }
 
         private void gameToBackground()
         {
             if (background) return;
-            GLES2View.Stop();
+            dispTarget.Stop();
             VishnuSystem.Instance.OnPause();
-            GLES2View.DestroySurface();
+            dispTarget.DestroySurface();
             background = true;
         }
 
         private void gameToForeground()
         {
             if (!background) return;
-            GLES2View.CreateSurface();
+            dispTarget.CreateSurface();
             VishnuSystem.Instance.OnResume();
-            GLES2View.Start();
+            dispTarget.Start();
             background = false;
         }
 
@@ -148,21 +158,21 @@ namespace VishnuDev
         {
             if (btnPause.Checked)
             {
-                GLES2View.Stop();
+                dispTarget.Stop();
                 btnStep.Enabled = true;
                 btnBackground.Enabled = false;
             }
             else
             {
                 btnStep.Enabled = false;
-                GLES2View.Start();
+                dispTarget.Start();
                 btnBackground.Enabled = true;
             }
         }
 
         private void btnStep_Click(object sender, EventArgs e)
         {
-            GLES2View.Update();
+            dispTarget.Update();
         }
 
         private void btnBackground_CheckedChanged(object sender, EventArgs e)
@@ -192,6 +202,77 @@ namespace VishnuDev
         {
 
         }
+
+        private FormVR formVR = null;
+        private bool isVR = false;
+        private void VRDisplayActive(bool active)
+        {
+            bool is_background = background;
+            if (!isVR && active)
+            {
+                if (running && !is_background) gameToBackground();
+                formVR = new FormVR();
+                Screen s = (Screen)comboDisplay.SelectedItem;
+                formVR.StartPosition = FormStartPosition.Manual;
+                formVR.Location = s.Bounds.Location;
+                formVR.Show();
+                dispTarget = formVR.getGLES2Control();
+                GLES2View.Hide();
+                if (running && !is_background) gameToForeground();
+                isVR = true;
+                return;
+            }
+            if (isVR && !active)
+            {
+                if (running && !is_background) gameToBackground();
+                formVR.Hide();
+                formVR = null;
+                GLES2View.Show();
+                dispTarget = GLES2View;
+                if (running && !is_background) gameToForeground();
+                isVR = false;
+            }
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            CheckBox chkBox = (CheckBox)sender;
+            if (chkBox.Checked)
+            {
+                chkBox.Text = "to Preview";
+                VRDisplayActive(true);
+            }
+            else
+            {
+                chkBox.Text = "to VR";
+                VRDisplayActive(false);
+            }
+
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            gameBreak();
+        }
+
+        private void chkVREnv_CheckedChanged(object sender, EventArgs e)
+        {
+
+            CheckBox chkBox = (CheckBox)sender;
+            if (chkBox.Checked)
+            {
+                chkDisplay.Enabled = true;
+                comboDisplay.Enabled = true;
+                is_VR = true;
+            }
+            else
+            {
+                chkDisplay.Enabled = false;
+                comboDisplay.Enabled = false;
+                is_VR = false;
+            }
+        }
+
 
     }
 }

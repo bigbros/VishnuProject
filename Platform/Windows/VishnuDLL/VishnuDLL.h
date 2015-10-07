@@ -18,7 +18,7 @@ extern "C" {
 	VISHNUDLL_API void gles2Flip(void * ptr);
 
 
-	VISHNUDLL_API void * vsnCreate(const char * path, int width, int height);
+	VISHNUDLL_API void * vsnCreate(const char * path, int width, int height, int is_vr);
 	VISHNUDLL_API void vsnDestroy(void * ptr);
 	VISHNUDLL_API void vsnUpdate(void * ptr);
 	VISHNUDLL_API void vsnOnSizeChanged(void * ptr, int width, int height);

@@ -37,6 +37,8 @@ public:
 	virtual void renderGlobal() = 0;
 	virtual void onChangeGlobalResolution(int width, int height);
 
+	virtual void createVertex() = 0;
+	virtual void destroyVertex() = 0;
 	bool recovery();
 	bool destruction();
 

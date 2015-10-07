@@ -53,6 +53,8 @@ C3DDefaultShader::setShaderParams(GLuint program)
 	m_u_shininess = glGetUniformLocation(program, "u_shininess");
 	m_u_switch = glGetUniformLocation(program, "u_switch");
 	m_u_offset = glGetUniformLocation(program, "u_offset");
+	m_u_normalmap = glGetUniformLocation(program, "u_normalmap");
+	m_u_texmap = glGetUniformLocation(program, "u_texmap");
 
 	// shader‚ÌŠeattrib‚É‘Š“–‚·‚é’l‚ğæ“¾‚µ‚Ä‚¨‚­B
 	m_a_vert = glGetAttribLocation(program, "a_vert");

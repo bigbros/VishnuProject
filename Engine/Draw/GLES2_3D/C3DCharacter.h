@@ -25,6 +25,10 @@ public:
 	inline const C3DQuat& getBoneRotation(int bone) { return m_motion[bone]; }
 	void setBoneRotation(int bone, C3DQuat& rot);
 
+	inline void setColor(C3DVec& color) {
+		m_color = color;
+	}
+
 	void render(C3DShader * pShader);
 };
 

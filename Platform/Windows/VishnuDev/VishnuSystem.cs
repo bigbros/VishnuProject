@@ -11,7 +11,7 @@ namespace VishnuDev
     class VishnuSystem {
 
         [DllImport("VishnuDLL.dll", CallingConvention = CallingConvention.Cdecl)]
-        private static extern IntPtr vsnCreate(string path, int width, int height);
+        private static extern IntPtr vsnCreate(string path, int width, int height, int is_vr);
 
         [DllImport("VishnuDLL.dll", CallingConvention = CallingConvention.Cdecl)]
         private static extern void vsnDestroy(IntPtr vsn);
@@ -81,20 +81,20 @@ namespace VishnuDev
             pathBase = path;
         }
 
-        public void Start(string path)
+        public void Start(string path, bool isvr = false)
         {
             pathBase = path;
-            Start();
+            Start(isvr);
         }
 
-        public void Start()
+        public void Start(bool isvr = false)
         {
             EventGLES2.Instance.onSurface += OnSurface;
             EventGLES2.Instance.onDetach += OnDetach;
             EventGLES2.Instance.onPointing += OnPointing;
             EventGLES2.Instance.onSizeChanged += OnSizeChanged;
             EventGLES2.Instance.update += Update;
-            vsnInstance = vsnCreate(pathBase, 100, 100);
+            vsnInstance = vsnCreate(pathBase, 100, 100, ((isvr) ? 1 : 0));
         }
 
         public void Stop()

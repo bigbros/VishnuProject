@@ -32,10 +32,11 @@ public:
 	void renderGlobal();
 	void onChangeGlobalResolution(int width, int height);
 	float getAngle();			// デフォルトの視野角を返す
-
+	float getAspect();
 private:
 	void createShader(const char * shaderPath);
 	void createVertex();
+	void destroyVertex();
 private:
 	C3DFBOShader	*	m_shader;
 
@@ -49,6 +50,7 @@ private:
 	u16				*	m_indices;
 	GLuint			m_idxVert;		// 頂点バッファ
 	GLuint			m_idxIndex;		// インデックスバッファ
+	C3DVec			m_offset;
 };
 
 

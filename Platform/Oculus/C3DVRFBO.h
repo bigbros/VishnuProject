@@ -16,6 +16,7 @@ public:
 	GLint				m_u_angle;		// ‹–ìŠp[rad]
 	GLint				m_u_f;			//
 	GLint				m_u_w;			//
+	GLint				m_u_vrate;
 
 	// attribs
 	GLint				m_a_vert;		// ’¸“_vec2(ˆê•Ó‚ª1.0‚Ì³•ûŒ`‚ğ•`‚­Œ`‚Å—^‚¦‚éB
@@ -44,6 +45,7 @@ public:
 private:
 	void createShader(const char * shaderPath);
 	void createVertex();
+	void destroyVertex();
 private:
 	C3DVRFBOShader	*	m_shader;
 
@@ -66,6 +68,7 @@ private:
 	float			m_angle;
 	float			m_f;
 	float			m_w;
+	float			m_vrate;
 };
 
 #endif // C3DVRFBO_h

@@ -40,13 +40,16 @@ bool
 CGLFBO::destruction()
 {
 	destroyFrameBuffer();
+	destroyVertex();
 	return true;
 }
 
 bool
 CGLFBO::recovery()
 {
-	return makeFrameBuffer();
+	bool result = makeFrameBuffer();
+	createVertex();
+	return result;
 }
 
 void

@@ -24,6 +24,8 @@ public:
 	GLint				m_u_shininess;
 	GLint				m_u_switch;
 	GLint				m_u_offset;
+	GLint				m_u_normalmap;
+	GLint				m_u_texmap;
 
 	// attribs
 	GLint				m_a_vert;
