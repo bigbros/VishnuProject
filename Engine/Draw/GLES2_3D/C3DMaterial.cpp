@@ -36,6 +36,14 @@ C3DMaterial::setup(C3DDefaultShader * shader)
 	else {
 		glUniform1i(shader->m_u_f_normalmap, GL_FALSE);
 	}
+	if (m_switch & SPECULAR) {
+		m_specular->set(GL_TEXTURE2);
+		glUniform1i(shader->m_u_specular, 2);
+		glUniform1i(shader->m_u_f_specularmap, GL_TRUE);
+	}
+	else {
+		glUniform1i(shader->m_u_f_specularmap, GL_FALSE);
+	}
 	glUniform1f(shader->m_u_shininess, m_shininess);
 	glUniform1i(shader->m_u_switch, m_switch);
 }

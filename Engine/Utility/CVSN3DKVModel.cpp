@@ -42,6 +42,13 @@ CVSN3DKVModel::loadModel(CVSNKVObj& kvObj)
 			CVSNPNGTex * pTex = new CVSNPNGTex("norm", name);
 			material->setNormal(pTex);
 		}
+		if (kvMat.ContainsKey("specular")) {
+			LOG("READ SPECULAR\n");
+
+			const char * name = kvMat["specular"];
+			CVSNPNGTex * pTex = new CVSNPNGTex("spcl", name);
+			material->setSpecular(pTex);
+		}
 		if (kvMat.ContainsKey("shiness")) {
 			LOG("SET SPECULAR\n");
 			const float shiness = kvMat["shiness"];

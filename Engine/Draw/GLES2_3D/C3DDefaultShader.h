@@ -20,12 +20,14 @@ public:
 	GLint				m_u_bonepos;
 	GLint				m_u_tex;
 	GLint				m_u_normmap;
+	GLint				m_u_specular;
 	GLint				m_u_modelcol;
 	GLint				m_u_shininess;
 	GLint				m_u_switch;
 	GLint				m_u_offset;
 	GLint				m_u_f_normalmap;
 	GLint				m_u_f_texmap;
+	GLint				m_u_f_specularmap;
 
 	// attribs
 	GLint				m_a_vert;

@@ -7,7 +7,7 @@ uniform float u_shininess;
 //uniform int u_switch;
 uniform sampler2D u_tex;
 uniform sampler2D u_normmap;
-uniform sampler2D u_specularmap;
+uniform sampler2D u_specular;
 
 uniform bool u_f_normalmap;
 uniform bool u_f_texmap;
@@ -60,13 +60,21 @@ void main(void)
 		//diffuse=0.0;
 
 		// specular
-		//view = normalize(view);
 		float specular = 0.0;
-		vec3 refvec = reflect(-light, norm);
-		specular = pow(max(dot(view, refvec), 0.0), 1.0/u_shininess);
-		if(dot(norm, light) < 0.0) specular = 0.0;
-		//specular = 0.0;
-		vec4 spcol = u_rgba * specular;
+		float shininess = u_shininess;
+		vec4 spcol = u_rgba;
+		if(u_f_specularmap) {
+			vec4 sp_tex = texture2D(u_specular, uv);
+			shininess = shininess * sp_tex.a;
+			spcol = spcol * sp_tex;
+			spcol.a = 1.0;
+		}
+		if(shininess > 0.0) {
+			vec3 refvec = reflect(-light, norm);
+			specular = pow(max(dot(view, refvec), 0.0), 1.0/shininess);
+			if(dot(norm, light) < 0.0) specular = 0.0;
+		}
+		spcol = spcol * specular;
 
 		vec4 color;
 		if(u_f_texmap) {

@@ -49,12 +49,14 @@ C3DDefaultShader::setShaderParams(GLuint program)
 	m_u_bonepos = glGetUniformLocation(program, "u_bonepos");
 	m_u_tex = glGetUniformLocation(program, "u_tex");
 	m_u_normmap = glGetUniformLocation(program, "u_normmap");
+	m_u_specular = glGetUniformLocation(program, "u_specular");
 	m_u_modelcol = glGetUniformLocation(program, "u_modelcol");
 	m_u_shininess = glGetUniformLocation(program, "u_shininess");
 	m_u_switch = glGetUniformLocation(program, "u_switch");
 	m_u_offset = glGetUniformLocation(program, "u_offset");
 	m_u_f_normalmap = glGetUniformLocation(program, "u_f_normalmap");
 	m_u_f_texmap = glGetUniformLocation(program, "u_f_texmap");
+	m_u_f_specularmap = glGetUniformLocation(program, "u_f_specularmap");
 
 	// shaderÇÃäeattribÇ…ëäìñÇ∑ÇÈílÇéÊìæÇµÇƒÇ®Ç≠ÅB
 	m_a_vert = glGetAttribLocation(program, "a_vert");

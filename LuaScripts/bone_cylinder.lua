@@ -184,6 +184,7 @@ function makeBoneCylinder(r, h, vsep, hsep)
 		material = {
 			texture = "LuaScripts/mars.png",
 			normal = "LuaScripts/wood_normal.png",
+			specular = "LuaScripts/specularmap.png",
 			shiness = 0.2
 		}
 	}
