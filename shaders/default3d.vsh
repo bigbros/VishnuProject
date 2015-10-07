@@ -53,9 +53,10 @@ void main(void)
 	vw += (u_bone[idx.w] * vec4(a_vert - u_bonepos[idx.w].xyz, 1.0)) * a_wght.w;
 
 	mat3 m3camera = mat3(u_camera);
-	vec3 pos = normalize(m3camera * vec3(vw));
+	//vec3 pos = normalize(m3camera * vec3(vw));
 	vw = u_camera * vw;
-	
+	vec3 pos = normalize(vec3(vw));
+
 	vw.x += u_offset.x * vw.w;
 	vw.y += u_offset.y * vw.w;
 	vw.z += u_offset.z * vw.w;
@@ -73,11 +74,10 @@ void main(void)
 	v_normlight.z = dot(n, lgt);
 	v_normlight = normalize(v_normlight);
 
-	/*
 	n = m3camera * n;
 	t = m3camera * t;
 	b = cross(n, t);
-	*/
+
 	v_viewvec.x = dot(t, -pos);
 	v_viewvec.y = dot(b, -pos);
 	v_viewvec.z = dot(n, -pos);

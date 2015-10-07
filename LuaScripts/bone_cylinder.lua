@@ -115,8 +115,8 @@ function makeSphere(r, vsep, hsep)
 		},
 		material = {
 --			texture = "LuaScripts/mars.png",
---			normal = "LuaScripts/fukusaya_normalmap.png",
-			shiness = 8.0
+--			normal = "LuaScripts/wood_normal.png",
+			shiness = 0.125
 		}
 	}
 end
@@ -183,8 +183,8 @@ function makeBoneCylinder(r, h, vsep, hsep)
 		},
 		material = {
 			texture = "LuaScripts/mars.png",
-			normal = "LuaScripts/fukusaya_normalmap.png",
-			shiness = 8.0
+			normal = "LuaScripts/wood_normal.png",
+			shiness = 0.2
 		}
 	}
 end
