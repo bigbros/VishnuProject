@@ -123,15 +123,15 @@ CGLShader::createProgram(const char * srcVertex, const char * srcFragment)
 	LOG("compile finished.\n");
 	GLuint prog = glCreateProgram();
 
-	LOG("attach vertex shader");
+	LOG("attach vertex shader\n");
 	glAttachShader(prog, m_vertex);
-	LOG("attach fragment shader");
+	LOG("attach fragment shader\n");
 	glAttachShader(prog, m_fragment);
 	LOG("Link shader\n");
 	glLinkProgram(prog);
 	GLint linked;
 	glGetProgramiv(prog, GL_LINK_STATUS, &linked);
-
+	LOG("Link Finished.\n");
 	if (linked == GL_FALSE) {
 		GLint length = 0;
 		glGetProgramiv(prog, GL_INFO_LOG_LENGTH, &length);

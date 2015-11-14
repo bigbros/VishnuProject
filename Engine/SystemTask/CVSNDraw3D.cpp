@@ -28,8 +28,6 @@ CVSNDraw3D::init(const char * shaderPath, CGLFBO * fbo)
 
 	const char * srcVertex = (const char *)storage->readText(vpath, &vsize);
 	const char * srcFragment = (const char *)storage->readText(fpath, &fsize);
-	LOG(srcVertex);
-	LOG(srcFragment);
 	if (srcVertex && srcFragment) {
 		m_shader = new C3DDefaultShader(m_env);
 		m_shader->init(srcVertex, srcFragment);
