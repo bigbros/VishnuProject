@@ -4,9 +4,9 @@
 #include "CCol3DCollision.h"
 
 CCol3D::CCol3D(TYPE type,C3DMat * ref, u32 * flag, u32 bit)
-	: m_parent(nullptr)
-	, m_prev(nullptr)
-	, m_next(nullptr)
+	: m_parent(0)
+	, m_prev(0)
+	, m_next(0)
 	, m_ref(ref)
 	, m_flag(flag)
 	, m_bit(bit)
@@ -40,17 +40,17 @@ CCol3D::strip()
 			m_parent->m_end = m_prev;
 		}
 	}
-	m_parent = nullptr;
-	m_prev = nullptr;
-	m_next = nullptr;
+	m_parent = 0;
+	m_prev = 0;
+	m_next = 0;
 }
 
 CCol3DGroup::CCol3DGroup(u32 gID)
-	: m_begin(nullptr)
-	, m_end(nullptr)
+	: m_begin(0)
+	, m_end(0)
 	, m_gID(gID)
-	, m_prev(nullptr)
-	, m_next(nullptr)
+	, m_prev(0)
+	, m_next(0)
 	, m_count(0)
 {
 	// ¶¬‚Æ“¯Žž‚Émanager“o˜^
@@ -104,7 +104,7 @@ CCol3DGroup::strip()
 	else {
 		mgr.m_end = m_prev;
 	}
-	m_prev = m_next = nullptr;
+	m_prev = m_next = 0;
 }
 
 void
@@ -200,5 +200,5 @@ CCol3DGroupMgr::findGroup(u32 gID)
 	for (CCol3DGroup * grp = m_begin; grp; grp = grp->m_next) {
 		if (grp->m_gID == gID) return grp;
 	}
-	return nullptr;
+	return 0;
 }

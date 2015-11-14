@@ -6,9 +6,9 @@
 CGLFBO::CGLFBO(int num, int width, int height)
 	: CGLObj()
 	, m_fboNum(0)
-	, m_fboIdx(nullptr)
-	, m_fboDepth(nullptr)
-	, m_fboTex(nullptr)
+	, m_fboIdx(0)
+	, m_fboDepth(0)
+	, m_fboTex(0)
 	, m_width(width)
 	, m_height(height)
 {

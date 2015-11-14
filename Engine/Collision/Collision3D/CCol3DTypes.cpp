@@ -7,7 +7,7 @@ CCol3DMESH::CCol3DMESH(C3DMat * ref, u32 * flag, u32 bit, C3DVec * vert, int vnu
 	, vert_num(vnum)
 	, idx_num(inum)
 {
-	vertices = nullptr;
+	vertices = 0;
 	try {
 		vertices = new C3DVec[vert_num];
 	}

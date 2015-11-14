@@ -7,7 +7,7 @@
 
 CVSN3DVMDModel::CVSN3DVMDModel(C3DDefaultShader * shader, const char * modelName, const char * path)
 	: C3DModel(shader, modelName)
-	, m_pathName(nullptr)
+	, m_pathName(0)
 {
 
 	try {
