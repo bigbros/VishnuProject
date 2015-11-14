@@ -120,7 +120,7 @@ CGLShader::createProgram(const char * srcVertex, const char * srcFragment)
 		m_fragment = -1;
 		throw CGLException("Shader compile failed.\n");
 	}
-
+	LOG("compile finished.\n");
 	GLuint prog = glCreateProgram();
 
 	glAttachShader(prog, m_vertex);
