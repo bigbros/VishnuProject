@@ -220,6 +220,7 @@
     <ClInclude Include="..\..\..\Engine\SystemTask\CVSNScriptDriver.h" />
     <ClInclude Include="..\..\..\Engine\Utility\CVSN3DKVModel.h" />
     <ClInclude Include="..\..\..\Engine\Utility\CVSN3DLightVecFunc.h" />
+    <ClInclude Include="..\..\..\Engine\Utility\CVSN3DVMDModel.h" />
     <ClInclude Include="..\..\..\Engine\Utility\CVSNFontTex.h" />
     <ClInclude Include="..\..\..\Engine\Utility\CVSNJsonKVObj.h" />
     <ClInclude Include="..\..\..\Engine\Utility\CVSNKVObj.h" />
@@ -253,6 +254,7 @@
     <ClInclude Include="..\..\..\Test\CTestEnv.h" />
     <ClInclude Include="..\..\..\UserTask\CVSNBoneTest.h" />
     <ClInclude Include="..\..\..\UserTask\CVSNLeapTest.h" />
+    <ClInclude Include="..\..\..\UserTask\CVSNModelTest.h" />
     <ClInclude Include="..\..\..\UserTask\CVSNTest2D.h" />
     <ClInclude Include="..\..\..\UserTask\CVSNTestCamera.h" />
     <ClInclude Include="..\..\..\UserTask\CVSNTestTask.h" />
@@ -326,6 +328,7 @@
     <ClCompile Include="..\..\..\Engine\SystemTask\CVSNScriptDriver.cpp" />
     <ClCompile Include="..\..\..\Engine\Utility\CVSN3DKVModel.cpp" />
     <ClCompile Include="..\..\..\Engine\Utility\CVSN3DLightVecFunc.cpp" />
+    <ClCompile Include="..\..\..\Engine\Utility\CVSN3DVMDModel.cpp" />
     <ClCompile Include="..\..\..\Engine\Utility\CVSNJsonKVObj.cpp" />
     <ClCompile Include="..\..\..\Engine\Utility\CVSNKVObj.cpp" />
     <ClCompile Include="..\..\..\Engine\Utility\CVSNPNGTex.cpp" />
@@ -365,6 +368,7 @@
     <ClCompile Include="..\..\..\Test\CTestEnv.cpp" />
     <ClCompile Include="..\..\..\UserTask\CVSNBoneTest.cpp" />
     <ClCompile Include="..\..\..\UserTask\CVSNLeapTest.cpp" />
+    <ClCompile Include="..\..\..\UserTask\CVSNModelTest.cpp" />
     <ClCompile Include="..\..\..\UserTask\CVSNTest2D.cpp" />
     <ClCompile Include="..\..\..\UserTask\CVSNTestCamera.cpp" />
     <ClCompile Include="..\..\..\UserTask\CVSNTestTask.cpp" />

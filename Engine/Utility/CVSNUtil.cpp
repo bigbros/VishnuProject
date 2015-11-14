@@ -27,3 +27,16 @@ CVSNUtil::freePath(const char * joint_path)
 {
 	vsnMemFree((void *)joint_path);
 }
+
+const char *
+CVSNUtil::pathDir(const char * path)
+{
+	int last = 0;
+	for (int i = 0; path[i]; i++) {
+		if (path[i] == '\\' || path[i] == '/') last = i;
+	}
+	char * buf = (char *)vsnMemAlloc(last + 1);
+	strncpy(buf, path, last);
+	buf[last] = 0;
+	return buf;
+}

@@ -1,3 +1,5 @@
+#include <iostream>
+#include <exception>
 #include "CGLFBO.h"
 #include "platform.h"
 

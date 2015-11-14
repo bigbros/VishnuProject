@@ -12,22 +12,34 @@ public:
 public:
 	// uniforms
 	GLint				m_u_light;
-	GLint				m_u_rgba;
-	GLint				m_u_ambient;
+	GLint				m_u_offset;
 	GLint				m_u_camera;
 	GLint				m_u_projection;
 	GLint				m_u_bone;
 	GLint				m_u_bonepos;
-	GLint				m_u_tex;
-	GLint				m_u_normmap;
-	GLint				m_u_specular;
-	GLint				m_u_modelcol;
-	GLint				m_u_shininess;
-	GLint				m_u_switch;
-	GLint				m_u_offset;
+
+	// textures
+	GLint				m_u_maptexture;
+	GLint				m_u_mapnormal;
+	GLint				m_u_mapspecular;
+
+	// enable flags
 	GLint				m_u_f_normalmap;
 	GLint				m_u_f_texmap;
 	GLint				m_u_f_specularmap;
+
+	// material
+	GLint				m_u_rgba;
+	GLint				m_u_modelcol;
+	GLint				m_u_ambient;
+	GLint				m_u_diffuse;
+	GLint				m_u_emissive;
+	GLint				m_u_specular;
+
+	GLint				m_u_ambient_f;
+	GLint				m_u_diffuse_f;
+	GLint				m_u_emissive_f;
+	GLint				m_u_shininess;
 
 	// attribs
 	GLint				m_a_vert;

@@ -6,6 +6,7 @@ class CVSNUtil
 public:
 	static int strHash(const char * str);
 
+	static const char * pathDir(const char * path);
 	static const char * jointPath(const char * path, const char * filename);
 	static void freePath(const char * joint_path);
 };

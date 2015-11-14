@@ -26,35 +26,37 @@ CVSN3DKVModel::loadModel(CVSNKVObj& kvObj)
 
 	if (kvObj.ContainsKey("material")) {
 		CVSNKVObj& kvMat = kvObj["material"];
-		C3DMaterial * material = new C3DMaterial();
-		if (kvMat.ContainsKey("texture")) {
+		for (int i = 0; i < kvMat.length(); i++) {
+			C3DMaterial::MATERIAL tmp;
+			C3DMaterial * material = new C3DMaterial();
 
-			LOG("READ TEXTURE\n");
-
-			const char * name = kvMat["texture"];
-			CVSNPNGTex * pTex = new CVSNPNGTex("tex", name);
-			material->setTexture(pTex);
+			if (kvMat.ContainsKey("texture")) {
+				LOG("READ TEXTURE\n");
+				const char * name = kvMat["texture"];
+				CVSNPNGTex * pTex = new CVSNPNGTex("tex", name);
+				material->setTexture(pTex);
+			}
+			if (kvMat.ContainsKey("normal")) {
+				LOG("READ NORMAL\n");
+				const char * name = kvMat["normal"];
+				CVSNPNGTex * pTex = new CVSNPNGTex("norm", name);
+				material->setNormal(pTex);
+			}
+			if (kvMat.ContainsKey("specular")) {
+				LOG("READ SPECULAR\n");
+				const char * name = kvMat["specular"];
+				CVSNPNGTex * pTex = new CVSNPNGTex("spcl", name);
+				material->setSpecular(pTex);
+			}
+			/*
+			if (kvMat.ContainsKey("shiness")) {
+				LOG("SET SPECULAR\n");
+				const float shiness = kvMat["shiness"];
+				material->setShininess(shiness);
+			}
+			*/
+			setMaterial(material);
 		}
-		if (kvMat.ContainsKey("normal")) {
-			LOG("READ NORMAL\n");
-
-			const char * name = kvMat["normal"];
-			CVSNPNGTex * pTex = new CVSNPNGTex("norm", name);
-			material->setNormal(pTex);
-		}
-		if (kvMat.ContainsKey("specular")) {
-			LOG("READ SPECULAR\n");
-
-			const char * name = kvMat["specular"];
-			CVSNPNGTex * pTex = new CVSNPNGTex("spcl", name);
-			material->setSpecular(pTex);
-		}
-		if (kvMat.ContainsKey("shiness")) {
-			LOG("SET SPECULAR\n");
-			const float shiness = kvMat["shiness"];
-			material->setShininess(shiness);
-		}
-		setMaterial(material);
 	}
 	return true;
 }

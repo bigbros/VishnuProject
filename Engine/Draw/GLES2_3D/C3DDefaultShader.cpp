@@ -41,22 +41,31 @@ C3DDefaultShader::setShaderParams(GLuint program)
 {
 	// shaderの各uniformに相当する値を取得しておく。
 	m_u_light = glGetUniformLocation(program, "u_light");
-	m_u_rgba = glGetUniformLocation(program, "u_rgba");
-	m_u_ambient = glGetUniformLocation(program, "u_ambient");
+	m_u_offset = glGetUniformLocation(program, "u_offset");
 	m_u_camera = glGetUniformLocation(program, "u_camera");
 	m_u_projection = glGetUniformLocation(program, "u_projection");
 	m_u_bone = glGetUniformLocation(program, "u_bone");
 	m_u_bonepos = glGetUniformLocation(program, "u_bonepos");
-	m_u_tex = glGetUniformLocation(program, "u_tex");
-	m_u_normmap = glGetUniformLocation(program, "u_normmap");
-	m_u_specular = glGetUniformLocation(program, "u_specular");
-	m_u_modelcol = glGetUniformLocation(program, "u_modelcol");
-	m_u_shininess = glGetUniformLocation(program, "u_shininess");
-	m_u_switch = glGetUniformLocation(program, "u_switch");
-	m_u_offset = glGetUniformLocation(program, "u_offset");
+
+	m_u_maptexture = glGetUniformLocation(program, "u_maptexture");
+	m_u_mapnormal = glGetUniformLocation(program, "u_mapnormal");
+	m_u_mapspecular = glGetUniformLocation(program, "u_mapspecular");
+
 	m_u_f_normalmap = glGetUniformLocation(program, "u_f_normalmap");
 	m_u_f_texmap = glGetUniformLocation(program, "u_f_texmap");
 	m_u_f_specularmap = glGetUniformLocation(program, "u_f_specularmap");
+
+	m_u_rgba = glGetUniformLocation(program, "u_rgba");
+	m_u_modelcol = glGetUniformLocation(program, "u_modelcol");
+	m_u_ambient = glGetUniformLocation(program, "u_ambient");
+	m_u_diffuse = glGetUniformLocation(program, "u_diffuse");
+	m_u_emissive = glGetUniformLocation(program, "u_emissive");
+	m_u_specular = glGetUniformLocation(program, "u_specular");
+
+	m_u_ambient_f = glGetUniformLocation(program, "u_ambient_f");
+	m_u_diffuse_f = glGetUniformLocation(program, "u_diffuse_f");
+	m_u_emissive_f = glGetUniformLocation(program, "u_emissive_f");
+	m_u_shininess = glGetUniformLocation(program, "u_shininess");
 
 	// shaderの各attribに相当する値を取得しておく。
 	m_a_vert = glGetAttribLocation(program, "a_vert");

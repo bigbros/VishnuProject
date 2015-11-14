@@ -17,7 +17,8 @@ C3DModel::C3DModel(C3DShader * shader, const char * modelName)
 	, m_boneparent(0)
 	, m_bonenum(0)
 	, m_modelName(0)
-	, m_material(0)
+	, m_matBegin(0)
+	, m_matEnd(0)
 	, m_ready(false)
 {
 	char * buf = 0;
@@ -41,7 +42,12 @@ C3DModel::~C3DModel()
 	delete[] m_indices;
 	delete[] m_bones;
 	delete[] m_boneparent;
-	delete m_material;
+	C3DMaterial * mat = m_matBegin;
+	while (mat) {
+		C3DMaterial * nxt = mat->m_next;
+		delete mat;
+		mat = nxt;
+	}
 }
 
 bool
@@ -63,7 +69,7 @@ bool
 C3DModel::newIndices(int num)
 {
 	try {
-		u16 * p = new u16[num];
+		INDEXTYPE * p = new INDEXTYPE[num];
 		delete[] m_indices;
 		m_indices = p;
 		m_idxnum = num;
@@ -107,7 +113,7 @@ C3DModel::setBuffer()
 
 	m_idxIndex = bufIdx[1];
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_idxIndex);
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(u16) * m_idxnum, m_indices, GL_STATIC_DRAW);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(INDEXTYPE) * m_idxnum, m_indices, GL_STATIC_DRAW);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 
 	m_ready = true;
@@ -117,14 +123,6 @@ void
 C3DModel::setup(C3DShader * pShader)
 {
 	C3DDefaultShader * shader = (C3DDefaultShader *)pShader;
-
-	// テクスチャが設定されていれば、そのテクスチャを有効にする。
-	if (m_material) {
-		m_material->setup(shader);
-	}
-	else {
-		glUniform1i(shader->m_u_switch, C3DMaterial::DIFFUSE);
-	}
 
 	// このモデルの全頂点情報(座標、法線、uv値、頂点カラー、追従ボーンおよびウェイト値)が転送済みのバッファを有効にし、
 	// そのバッファにインターリーヴされた各情報のオフセットを指定する。
@@ -173,3 +171,25 @@ C3DModel::destruction()
 	return true;
 }
 
+void
+C3DModel::setMaterial(C3DMaterial * material)
+{
+	material->m_prev = m_matEnd;
+	if (material->m_prev) {
+		material->m_prev->m_next = material;
+	}
+	else {
+		m_matBegin = material;
+	}
+	m_matEnd = material;
+}
+
+void
+C3DModel::draw(C3DShader * shader)
+{
+	// モデルに使用されている全マテリアルでの描画を行う。
+	for (C3DMaterial * mat = m_matBegin; mat; mat = mat->m_next) {
+		mat->setup((C3DDefaultShader *)shader);
+		glDrawElements(GL_TRIANGLES, mat->params.indicesNum, idxType, (void *)(mat->params.indicesBegin * sizeof(INDEXTYPE)));
+	}	
+}

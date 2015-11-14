@@ -6,7 +6,8 @@ C3DMaterial::C3DMaterial()
 	: CGLBase()
 	, m_texture(0)
 	, m_normal(0)
-	, m_shininess(0)
+	, m_prev(0)
+	, m_next(0)
 	, m_switch(DIFFUSE)
 {
 }
@@ -18,32 +19,30 @@ C3DMaterial::~C3DMaterial()
 }
 
 void
+C3DMaterial::setTexture(int mask, CGLTex * tex, GLenum target, int num, GLint shaderIdx, GLint flagIdx)
+{
+	if (m_switch & mask) {
+		tex->set(target);
+		glUniform1i(shaderIdx, num);
+		glUniform1i(flagIdx, GL_TRUE);
+	}
+	else {
+		glUniform1i(flagIdx, GL_FALSE);
+	}
+}
+void
 C3DMaterial::setup(C3DDefaultShader * shader)
 {
-	if (m_switch & TEXTURE) {
-		m_texture->set(GL_TEXTURE0);
-		glUniform1i(shader->m_u_tex, 0);
-		glUniform1i(shader->m_u_f_texmap, GL_TRUE);
-	}
-	else {
-		glUniform1i(shader->m_u_f_texmap, GL_FALSE);
-	}
-	if (m_switch & NORMAL) {
-		m_normal->set(GL_TEXTURE1);
-		glUniform1i(shader->m_u_normmap, 1);
-		glUniform1i(shader->m_u_f_normalmap, GL_TRUE);
-	}
-	else {
-		glUniform1i(shader->m_u_f_normalmap, GL_FALSE);
-	}
-	if (m_switch & SPECULAR) {
-		m_specular->set(GL_TEXTURE2);
-		glUniform1i(shader->m_u_specular, 2);
-		glUniform1i(shader->m_u_f_specularmap, GL_TRUE);
-	}
-	else {
-		glUniform1i(shader->m_u_f_specularmap, GL_FALSE);
-	}
-	glUniform1f(shader->m_u_shininess, m_shininess);
-	glUniform1i(shader->m_u_switch, m_switch);
+	setTexture(TEXTURE, m_texture,	GL_TEXTURE0, 0, shader->m_u_maptexture, shader->m_u_f_texmap);
+	setTexture(NORMAL, m_normal,	GL_TEXTURE1, 1, shader->m_u_mapnormal, shader->m_u_f_normalmap);
+	setTexture(SPECULAR, m_specular, GL_TEXTURE2, 2, shader->m_u_mapspecular, shader->m_u_f_specularmap);
+
+	glUniform4fv(shader->m_u_ambient, 1, (GLfloat *)&params.ambient);
+	glUniform4fv(shader->m_u_diffuse, 1, (GLfloat *)&params.diffuse);
+	glUniform4fv(shader->m_u_emissive, 1, (GLfloat *)&params.emissive);
+	glUniform4fv(shader->m_u_specular, 1, (GLfloat *)&params.specular);
+	glUniform1f(shader->m_u_ambient_f, params.ambientFactor);
+	glUniform1f(shader->m_u_diffuse_f, params.diffuseFactor);
+	glUniform1f(shader->m_u_emissive_f, params.emissiveFactor);
+	glUniform1f(shader->m_u_shininess, params.shininess);
 }

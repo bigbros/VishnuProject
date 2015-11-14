@@ -468,6 +468,12 @@
     <ClInclude Include="..\..\..\UserTask\CVSNLeapTest.h">
       <Filter>ヘッダー ファイル\UserTask</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\UserTask\CVSNModelTest.h">
+      <Filter>ヘッダー ファイル\UserTask</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\Utility\CVSN3DVMDModel.h">
+      <Filter>ヘッダー ファイル\Engine\Utility</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -799,6 +805,12 @@
     </ClCompile>
     <ClCompile Include="..\..\..\UserTask\CVSNLeapTest.cpp">
       <Filter>ソース ファイル\UserTask</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\UserTask\CVSNModelTest.cpp">
+      <Filter>ソース ファイル\UserTask</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\Utility\CVSN3DVMDModel.cpp">
+      <Filter>ソース ファイル\Utility</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

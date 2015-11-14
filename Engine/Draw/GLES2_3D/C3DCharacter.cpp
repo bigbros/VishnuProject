@@ -92,5 +92,6 @@ C3DCharacter::render(C3DShader * pShader)
 	glUniformMatrix4fv(shader->m_u_bone, m_matnum, GL_FALSE, (const GLfloat *)m_matrices);	// ボーンのワールドマトリクス
 
 	// 転送済みの頂点とインデックス、およびマトリクス、ボーン位置情報で描画する。
-	glDrawElements(GL_TRIANGLE_STRIP, model->m_idxnum, GL_UNSIGNED_SHORT, 0);
+	model->draw(shader);
+//	glDrawElements(GL_TRIANGLES, model->m_idxnum, GL_UNSIGNED_SHORT, 0);
 }

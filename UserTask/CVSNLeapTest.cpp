@@ -1,3 +1,4 @@
+#if defined(WIN32) || defined(WIN64)
 #include "CVSNLeapTest.h"
 #include "platform.h"
 
@@ -73,3 +74,4 @@ void
 CVSNLeapTest::on_change()
 {
 }
+#endif

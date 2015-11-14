@@ -43,10 +43,13 @@ protected:
 	*/
 
 	// メッシュ情報
-	VERTEX	*	m_vertices;		// 頂点
-	u16		*	m_indices;		// 頂点index
-	u16			m_vertnum;		// 頂点の数
-	u16			m_idxnum;		// 頂点indexの数
+	typedef u32 INDEXTYPE;
+	const GLenum idxType = GL_UNSIGNED_INT;
+
+	VERTEX			*	m_vertices;		// 頂点
+	INDEXTYPE		*	m_indices;		// 頂点index
+	INDEXTYPE			m_vertnum;		// 頂点の数
+	INDEXTYPE			m_idxnum;		// 頂点indexの数
 
 	// ボーン情報(最大64個まで)
 	C3DVec	*	m_bones;		// 骨格の起点情報(親骨格原点からの相対)
@@ -54,7 +57,8 @@ protected:
 	int			m_bonenum;		// 骨格の数
 
 	// マテリアル情報
-	C3DMaterial * m_material;	// マテリアル情報
+	C3DMaterial	*	m_matBegin;
+	C3DMaterial	*	m_matEnd;
 
 	GLuint		m_idxVert;		// 頂点バッファ
 	GLuint		m_idxIndex;		// インデックスバッファ
@@ -73,6 +77,7 @@ public:
 
 	void setup(C3DShader * env);
 	void cleanup(C3DShader * env);
+	void draw(C3DShader * shader);
 
 	bool recovery();
 	bool destruction();
@@ -81,8 +86,8 @@ protected:
 	bool newVertices(int num = 0);
 	bool newIndices(int num = 0);
 	bool newBones(int num = 0);
-	inline void setMaterial(C3DMaterial * material) { m_material = material; }
-
+	void setMaterial(C3DMaterial * material);
+	
 	void setBuffer();
 };
 

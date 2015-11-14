@@ -7,24 +7,26 @@ function Init()
 	celestialSphere = vsnTaskCreate("sysSkyDome", "LuaScripts/SkyDome.png", 340.0)
 
 	local skinning = false
-	local camerarot = true
+	local camerarot = false
 
 	camera = vsnTaskCreate("camera",
 							{angle=math.pi/2, near=0.05, far=350.0},
-							{x=0, y=0, z=2.0}, camerarot)			-- camera position
+							{x=0, y=0, z=10.0}, camerarot)			-- camera position
 
 	tracking = vsnTaskCreate("vrcamera")
 	
-	local hand = makeSphere(0.02, 3, 12)
-	leap = vsnTaskCreate("leapmotion", hand)
+	-- local hand = makeSphere(0.02, 3, 12)
+	-- leap = vsnTaskCreate("leapmotion", hand)
 
+	taskModel = vsnTaskCreate("model", {x=0, y=0, z=0}, "LuaScripts/schooldesk.vmd", true)
+--[[
 	local model = makeBoneCylinder(0.2, 1.44, 12, 24)
 	task1 = vsnTaskCreate("test2", {x=0, y=0, z=0}, model, skinning)
 	task2 = vsnTaskCreate("test2", {x=0.3, y=-1.5, z=0}, model, skinning)
 	task3 = vsnTaskCreate("test2", {x=-0.3, y=-1.5, z=0}, model, skinning)
 	task4 = vsnTaskCreate("test2", {x=0.5, y=0, z=0}, model, skinning)
 	task5 = vsnTaskCreate("test2", {x=-0.5, y=0, z=0}, model, skinning)
-
+]]
 	hand = nil
 	model = nil
 	
@@ -40,11 +42,14 @@ function Execute(deltaT)
 end
 
 function Leave()
+	vsnTaskKill(taskModel)
+--[[
 	vsnTaskKill(task1)
 	vsnTaskKill(task2)
 	vsnTaskKill(task3)
 	vsnTaskKill(task4)
 	vsnTaskKill(task5)
+]]
 	vsnTaskKill(celestialSphere)
 	vsnTaskKill(tracking)
 	vsnTaskKill(leap)
