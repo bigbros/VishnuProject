@@ -1,3 +1,4 @@
+#include <stddef.h>
 #include "C3DDrawEnv.h"
 #include "C3DSkyDome.h"
 #include "CGLTex.h"
