@@ -1,6 +1,8 @@
 #ifndef C3DMaterial_h
 #define C3DMaterial_h
 
+#include <string.h>
+
 #include "CGLBase.h"
 #include "C3DDefaultShader.h"
 
