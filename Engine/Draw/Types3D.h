@@ -2,6 +2,7 @@
 #define Types3D_h
 
 #define _USE_MATH_DEFINES
+#include <stdio.h>
 #include <math.h>
 #include <cmath>
 
