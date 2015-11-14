@@ -7,6 +7,9 @@
 
 #include "dtypes.h"
 
+#include "CGLAlloc.h"
+
+
 #define F_PI ((float)M_PI)
 
 struct C2DMat;
