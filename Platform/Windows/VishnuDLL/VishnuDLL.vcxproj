@@ -68,7 +68,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>..\;..\..\..\Test;..\..\..\Engine\Core\include;..\..\..\Engine\Collision;..\..\..\Engine\Collision\Collision3D;..\..\..\Engine\Draw;..\..\..\Engine\Draw\GLES2_2D;..\..\..\Engine\Draw\GLES2_3D;..\..\..\Engine\Platform;..\..\..\Engine\Script;..\..\..\Engine\SystemTask;..\..\..\Engine\Utility;..\..\..\Platform\Oculus;..\..\..\Platform\LeapMotion;..\extern\yajl-1.0.12\include;..\extern\Lua;..\extern\libpng\include;..\extern\freetype2\include;..\extern\OpenGLES\include;$(OCULUS_SDK)\LibOVR\Include;$(LEAPMOTION_SDK)\include;$(IncludePath)</IncludePath>
+    <IncludePath>..\;..\..\..\Test;..\..\..\Engine\Core\include;..\..\..\Engine\Collision;..\..\..\Engine\Collision\Collision3D;..\..\..\Engine\Draw;..\..\..\Engine\Draw\GLES2_2D;..\..\..\Engine\Draw\GLES2_3D;..\..\..\Engine\Platform;..\..\..\Engine\Script;..\..\..\Engine\SystemTask;..\..\..\Engine\Utility;..\..\..\Platform\Oculus;..\..\..\Platform\Oculus\Win32;..\..\..\Platform\LeapMotion;..\extern\yajl-1.0.12\include;..\extern\Lua;..\extern\libpng\include;..\extern\freetype2\include;..\extern\OpenGLES\include;$(OCULUS_SDK)\LibOVR\Include;$(LEAPMOTION_SDK)\include;$(IncludePath)</IncludePath>
     <LibraryPath>..\extern\Lua;..\extern\OpenGLES\lib;..\extern\libpng;..\extern\yajl-1.0.12\lib;..\extern\freetype2;$(LEAPMOTION_SDK)\lib\x86;$(OCULUS_SDK)\LibOVR\Lib\Windows\Win32\Debug\VS2013;$(LibraryPath)</LibraryPath>
     <OutDir>..\VishnuDev\Package\</OutDir>
   </PropertyGroup>
@@ -261,7 +261,7 @@
     <ClInclude Include="..\..\..\UserTask\CVSNTrackTest.h" />
     <ClInclude Include="..\..\LeapMotion\CVSNLeapMotion.h" />
     <ClInclude Include="..\..\Oculus\C3DVRFBO.h" />
-    <ClInclude Include="..\..\Oculus\CVSNWin32Tracking.h" />
+    <ClInclude Include="..\..\Oculus\Win32\CVSNWin32Tracking.h" />
     <ClInclude Include="..\CVSNWin32FS.h" />
     <ClInclude Include="..\CVSNWin32Thread.h" />
     <ClInclude Include="..\CWin32GLES2.h" />
@@ -375,7 +375,7 @@
     <ClCompile Include="..\..\..\UserTask\CVSNTrackTest.cpp" />
     <ClCompile Include="..\..\LeapMotion\CVSNLeapMotion.cpp" />
     <ClCompile Include="..\..\Oculus\C3DVRFBO.cpp" />
-    <ClCompile Include="..\..\Oculus\CVSNWin32Tracking.cpp" />
+    <ClCompile Include="..\..\Oculus\Win32\CVSNWin32Tracking.cpp" />
     <ClCompile Include="..\CVSNWin32FS.cpp" />
     <ClCompile Include="..\CVSNWin32Thread.cpp" />
     <ClCompile Include="..\CWin32GLES2.cpp" />

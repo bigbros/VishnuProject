@@ -357,9 +357,6 @@
     <ClInclude Include="..\..\..\UserTask\CVSNTrackTest.h">
       <Filter>ヘッダー ファイル\UserTask</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Oculus\CVSNWin32Tracking.h">
-      <Filter>ヘッダー ファイル\Oculus</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\External\lua5.2.3\lapi.h">
       <Filter>ヘッダー ファイル\Lua</Filter>
     </ClInclude>
@@ -473,6 +470,9 @@
     </ClInclude>
     <ClInclude Include="..\..\..\Engine\Utility\CVSN3DVMDModel.h">
       <Filter>ヘッダー ファイル\Engine\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Oculus\Win32\CVSNWin32Tracking.h">
+      <Filter>ヘッダー ファイル\Oculus</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -677,9 +677,6 @@
     <ClCompile Include="..\..\..\UserTask\CVSNTrackTest.cpp">
       <Filter>ソース ファイル\UserTask</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Oculus\CVSNWin32Tracking.cpp">
-      <Filter>ソース ファイル\Oculus</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\External\lua5.2.3\lapi.c">
       <Filter>ソース ファイル\Lua</Filter>
     </ClCompile>
@@ -811,6 +808,9 @@
     </ClCompile>
     <ClCompile Include="..\..\..\Engine\Utility\CVSN3DVMDModel.cpp">
       <Filter>ソース ファイル\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Oculus\Win32\CVSNWin32Tracking.cpp">
+      <Filter>ソース ファイル\Oculus</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
