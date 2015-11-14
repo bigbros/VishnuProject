@@ -21,6 +21,11 @@ CVSNDraw3D::init(const char * shaderPath, CGLFBO * fbo)
 	const char * fpath = CVSNUtil::jointPath(shaderPath, "default3d.fsh");	// default fragment shader
 	size_t vsize, fsize;
 
+	LOG("VertexShader: ");
+	LOG(vpath);
+	LOG("FragmentShader: ");
+	LOG(fpath);
+
 	const char * srcVertex = (const char *)storage->readText(vpath, &vsize);
 	const char * srcFragment = (const char *)storage->readText(fpath, &fsize);
 	if (srcVertex && srcFragment) {
