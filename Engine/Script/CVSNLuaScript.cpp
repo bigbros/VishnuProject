@@ -1,3 +1,4 @@
+#include <string.h>
 #include "CVSNScriptTask.h"
 #include "CVSNLuaScript.h"
 #include "IVSNScriptUtilFunc.h"
