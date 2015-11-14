@@ -190,6 +190,6 @@ C3DModel::draw(C3DShader * shader)
 	// モデルに使用されている全マテリアルでの描画を行う。
 	for (C3DMaterial * mat = m_matBegin; mat; mat = mat->m_next) {
 		mat->setup((C3DDefaultShader *)shader);
-		glDrawElements(GL_TRIANGLES, mat->params.indicesNum, idxType, (void *)(mat->params.indicesBegin * sizeof(INDEXTYPE)));
+		glDrawElements(GL_TRIANGLES, mat->params.indicesNum, IdxTYPE, (void *)(mat->params.indicesBegin * sizeof(INDEXTYPE)));
 	}	
 }

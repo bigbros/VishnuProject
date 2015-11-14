@@ -44,7 +44,9 @@ protected:
 
 	// メッシュ情報
 	typedef u32 INDEXTYPE;
-	const GLenum idxType = GL_UNSIGNED_INT;
+	enum {
+		IdxTYPE = GL_UNSIGNED_INT
+	};
 
 	VERTEX			*	m_vertices;		// 頂点
 	INDEXTYPE		*	m_indices;		// 頂点index
