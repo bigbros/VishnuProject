@@ -33,4 +33,8 @@ extern "C" {
 #endif
 #endif
 
+#ifdef RAS_PI
+#define LOG(msg...) printf(msg)
+#endif
+
 #endif // PlatformUtil_h
