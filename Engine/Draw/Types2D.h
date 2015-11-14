@@ -2,12 +2,12 @@
 #define Types2D_h
 
 #define _USE_MATH_DEFINES
+#include <stdio.h>
 #include <math.h>
 #include <cmath>
 
 #include "dtypes.h"
 
-#include "CGLAlloc.h"
 
 
 #define F_PI ((float)M_PI)
