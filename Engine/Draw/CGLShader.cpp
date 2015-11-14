@@ -140,6 +140,7 @@ CGLShader::createProgram(const char * srcVertex, const char * srcFragment)
 			glGetProgramInfoLog(prog, length, &length, buf);
 			std::string msg = "Program attach failed: ";
 			msg += buf;
+			msg +="\n";
 			LOG(msg.c_str());
 			CGLAlloc::free(buf);
 			throw CGLException(msg.c_str());
