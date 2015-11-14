@@ -1,3 +1,4 @@
+#include <stddef.h>
 #include "C2DDrawQueue.h"
 #include "CGLAlloc.h"
 #include "C2DSprite.h"
