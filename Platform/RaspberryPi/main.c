@@ -83,12 +83,12 @@ void Destroy(ScreenConfig * sc)
 {
 	if (sc->context != EGL_NO_CONTEXT) {
 		eglMakeCurrent(sc->display, EGL_NO_SURFACE, EGL_NO_SURFACE, EGL_NO_CONTEXT);
-		eglDestroyContext(sc->display, m_eglContext);
+		eglDestroyContext(sc->display, sc->context);
 		sc->context = EGL_NO_CONTEXT;
 	}
 
 	if (sc->surface != EGL_NO_SURFACE) {
-		eglDestroySurface(sc->display, m_eglSurface);
+		eglDestroySurface(sc->display, sc->surface);
 		sc->surface = EGL_NO_SURFACE;
 	}
 
