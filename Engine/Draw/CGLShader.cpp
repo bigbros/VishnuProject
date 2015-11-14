@@ -1,6 +1,7 @@
 #include <iostream>
 #include <memory>
 #include <exception>
+#include <string.h>
 #include "CGLShader.h"
 #include "CGLAlloc.h"
 
