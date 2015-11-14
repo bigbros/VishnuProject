@@ -28,16 +28,16 @@ private:
 	int				m_pri;
 
 	C2DSprite	*	m_sprites[QUEUE_MAX];
-	C2DMat			m_matrices[ QUEUE_MAX ];
-	C3DVec			m_rgba[ QUEUE_MAX ];
-	C3DVec			m_uv[ QUEUE_MAX ];
+	C2DMat			m_matrices[QUEUE_MAX];
+	C3DVec			m_rgba[QUEUE_MAX];
+	C3DVec			m_uv[QUEUE_MAX];
 
 
 public:
 	C2DQueueItem(C2DTexOT * ot, int pri);
 	virtual ~C2DQueueItem();
 
-	inline int getBlank() { return C2DDrawQueue::MAX_DRAW_ITEMS - m_useItem;  }
+	inline int getBlank() { return C2DDrawQueue::MAX_DRAW_ITEMS - m_useItem; }
 	bool alloc(C2DSprite * pSpr);
 	int remove(C2DSprite * pSpr);
 
