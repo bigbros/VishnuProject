@@ -11,8 +11,9 @@ uniform highp mat4 u_projection;
 uniform highp vec4 u_light;
 uniform highp vec4 u_offset;
 
-uniform mat4 u_bone[32];
-uniform vec4 u_bonepos[32];
+#define BONES 16
+uniform mat4 u_bone[BONES];
+uniform vec4 u_bonepos[BONES];
 
 varying mediump vec4 v_color;
 varying mediump vec4 v_light;
