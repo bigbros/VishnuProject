@@ -123,9 +123,11 @@ CGLShader::createProgram(const char * srcVertex, const char * srcFragment)
 	LOG("compile finished.\n");
 	GLuint prog = glCreateProgram();
 
+	LOG("attach vertex shader");
 	glAttachShader(prog, m_vertex);
+	LOG("attach fragment shader");
 	glAttachShader(prog, m_fragment);
-
+	LOG("Link shader\n");
 	glLinkProgram(prog);
 	GLint linked;
 	glGetProgramiv(prog, GL_LINK_STATUS, &linked);
