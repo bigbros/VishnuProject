@@ -8,14 +8,14 @@ C2DObj::OBJLINK::OBJLINK() : prev(0), next(0) {}
 
 C2DObj::C2DObj()
 	: CGLBase()
+	, m_parent(0)
 	, m_childs()
 	, m_sisters()
-	, m_parent(0)
+	, m_visible(false)
+	, m_recalc(true)
 	, m_position(0.0f, 0.0f)
 	, m_rotation(0.0f)
 	, m_priority(0)
-	, m_visible(false)
-	, m_recalc(true)
 {
 }
 
