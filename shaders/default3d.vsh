@@ -41,9 +41,9 @@ void main(void)
 	bone4[3] = u_bone[idx.w];
 	
 	bonepos[0] = u_bonepos[idx.x];
-	bonepos[0] = u_bonepos[idx.y];
-	bonepos[0] = u_bonepos[idx.z];
-	bonepos[0] = u_bonepos[idx.w];
+	bonepos[1] = u_bonepos[idx.y];
+	bonepos[2] = u_bonepos[idx.z];
+	bonepos[3] = u_bonepos[idx.w];
 
 	wght[0] = a_wght.x;
 	wght[1] = a_wght.y;
