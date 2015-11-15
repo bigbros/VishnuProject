@@ -73,7 +73,7 @@ CVSNRasPi::OnDetach()
 }
 
 void
-CVishnuSystem::OnSurface()
+CVSNRasPi::OnSurface()
 {
 	m_env->onSurface();
 }

@@ -1,9 +1,9 @@
-VISHNU_PATH			:= ../..
+VISHNU_PATH		:= ../..
 VISHNU_ENGINE_PATH	:= $(VISHNU_PATH)/Engine
-LUA_PATH			:= $(VISHNU_PATH)/External/Lua5.2.3
-YAJL_PATH			:= $(VISHNU_PATH)/External/yajl-1.0.12
-LIBPNG_PATH			:= $(VISHNU_PATH)/External/libpng
-ZLIB_PATH			:= $(VISHNU_PATH)/External/zlib
+LUA_PATH		:= $(VISHNU_PATH)/External/Lua5.2.3
+YAJL_PATH		:= $(VISHNU_PATH)/External/yajl-1.0.12
+LIBPNG_PATH		:= $(VISHNU_PATH)/External/libpng
+ZLIB_PATH		:= $(VISHNU_PATH)/External/zlib
 UNIXMOD_PATH		:= $(VISHNU_PATH)/Platform/UnixModules
 
 LOCAL_CFLAGS += -I$(VISHNU_ENGINE_PATH)/Core/include
@@ -50,14 +50,13 @@ LOCAL_CFLAGS		+= -I$(TEST_PATH)
 USERTASK_SRC_FILES	:=	$(wildcard $(USERTASK_PATH)/*.cpp)
 USERTASK_SRC_FILES	+=	$(wildcard $(TEST_PATH)/*.cpp)
 
-LOCAL_MODULE    := NativeVishnuProject
-LOCAL_SRC_FILES := NativeVishnuProject.cpp android_native_app_glue.c random.c
+LOCAL_SRC_FILES := main.c raspi.cpp CVSNRasPi.cpp
 LOCAL_SRC_FILES	+= $(patsubst $(LOCAL_PATH)/%,%,$(UNIXMOD_SRC_FILES))
 LOCAL_SRC_FILES	+= $(patsubst $(LOCAL_PATH)/%,%,$(VISHNU_SRC_FILES))
 LOCAL_SRC_FILES	+= $(patsubst $(LOCAL_PATH)/%,%,$(EXTERNAL_SRC_FILES))
 LOCAL_SRC_FILES	+= $(patsubst $(LOCAL_PATH)/%,%,$(USERTASK_SRC_FILES))
 
-LOCAL_LDLIBS    := -lc -lm -lbcm_host -lEGL -lGLESv2 -L/opt/vc/lib
+LOCAL_LDLIBS    := -lc -lm -lbcm_host -lpthread -lEGL -lGLESv2 -L/opt/vc/lib
 
 
 CC			:=	gcc
@@ -66,15 +65,19 @@ CPP			:=	g++
 INCLUDE		:=	-I/opt/vc/include -I/opt/vc/include/interface/vcos/pthreads
 LIBS		:=	$(LOCAL_LDLIBS)
 CFLAGS		:=	$(INCLUDE) $(LOCAL_CFLAGS) -O2 -Wall -DRAS_PI
-CPPFLAGS	:=	$(CFLAGS) -std=c++11
+CPPFLAGS	:=	$(CFLAGS)
 
-C_OBJS		:=	$(LOCAL_SRC_FILES:.c=.o)
-OBJS		:=	$(C_OBJS:.cpp=.o)
+C_OBJS		:=	$(LOCAL_SRC_FILES:%.c=%.o)
+OBJS		:=	$(C_OBJS:%.cpp=%.o)
 
 TARGET	:=	vishnu
 
-$(TARGET):	$(LOCAL_OBJS)
-		$(CC) $(LIBS) -o $(TARGET) $(OBJS)
+all:	$(TARGET)
+
+clean:;	rm $(OBJS)
+
+$(TARGET):	$(OBJS)
+		$(CC) $(LIBS) -o $@ $(OBJS)
 
 .c.o:;	$(CC) $(CFLAGS) -c $<
 

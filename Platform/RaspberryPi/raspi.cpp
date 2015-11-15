@@ -1,4 +1,4 @@
-$#include "raspi.h"
+#include "raspi.h"
 #include "CVSNRasPi.h"
 
 extern "C" {

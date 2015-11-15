@@ -37,9 +37,4 @@ private:
 };
 
 
-#endif // CVishnuGLES2_h
-
-
-
-
 #endif // CVSNRasPi_h

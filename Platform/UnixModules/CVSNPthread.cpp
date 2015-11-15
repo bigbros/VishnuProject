@@ -1,3 +1,4 @@
+#include <signal.h>
 #include <pthread.h>
 #include <setjmp.h>
 #include <errno.h>

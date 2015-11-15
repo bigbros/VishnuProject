@@ -110,7 +110,7 @@ int main(int argc, char *argv[])
 	res = SurfaceCreate(&sc);
 	if (!res) return 0;
 
-	env = vsnCreate(argv[1], sc.width, sc.hright, 0);
+	env = vsnCreate(argv[1], sc.width, sc.height, 0);
 
 	int is_continue = 1;
 	while (is_continue) {
