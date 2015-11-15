@@ -4,13 +4,16 @@
 
 CGLTex::CGLTex(const char * name)
 	: CGLObj()
-	, m_width(0)
-	, m_height(0)
 	, m_texture(0)
 	, m_format(0)
-	, m_bitmap(0)
-	, m_texName(0)
 	, m_env(CGLEnv::getInstance().DrawEnv<C3DDrawEnv>(CGLEnv::C3D))
+	, m_texName(0)
+	, m_width(0)
+	, m_height(0)
+	, m_imgWidth(0)
+	, m_imgHeight(0)
+	, m_stride(0)
+	, m_bitmap(0)
 
 {
 	char * buf = 0;
