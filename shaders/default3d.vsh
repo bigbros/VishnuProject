@@ -48,10 +48,10 @@ void main(void)
 	t += (bone[2] * a_tang) * a_wght.z;
 	t += (bone[3] * a_tang) * a_wght.w;
 	
-	vw =  (u_bone[idx.x] * vec4(a_vert - u_bonepos[idx.x].xyz, 1.0)) * a_wght.x;
-	vw += (u_bone[idx.y] * vec4(a_vert - u_bonepos[idx.y].xyz, 1.0)) * a_wght.y;
-	vw += (u_bone[idx.z] * vec4(a_vert - u_bonepos[idx.z].xyz, 1.0)) * a_wght.z;
-	vw += (u_bone[idx.w] * vec4(a_vert - u_bonepos[idx.w].xyz, 1.0)) * a_wght.w;
+	vw =  (u_bone[idx.x] * vec4(a_vert - vec3(u_bonepos[idx.x]), 1.0)) * a_wght.x;
+	vw += (u_bone[idx.y] * vec4(a_vert - vec3(u_bonepos[idx.y]), 1.0)) * a_wght.y;
+	vw += (u_bone[idx.z] * vec4(a_vert - vec3(u_bonepos[idx.z]), 1.0)) * a_wght.z;
+	vw += (u_bone[idx.w] * vec4(a_vert - vec3(u_bonepos[idx.w]), 1.0)) * a_wght.w;
 
 	mat3 m3camera = mat3(u_camera);
 	//vec3 pos = normalize(m3camera * vec3(vw));
