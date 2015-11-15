@@ -2,7 +2,9 @@
 #include "platform.h"
 #include "C3DFBO.h"
 
-C3DFBOShader::C3DFBOShader() : CGLShader() {}
+C3DFBOShader::C3DFBOShader() : CGLShader() {
+	LOG("[FBO Shader]\n");
+}
 C3DFBOShader::~C3DFBOShader() {}
 
 void

@@ -29,12 +29,13 @@ EGLBoolean WinCreate(ScreenConfig *sc)
 
 	success = graphics_get_display_size(0, &width, &height);
 	if (success < 0) return EGL_FALSE;
-
+	width = width / 2;
+	height = height / 2;
 	sc->width = width;
 	sc->height = height;
 
 	vc_dispmanx_rect_set(&dst_rect, 0, 0, sc->width, sc->height);
-	vc_dispmanx_rect_set(&src_rect, 0, 0, sc->width << 16, sc->height << 16);
+	vc_dispmanx_rect_set(&src_rect, 0, 0, sc->width /* << 16 */, sc->height /* << 16 */);
 
 	dispman_display = vc_dispmanx_display_open(0);
 	dispman_update = vc_dispmanx_update_start(0);
@@ -51,13 +52,13 @@ EGLBoolean WinCreate(ScreenConfig *sc)
 EGLBoolean SurfaceCreate(ScreenConfig *sc)
 {
 	EGLint attrib[] = {
-		EGL_RED_SIZE, 5,
-		EGL_GREEN_SIZE, 6,
-		EGL_BLUE_SIZE, 5,
+		EGL_RED_SIZE, 8,
+		EGL_GREEN_SIZE, 8,
+		EGL_BLUE_SIZE, 8,
 		EGL_ALPHA_SIZE, 8,
-		EGL_DEPTH_SIZE, 8,
-		EGL_STENCIL_SIZE, EGL_DONT_CARE,
-		EGL_SAMPLE_BUFFERS, 0,
+		EGL_DEPTH_SIZE, 24,
+	/*	EGL_STENCIL_SIZE, EGL_DONT_CARE,
+		EGL_SAMPLE_BUFFERS, 0, */
 		EGL_NONE
 	};
 	EGLint context[] = { EGL_CONTEXT_CLIENT_VERSION, 2, EGL_NONE };
@@ -113,10 +114,12 @@ int main(int argc, char *argv[])
 	env = vsnCreate(argv[1], sc.width, sc.height, 0);
 
 	int is_continue = 1;
+	int count = 0;
 	while (is_continue) {
 		/* draw */
 		vsnUpdate(env);
 		eglSwapBuffers(sc.display, sc.surface);
+		if(++count > 600) break;
 	}
 
 	vsnDestroy(env);

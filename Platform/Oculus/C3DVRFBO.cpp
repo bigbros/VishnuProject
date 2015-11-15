@@ -2,7 +2,9 @@
 #include "platform.h"
 #include "C3DVRFBO.h"
 
-C3DVRFBOShader::C3DVRFBOShader() : CGLShader() {}
+C3DVRFBOShader::C3DVRFBOShader() : CGLShader() {
+	LOG("[VRFBO Shader]\n");
+}
 C3DVRFBOShader::~C3DVRFBOShader() {}
 
 void

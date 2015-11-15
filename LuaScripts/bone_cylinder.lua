@@ -4,7 +4,7 @@ function Init()
 	vsnUtil("3d_light_col", {r=1,g=1,b=1})				-- light col
 	vsnUtil("3d_ambient", {r=0.08,g=0.08,b=0.08})		-- ambient col
 
-	celestialSphere = vsnTaskCreate("sysSkyDome", "LuaScripts/SkyDome.png", 340.0)
+--	celestialSphere = vsnTaskCreate("sysSkyDome", "LuaScripts/SkyDome.png", 340.0)
 
 	local skinning = false
 	local camerarot = false

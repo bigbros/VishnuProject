@@ -1,7 +1,10 @@
 #include "C3DDrawEnv.h"
 #include "C3DDefaultShader.h"
+#include "platform.h"
 
-C3DDefaultShader::C3DDefaultShader(C3DDrawEnv * env) : C3DShader(SID_DEFAULT, env, C3DShader::DP_OBJECT) {}
+C3DDefaultShader::C3DDefaultShader(C3DDrawEnv * env) : C3DShader(SID_DEFAULT, env, C3DShader::DP_OBJECT) {
+	LOG("[3D Default Shader]\n");
+}
 C3DDefaultShader::~C3DDefaultShader() {}
 
 void
@@ -39,6 +42,7 @@ C3DDefaultShader::uniformOffset()
 void
 C3DDefaultShader::setShaderParams(GLuint program)
 {
+	LOG("setShaderParams\n");
 	// shader‚ÌŠeuniform‚É‘Š“–‚·‚é’l‚ğæ“¾‚µ‚Ä‚¨‚­B
 	m_u_light = glGetUniformLocation(program, "u_light");
 	m_u_offset = glGetUniformLocation(program, "u_offset");
@@ -84,4 +88,6 @@ C3DDefaultShader::setShaderParams(GLuint program)
 	glEnableVertexAttribArray(m_a_rgba);
 	glEnableVertexAttribArray(m_a_bone);
 	glEnableVertexAttribArray(m_a_wght);
+
+	LOG("Finished.\n");
 }

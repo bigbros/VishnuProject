@@ -82,6 +82,8 @@ clean:;	rm $(OBJS)
 $(TARGET):	$(OBJS)
 		$(CPP) $(LIBS) -o $@ $(OBJS)
 
+test:	$(TARGET)
+	./$(TARGET) ../../
 .c.o:;	$(CC) $(CFLAGS) -c $< -o $@
 
 .cpp.o:;	$(CPP) $(CPPFLAGS) -c $< -o $@

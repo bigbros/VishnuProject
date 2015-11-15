@@ -1,8 +1,10 @@
 #include "C3DDrawEnv.h"
 #include "C3DSkyDomeShader.h"
+#include "platform.h"
 
-
-C3DSkyDomeShader::C3DSkyDomeShader(C3DDrawEnv * env) : C3DShader(SID_SKYDOME, env, C3DShader::DP_SKYDOME) {}
+C3DSkyDomeShader::C3DSkyDomeShader(C3DDrawEnv * env) : C3DShader(SID_SKYDOME, env, C3DShader::DP_SKYDOME) {
+	LOG("[SkyDome Shader]\n");
+}
 C3DSkyDomeShader::~C3DSkyDomeShader() {}
 
 void

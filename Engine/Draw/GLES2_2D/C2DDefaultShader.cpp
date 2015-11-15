@@ -1,6 +1,10 @@
 #include "C2DDefaultShader.h"
+#include "platform.h"
 
-C2DDefaultShader::C2DDefaultShader() : CGLShader() {}
+C2DDefaultShader::C2DDefaultShader() : CGLShader() {
+	LOG("[2D Default Shader]\n");
+}
+
 C2DDefaultShader::~C2DDefaultShader() {}
 
 void

@@ -11,8 +11,8 @@ uniform highp mat4 u_projection;
 uniform highp vec4 u_light;
 uniform highp vec4 u_offset;
 
-uniform mat4 u_bone[40];
-uniform vec4 u_bonepos[40];
+uniform mat4 u_bone[32];
+uniform vec4 u_bonepos[32];
 
 varying mediump vec4 v_color;
 varying mediump vec4 v_light;
