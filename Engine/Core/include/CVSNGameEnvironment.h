@@ -1,6 +1,7 @@
 #ifndef CVSNGameEnvironment_h
 #define CVSNGameEnvironment_h
 
+#include <stdio.h>
 #include "CVSNPlatform.h"
 #include "CVSNScript.h"
 #include "CVSNPointingDevice.h"
