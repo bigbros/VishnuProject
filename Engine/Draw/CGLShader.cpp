@@ -7,9 +7,11 @@
 
 CGLShader::CGLShader()
 	: CGLObj()
-	, m_program(0)
 	, m_vertex(-1)
 	, m_fragment(-1)
+	, m_program(0)
+	, m_srcVertex(0)
+	, m_srcFragment(0)
 {
 }
 
