@@ -99,6 +99,18 @@ void Destroy(ScreenConfig * sc)
 	}
 }
 
+void dispStatus()
+{
+	GLint vertUniform, fragUniform, texNum;
+	glGetIntegerv(GL_MAX_VERTEX_UNIFORM_VECTORS, &vertUniform);
+	glGetIntegerv(GL_MAX_FRAGMENT_UNIFORM_VECTORS, &fragUniform);
+	glGetIntegerv(GL_MAX_VERTEX_TEXTURE_IMAGE_UNITS, &texNum);
+
+	printf("vertex shader max uniform %d vectors\n", vertUniform);
+	printf("fragment shader max uniform: %d vectors\n", fragUniform);
+	printf("fragment shader max textures: %d units\n", texNum);
+}
+
 int main(int argc, char *argv[])
 {
 	ScreenConfig  sc;
@@ -111,6 +123,8 @@ int main(int argc, char *argv[])
 	res = SurfaceCreate(&sc);
 	if (!res) return 0;
 
+	dispStatus();
+	
 	env = vsnCreate(argv[1], sc.width, sc.height, 0);
 
 	int is_continue = 1;

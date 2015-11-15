@@ -11,7 +11,7 @@ uniform highp mat4 u_projection;
 uniform highp vec4 u_light;
 uniform highp vec4 u_offset;
 
-#define BONES 16
+#define BONES 25
 uniform mat4 u_bone[BONES];
 uniform vec4 u_bonepos[BONES];
 
@@ -30,7 +30,7 @@ void main(void)
 	highp vec3 n;
 	highp vec3 t;
 	ivec4 idx = ivec4(a_bone);
-
+	
 	mat3 bone[4];
 
 	bone[0] = mat3(u_bone[idx.x]);
@@ -47,7 +47,7 @@ void main(void)
 	t += (bone[1] * a_tang) * a_wght.y;
 	t += (bone[2] * a_tang) * a_wght.z;
 	t += (bone[3] * a_tang) * a_wght.w;
-
+	
 	vw =  (u_bone[idx.x] * vec4(a_vert - u_bonepos[idx.x].xyz, 1.0)) * a_wght.x;
 	vw += (u_bone[idx.y] * vec4(a_vert - u_bonepos[idx.y].xyz, 1.0)) * a_wght.y;
 	vw += (u_bone[idx.z] * vec4(a_vert - u_bonepos[idx.z].xyz, 1.0)) * a_wght.z;
