@@ -5,7 +5,7 @@ YAJL_PATH		:= $(VISHNU_PATH)/External/yajl-1.0.12
 LIBPNG_PATH		:= $(VISHNU_PATH)/External/libpng
 ZLIB_PATH		:= $(VISHNU_PATH)/External/zlib
 UNIXMOD_PATH		:= $(VISHNU_PATH)/Platform/UnixModules
-VR_PATH			:= $(VISHNU_PATH)/Platfoem/Oculus
+VR_PATH			:= $(VISHNU_PATH)/Platform/Oculus
 
 LOCAL_CFLAGS += -I$(VISHNU_ENGINE_PATH)/Core/include
 LOCAL_CFLAGS += -I$(VISHNU_ENGINE_PATH)/Draw
@@ -33,7 +33,7 @@ VISHNU_SRC_FILES	+= $(wildcard $(VISHNU_ENGINE_PATH)/SystemTask/*.cpp)
 
 LUA_SRC_FILES		:=	$(wildcard $(LUA_PATH)/*.c)
 YAJL_SRC_FILES		:=	$(wildcard $(YAJL_PATH)/*.c)
-LIBPNG_SRC_FILES	:=	$(wildcard $(LIBPNG_PATH)/*.c)
+LIBPNG_SRC_FILES	:=	$(patsubst %/pngtest.c,,$(wildcard $(LIBPNG_PATH)/*.c))
 ZLIB_SRC_FILES		:=	$(wildcard $(ZLIB_PATH)/*.c)
 
 EXTERNAL_SRC_FILES	:= $(LUA_SRC_FILES)
@@ -80,7 +80,7 @@ all:	$(TARGET)
 clean:;	rm $(OBJS)
 
 $(TARGET):	$(OBJS)
-		$(CC) $(LIBS) -o $@ $(OBJS)
+		$(CPP) $(LIBS) -o $@ $(OBJS)
 
 .c.o:;	$(CC) $(CFLAGS) -c $< -o $@
 
