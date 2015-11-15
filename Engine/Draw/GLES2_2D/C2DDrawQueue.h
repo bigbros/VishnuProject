@@ -19,7 +19,7 @@ class C2DDrawQueue : public CGLObj
 {
 public:
 	enum {
-		MAX_DRAW_ITEMS = 32
+		MAX_DRAW_ITEMS = 16
 	};
 private:
 	struct VEC {

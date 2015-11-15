@@ -23,11 +23,10 @@ CVSNRasPi::CVSNRasPi(const char * path, int width, int height, int is_vr)
 
 CVSNRasPi::~CVSNRasPi()
 {
-	delete m_env;
 	delete m_Thread;
 	delete m_Storage;
 	delete m_Pointing;
-
+	delete m_env;
 	free(m_heapBuf);
 }
 

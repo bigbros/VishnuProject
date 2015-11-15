@@ -3,9 +3,10 @@ attribute mediump vec2 a_params;
 
 uniform highp mat4 u_projection;
 
-uniform mat3 u_mat[32];
-uniform vec4 u_uv[32];
-uniform vec4 u_rgba[32];
+#define DRAW_NUM 16
+uniform mat3 u_mat[DRAW_NUM];
+uniform vec4 u_uv[DRAW_NUM];
+uniform vec4 u_rgba[DRAW_NUM];
 
 varying vec2 v_uv;
 varying vec4 v_rgba;

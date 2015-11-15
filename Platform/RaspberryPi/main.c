@@ -36,7 +36,7 @@ EGLBoolean WinCreate(ScreenConfig *sc)
 	sc->height = height;
 
 	vc_dispmanx_rect_set(&dst_rect, 0, 0, sc->width, sc->height);
-	vc_dispmanx_rect_set(&src_rect, 0, 0, sc->width /* << 16 */, sc->height /* << 16 */);
+	vc_dispmanx_rect_set(&src_rect, 0, 0, sc->width, sc->height);
 
 	dispman_display = vc_dispmanx_display_open(0);
 	dispman_update = vc_dispmanx_update_start(0);
@@ -100,18 +100,6 @@ void Destroy(ScreenConfig * sc)
 	}
 }
 
-void dispStatus()
-{
-	GLint vertUniform, fragUniform, texNum;
-	glGetIntegerv(GL_MAX_VERTEX_UNIFORM_VECTORS, &vertUniform);
-	glGetIntegerv(GL_MAX_FRAGMENT_UNIFORM_VECTORS, &fragUniform);
-	glGetIntegerv(GL_MAX_VERTEX_TEXTURE_IMAGE_UNITS, &texNum);
-
-	printf("vertex shader max uniform %d vectors\n", vertUniform);
-	printf("fragment shader max uniform: %d vectors\n", fragUniform);
-	printf("fragment shader max textures: %d units\n", texNum);
-}
-
 int main(int argc, char *argv[])
 {
 	ScreenConfig  sc;
@@ -124,8 +112,6 @@ int main(int argc, char *argv[])
 	res = SurfaceCreate(&sc);
 	if (!res) return 0;
 
-	dispStatus();
-	
 	env = vsnCreate(argv[1], sc.width, sc.height, 0);
 
 	int is_continue = 1;
@@ -136,7 +122,9 @@ int main(int argc, char *argv[])
 		eglSwapBuffers(sc.display, sc.surface);
 		if(++count > 600) break;
 	}
-
+	printf("finish-1\n");
 	vsnDestroy(env);
+	printf("finish-2\n");
+	Destroy(&sc);
 	return 0;
 }
