@@ -1,10 +1,11 @@
 VISHNU_PATH		:= ../..
 VISHNU_ENGINE_PATH	:= $(VISHNU_PATH)/Engine
-LUA_PATH		:= $(VISHNU_PATH)/External/Lua5.2.3
+LUA_PATH		:= $(VISHNU_PATH)/External/lua5.2.3
 YAJL_PATH		:= $(VISHNU_PATH)/External/yajl-1.0.12
 LIBPNG_PATH		:= $(VISHNU_PATH)/External/libpng
 ZLIB_PATH		:= $(VISHNU_PATH)/External/zlib
 UNIXMOD_PATH		:= $(VISHNU_PATH)/Platform/UnixModules
+VR_PATH			:= $(VISHNU_PATH)/Platfoem/Oculus
 
 LOCAL_CFLAGS += -I$(VISHNU_ENGINE_PATH)/Core/include
 LOCAL_CFLAGS += -I$(VISHNU_ENGINE_PATH)/Draw
@@ -19,6 +20,7 @@ LOCAL_CFLAGS += -I$(YAJL_PATH)
 LOCAL_CFLAGS += -I$(LIBPNG_PATH)
 LOCAL_CFLAGS += -I$(ZLIB_PATH)
 LOCAL_CFLAGS += -I$(UNIXMOD_PATH)
+LOCAL_CFLAGS += -I$(VR_PATH)
 
 VISHNU_SRC_FILES	:= $(wildcard $(VISHNU_ENGINE_PATH)/Core/*.cpp)
 VISHNU_SRC_FILES	+= $(wildcard $(VISHNU_ENGINE_PATH)/Draw/*.cpp)
@@ -40,7 +42,7 @@ EXTERNAL_SRC_FILES	+= $(LIBPNG_SRC_FILES)
 EXTERNAL_SRC_FILES	+= $(ZLIB_SRC_FILES)
 
 UNIXMOD_SRC_FILES	:=	$(wildcard $(UNIXMOD_PATH)/*.cpp)
-
+VR_SRC_FILES		:=	$(wildcard $(VR_PATH)/*.cpp)
 
 # for UserTask
 USERTASK_PATH		:= $(VISHNU_PATH)/UserTask
@@ -52,6 +54,7 @@ USERTASK_SRC_FILES	+=	$(wildcard $(TEST_PATH)/*.cpp)
 
 LOCAL_SRC_FILES := main.c raspi.cpp CVSNRasPi.cpp
 LOCAL_SRC_FILES	+= $(patsubst $(LOCAL_PATH)/%,%,$(UNIXMOD_SRC_FILES))
+LOCAL_SRC_FILES	+= $(patsubst $(LOCAL_PATH)/%,%,$(VR_SRC_FILES))
 LOCAL_SRC_FILES	+= $(patsubst $(LOCAL_PATH)/%,%,$(VISHNU_SRC_FILES))
 LOCAL_SRC_FILES	+= $(patsubst $(LOCAL_PATH)/%,%,$(EXTERNAL_SRC_FILES))
 LOCAL_SRC_FILES	+= $(patsubst $(LOCAL_PATH)/%,%,$(USERTASK_SRC_FILES))
@@ -79,9 +82,9 @@ clean:;	rm $(OBJS)
 $(TARGET):	$(OBJS)
 		$(CC) $(LIBS) -o $@ $(OBJS)
 
-.c.o:;	$(CC) $(CFLAGS) -c $<
+.c.o:;	$(CC) $(CFLAGS) -c $< -o $@
 
-.cpp.o:;	$(CPP) $(CPPFLAGS) -c $<
+.cpp.o:;	$(CPP) $(CPPFLAGS) -c $< -o $@
 
 
 
