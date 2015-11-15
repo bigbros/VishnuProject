@@ -21,6 +21,20 @@ CVSNGameEnvironment::CVSNGameEnvironment(void * pHeapBuffer, size_t sizeHeap, in
 , m_width(width)
 , m_height(height)
 {
+	{
+		GLint vertUniform, fragUniform, texNum;
+		glGetIntegerv(GL_MAX_VERTEX_UNIFORM_VECTORS, &vertUniform);
+		glGetIntegerv(GL_MAX_FRAGMENT_UNIFORM_VECTORS, &fragUniform);
+		glGetIntegerv(GL_MAX_VERTEX_TEXTURE_IMAGE_UNITS, &texNum);
+		char buf[1024];
+		sprintf(buf, "vertex shader max uniform %d vectors\n", vertUniform);
+		LOG(buf);
+		sprintf(buf, "fragment shader max uniform: %d vectors\n", fragUniform);
+		LOG(buf);
+		sprintf(buf, "fragment shader max textures: %d units\n", texNum);
+		LOG(buf);
+	}
+
 	CVSNEngineHeap::getInstance().setHeapArea(m_pHeapBuffer, m_sizeHeap);
 }
 
