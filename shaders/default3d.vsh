@@ -50,11 +50,10 @@ void main(void)
 	wght[2] = a_wght.z;
 	wght[3] = a_wght.w;
 	
-	int i;
 	n = vec3(0.0);
 	t = vec3(0.0);
 	vw = vec4(0.0);
-	for(i = 0; i < 4; i++) {
+	for(int i = 0; i < 4; i++) {
 		mat3 bone = mat3(bone4[i]);
 		n += (bone * a_norm) * wght[i];
 		t += (bone * a_tang) * wght[i];
