@@ -10,8 +10,8 @@ C2DTexOT::QUEUELIST::QUEUELIST() : begin(0), end(0) {}
 
 C2DTexOT::C2DTexOT(CGLTex * pTex)
 	: CGLBase()
-	, m_chain()
 	, m_tex(pTex)
+	, m_chain()
 {
 	C2DDrawEnv * env = CGLEnv::getInstance().DrawEnv<C2DDrawEnv>(CGLEnv::C2D);
 	m_chain.prev = env->m_texlist.end;
