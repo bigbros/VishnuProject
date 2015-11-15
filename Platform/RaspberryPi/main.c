@@ -36,7 +36,7 @@ EGLBoolean WinCreate(ScreenConfig *sc)
 	sc->height = height;
 
 	vc_dispmanx_rect_set(&dst_rect, 0, 0, sc->width, sc->height);
-	vc_dispmanx_rect_set(&src_rect, 0, 0, sc->width, sc->height);
+	vc_dispmanx_rect_set(&src_rect, 0, 0, sc->width /* << 16 */, sc->height /* << 16 */);
 
 	dispman_display = vc_dispmanx_display_open(0);
 	dispman_update = vc_dispmanx_update_start(0);
@@ -122,9 +122,7 @@ int main(int argc, char *argv[])
 		eglSwapBuffers(sc.display, sc.surface);
 		if(++count > 600) break;
 	}
-	printf("finish-1\n");
+
 	vsnDestroy(env);
-	printf("finish-2\n");
-	Destroy(&sc);
 	return 0;
 }
