@@ -122,7 +122,7 @@ int main(int argc, char *argv[])
 		eglSwapBuffers(sc.display, sc.surface);
 		if(++count > 600) break;
 	}
-
 	vsnDestroy(env);
+	Destroy(&sc);
 	return 0;
 }
