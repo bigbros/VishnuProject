@@ -144,7 +144,7 @@ CVSN3DVMDModel::readFloat(void * data, u32 offset)
 {
 	float tmp = 0.0f;
 	u8 * dst = (u8 *)&tmp;
-	for (int i = 0; i < sizeof(float); i++) {
+	for (size_t i = 0; i < sizeof(float); i++) {
 		dst[i] = *((u8 *)data + offset + i);
 	}
 	return tmp;

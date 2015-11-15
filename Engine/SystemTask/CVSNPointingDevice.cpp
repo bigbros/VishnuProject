@@ -15,10 +15,10 @@ CVSNPointListener::listenEvent(int touchId, IVSNPointListener::EVENT ev, int x, 
 // singleton からは、直前のフレームに記録されたすべてのポインティングデバイスイベントを
 // 同じフレーム内であれば何度でもキューから読みだすことができる。
 CVSNTouchPanel::CVSNTouchPanel()
-	: m_ptRec(0)
-	, m_ptRead(0)
-	, m_ptReadTop(0)
+	: m_ptReadTop(0)
 	, m_ptNextTop(0)
+	, m_ptRec(0)
+	, m_ptRead(0)
 {
 }
 CVSNTouchPanel::~CVSNTouchPanel() {}
@@ -92,3 +92,4 @@ void
 CVSNPointingDevice::die()
 {
 }
+

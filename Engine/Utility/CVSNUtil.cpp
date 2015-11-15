@@ -6,7 +6,7 @@ int
 CVSNUtil::strHash(const char * str)
 {
 	int hash = 0;
-	for (const char * ptr = str; *ptr; ptr = ptr++) {
+	for (const char * ptr = str; *ptr != 0; ptr++) {
 		hash = hash * 31 + (int)*ptr;
 	}
 	return hash;
@@ -40,3 +40,4 @@ CVSNUtil::pathDir(const char * path)
 	buf[last] = 0;
 	return buf;
 }
+

@@ -124,8 +124,8 @@ CVSNKVMap::ToJSON(char * buf, int index)
 CVSNKVArray::CVSNKVArray()
 	: CVSNObj()
 	, m_max(0)
-	, m_array(0)
 	, m_use(0)
+	, m_array(0)
 {}
 
 CVSNKVArray::~CVSNKVArray()

@@ -70,7 +70,7 @@ INCLUDE		+=	-I/opt/vc/include/interface/vcos/pthreads
 INCLUDE		+=	-I/opt/vc/include/interface/vmcs_host/linux
 
 LIBS		:=	$(LOCAL_LDLIBS)
-CFLAGS		:=	$(INCLUDE) $(LOCAL_CFLAGS) -O2 -Wall -Werror -DRAS_PI
+CFLAGS		:=	$(INCLUDE) $(LOCAL_CFLAGS) -O2 -Wall -DRAS_PI
 CPPFLAGS	:=	$(CFLAGS)
 
 C_OBJS		:=	$(LOCAL_SRC_FILES:%.c=%.o)

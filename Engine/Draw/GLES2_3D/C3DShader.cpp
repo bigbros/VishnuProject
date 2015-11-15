@@ -5,10 +5,12 @@ C3DShader::SHADER_LINK::SHADER_LINK() : prev(0), next(0) {}
 
 C3DShader::C3DShader(int id, C3DDrawEnv * env, DRAWPHASE phase)
 	: CGLShader()
-	, m_sisters()
+	, m_begin(0)
+	, m_end(0)
 	, m_phase(phase)
 	, m_env(env)
 	, m_sid(id)
+	, m_sisters()
 {
 	env->setShader(phase, this);
 }

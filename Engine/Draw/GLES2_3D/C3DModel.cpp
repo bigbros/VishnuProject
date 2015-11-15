@@ -17,10 +17,12 @@ C3DModel::C3DModel(C3DShader * shader, const char * modelName)
 	, m_bones(0)
 	, m_boneparent(0)
 	, m_bonenum(0)
-	, m_modelName(0)
 	, m_matBegin(0)
 	, m_matEnd(0)
+	, m_idxVert(0)
+	, m_idxIndex(0)
 	, m_ready(false)
+	, m_modelName(0)
 {
 	char * buf = 0;
 	try {

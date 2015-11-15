@@ -3,8 +3,8 @@
 
 C3DCameraObj::C3DCameraObj()
 	: C3DObj()
-	, m_lookAt(0)
 	, m_isActive(false)
+	, m_lookAt(0)
 {
 	C3DDrawEnv * env = CGLEnv::getInstance().DrawEnv<C3DDrawEnv>(CGLEnv::C3D);
 	float aspect = env->getAspect();

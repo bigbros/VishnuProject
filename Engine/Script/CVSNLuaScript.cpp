@@ -155,11 +155,11 @@ CVSNLuaScript * CVSNLuaScript::ms_end;
 
 CVSNLuaScript::CVSNLuaScript()
 : CVSNScript()
-, m_scriptBuf(0)
 , m_funcMemAlloc(0)
-, m_funcMemFree(0)
 , m_funcMemReAlloc(0)
+, m_funcMemFree(0)
 , m_storage(CVSNPlatform::getInstance().Module<CVSNStorage>(PF_STORAGE, "DATA"))
+, m_scriptBuf(0)
 {
 	m_prev = ms_end;
 	if (m_prev) {
@@ -511,7 +511,6 @@ CVSNLuaScriptArgs::get_value()
 	int type = lua_type(m_luaState, -1);
 	if (type == LUA_TTABLE) {
 		bool is_array = false;
-		int count = 0;
 		lua_pushnil(m_luaState);
 		while (lua_next(m_luaState, -2)) {
 			// 最初に拾った key のtypeが LUA_TNUMBER であればarray, LUA_TSTRINGであればmap扱い。
@@ -586,8 +585,8 @@ int CVSNLuaScriptCallback::ms_cbKeySeed = 0;
 
 CVSNLuaScriptCallback::CVSNLuaScriptCallback(lua_State * luaState, int idx)
 : CVSNScriptCallback()
-, m_myArgs(luaState, true)
 , m_luaState(luaState)
+, m_myArgs(luaState, true)
 {
 	int cbKey = generateKey();
 
@@ -630,7 +629,7 @@ void
 CVSNLuaScriptCallback::call()
 {
 	int status = lua_pcall(m_luaState, m_myArgs.argc(), 0, 0);
-	int result = CVSNLuaScript::procLuaState(m_luaState, status);
+	CVSNLuaScript::procLuaState(m_luaState, status);
 	lua_pop(m_luaState, 1);
 	m_myArgs.m_setCount = 0;	// 次回呼び出しのためカウントをリセット
 }

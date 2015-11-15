@@ -9,12 +9,12 @@ C3DSkyDomeModel::C3DSkyDomeModel(C3DSkyDomeShader * shader, float r, CGLTex * pT
 	, m_indices(0)
 	, m_vertnum(0)
 	, m_idxnum(0)
-	, m_modelName(0)
 	, m_texture(pTex)
 	, m_ready(false)
-	, m_r(r)
 	, m_reso_v(v_reso)
 	, m_reso_h(h_reso)
+	, m_r(r)
+	, m_modelName(0)
 {
 	char * buf = 0;
 	try {

@@ -4,10 +4,11 @@
 
 C3DMaterial::C3DMaterial()
 	: CGLBase()
-	, m_texture(0)
-	, m_normal(0)
 	, m_prev(0)
 	, m_next(0)
+	, m_texture(0)
+	, m_normal(0)
+	, m_specular(0)
 	, m_switch(DIFFUSE)
 {
 }
@@ -46,3 +47,4 @@ C3DMaterial::setup(C3DDefaultShader * shader)
 	glUniform1f(shader->m_u_emissive_f, params.emissiveFactor);
 	glUniform1f(shader->m_u_shininess, params.shininess);
 }
+

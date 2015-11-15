@@ -8,8 +8,8 @@ unsigned int CVSNScriptTask::ms_idSeed = 0;
 
 CVSNScriptTask::CVSNScriptTask(CVSNTask::PHASE phase)
 : CVSNTask(phase)
-, m_scriptData(0)
 , m_taskId(++ms_idSeed)
+, m_scriptData(0)
 {}
 CVSNScriptTask::~CVSNScriptTask()
 {

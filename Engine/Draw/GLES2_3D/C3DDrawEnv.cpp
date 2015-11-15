@@ -34,13 +34,13 @@ C3DDrawEnv::C3DDrawEnv()
 	: IGLDrawEnv()
 	, m_objRoot(0)
 	, m_objCamera(0)
-	, m_fbo(0)
 	, m_lightVec(1.0f, 0.0f, 0.0f)
 	, m_lightColor(1.0f, 1.0f, 1.0f)
 	, m_ambientColor(0.0f, 0.0f, 0.0f)
 	, m_nearClip(DEFAULT_NEAR)
 	, m_farClip(DEFAULT_FAR)
 	, m_angle(DEFAULT_ANGLE)
+	, m_fbo(0)
 {
 	for (int i = 0; i < C3DShader::DP_MAX; i++) {
 		m_shaders[i].begin = 0;

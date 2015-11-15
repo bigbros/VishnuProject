@@ -8,13 +8,13 @@ C3DObj::OBJLINK::OBJLINK() : prev(0), next(0) {}
 C3DObj::C3DObj(int matnum)
 	: CGLBase()
 	, m_parent(0)
+	, m_parent_matidx(0)
+	, m_visible(false)
+	, m_recalc(true)
 	, m_matrices(0)
 	, m_matnum(0)
 	, m_position()
 	, m_rotation()
-	, m_visible(false)
-	, m_recalc(true)
-	, m_parent_matidx(0)
 {
 	makeMatrices(matnum);
 }

@@ -27,7 +27,7 @@ CVSN3DKVModel::loadModel(CVSNKVObj& kvObj)
 	if (kvObj.ContainsKey("material")) {
 		CVSNKVObj& kvMat = kvObj["material"];
 		for (int i = 0; i < kvMat.length(); i++) {
-			C3DMaterial::MATERIAL tmp;
+			//C3DMaterial::MATERIAL tmp;
 			C3DMaterial * material = new C3DMaterial();
 
 			if (kvMat.ContainsKey("texture")) {

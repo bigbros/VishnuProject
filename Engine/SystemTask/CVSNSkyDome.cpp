@@ -7,7 +7,12 @@
 // CVSNSkyDome型タスクの起動をタスク名 "sysCelestialSphere" で登録する
 static CVSNFactory<CVSNSkyDome> factory("sysSkyDome");
 
-CVSNSkyDome::CVSNSkyDome() : CVSNScriptTask(), m_skydome(0), m_pTex(0), m_shader(0) {}
+CVSNSkyDome::CVSNSkyDome()
+	: CVSNScriptTask()
+	, m_shader(0)
+	, m_skydome(0)
+	, m_pTex(0)
+{}
 CVSNSkyDome::~CVSNSkyDome() {}
 
 bool
