@@ -34,12 +34,7 @@ void main(void)
 		mat4 bone4[4];
 		vec4 bonepos[4];
 		float wght[4];
-	
-		bone4[0] = u_bone[idx.x];
-		bone4[1] = u_bone[idx.y];
-		bone4[2] = u_bone[idx.z];
-		bone4[3] = u_bone[idx.w];
-	
+
 		bonepos[0] = u_bonepos[idx.x];
 		bonepos[1] = u_bonepos[idx.y];
 		bonepos[2] = u_bonepos[idx.z];
@@ -50,6 +45,11 @@ void main(void)
 		wght[2] = a_wght.z;
 		wght[3] = a_wght.w;
 	
+		bone4[0] = u_bone[idx.x];
+		bone4[1] = u_bone[idx.y];
+		bone4[2] = u_bone[idx.z];
+		bone4[3] = u_bone[idx.w];
+
 		n = vec3(0.0);
 		t = vec3(0.0);
 		vw = vec4(0.0);
