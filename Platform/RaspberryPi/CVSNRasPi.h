@@ -2,7 +2,7 @@
 #define CVSNRasPi_h
 
 #include <stdint.h>
-#include "CTestEnv.h"
+#include "CRasPiEnv.h"
 #include "CVSNUnixFS.h"
 #include "CVSNPthread.h"
 
@@ -28,7 +28,7 @@ private:
 	CVSNUnixFS			*	m_Storage;
 	CVSNPthread		*	m_Thread;
 
-	CTestEnv			*	m_env;
+	CVSNGameEnvironment	*	m_env;
 
 	void				*	m_heapBuf;
 	size_t					m_heapSize;

@@ -4,22 +4,21 @@ function Init()
 	vsnUtil("3d_light_col", {r=1,g=1,b=1})				-- light col
 	vsnUtil("3d_ambient", {r=0.08,g=0.08,b=0.08})		-- ambient col
 
-	celestialSphere = vsnTaskCreate("sysSkyDome", "LuaScripts/SkyDome.png", 340.0)
+--	celestialSphere = vsnTaskCreate("sysSkyDome", "LuaScripts/SkyDome.png", 340.0)
 
 	local skinning = false
 	local camerarot = false
-
+--[[
 	camera = vsnTaskCreate("camera",
 							{angle=math.pi/2, near=0.05, far=350.0},
 							{x=0, y=0, z=10.0}, camerarot)			-- camera position
 
---	tracking = vsnTaskCreate("vrcamera")
+	tracking = vsnTaskCreate("vrcamera")
 	
 	-- local hand = makeSphere(0.02, 3, 12)
 	-- leap = vsnTaskCreate("leapmotion", hand)
 	taskModel = vsnTaskCreate("model", {x=0, y=0, z=0}, "LuaScripts/schooldesk.vmd", true)
 
---[[
 	local model = makeBoneCylinder(0.2, 1.44, 12, 24)
 	task1 = vsnTaskCreate("test2", {x=0, y=0, z=0}, model, skinning)
 	task2 = vsnTaskCreate("test2", {x=0.3, y=-1.5, z=0}, model, skinning)

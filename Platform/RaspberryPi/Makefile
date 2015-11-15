@@ -46,13 +46,13 @@ VR_SRC_FILES		:=	$(wildcard $(VR_PATH)/*.cpp)
 
 # for UserTask
 USERTASK_PATH		:= $(VISHNU_PATH)/UserTask
-TEST_PATH			:= $(VISHNU_PATH)/Test
+TEST_PATH		:= $(VISHNU_PATH)/Test
 LOCAL_CFLAGS		+= -I$(USERTASK_PATH)
 LOCAL_CFLAGS		+= -I$(TEST_PATH)
 USERTASK_SRC_FILES	:=	$(wildcard $(USERTASK_PATH)/*.cpp)
-USERTASK_SRC_FILES	+=	$(wildcard $(TEST_PATH)/*.cpp)
+#USERTASK_SRC_FILES	+=	$(wildcard $(TEST_PATH)/*.cpp)
 
-LOCAL_SRC_FILES := main.c raspi.cpp CVSNRasPi.cpp
+LOCAL_SRC_FILES := main.c raspi.cpp CVSNRasPi.cpp CRasPiEnv.cpp
 LOCAL_SRC_FILES	+= $(patsubst $(LOCAL_PATH)/%,%,$(UNIXMOD_SRC_FILES))
 LOCAL_SRC_FILES	+= $(patsubst $(LOCAL_PATH)/%,%,$(VR_SRC_FILES))
 LOCAL_SRC_FILES	+= $(patsubst $(LOCAL_PATH)/%,%,$(VISHNU_SRC_FILES))

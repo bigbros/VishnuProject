@@ -30,8 +30,8 @@ EGLBoolean WinCreate(ScreenConfig *sc)
 
 	success = graphics_get_display_size(0, &width, &height);
 	if (success < 0) return EGL_FALSE;
-	width = width / 2;
-	height = height / 2;
+//	width = width / 2;
+//	height = height / 2;
 	sc->width = width;
 	sc->height = height;
 
@@ -122,7 +122,10 @@ int main(int argc, char *argv[])
 		eglSwapBuffers(sc.display, sc.surface);
 		if(++count > 600) break;
 	}
+	printf("finish-1\n");
 	vsnDestroy(env);
+	printf("finish-2\n");
 	Destroy(&sc);
+	printf("finish-3\n");
 	return 0;
 }

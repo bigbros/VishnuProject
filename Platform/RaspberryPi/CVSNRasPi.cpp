@@ -8,7 +8,7 @@ CVSNRasPi::CVSNRasPi(const char * path, int width, int height, int is_vr)
 {
 	m_heapSize = MEGA(VISHNU_MEMORY);
 	m_heapBuf = malloc(m_heapSize);
-	m_env = new CTestEnv(m_heapBuf, m_heapSize, width, height, is_vr);
+	m_env = new CRasPiEnv(m_heapBuf, m_heapSize, width, height, is_vr);
 	m_Pointing = new CVSNPointing();
 	m_Storage = new CVSNUnixFS(path);
 	m_Thread = new CVSNPthread();

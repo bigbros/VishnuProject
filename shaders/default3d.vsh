@@ -3,8 +3,8 @@ attribute highp vec3 a_norm;
 attribute highp vec3 a_tang;
 attribute mediump vec2 a_uv;
 attribute mediump vec4 a_bone;
-attribute mediump vec4 a_rgba;
-attribute mediump vec4 a_wght;
+attribute lowp vec4 a_rgba;
+attribute lowp vec4 a_wght;
 
 uniform highp mat4 u_camera;
 uniform highp mat4 u_projection;
@@ -33,7 +33,7 @@ void main(void)
 		ivec4 idx = ivec4(a_bone);
 		mat4 bone4[4];
 		vec4 bonepos[4];
-		float wght[4];
+		lowp float wght[4];
 
 		bonepos[0] = u_bonepos[idx.x];
 		bonepos[1] = u_bonepos[idx.y];
@@ -48,7 +48,7 @@ void main(void)
 		bone4[0] = u_bone[idx.x];
 		bone4[1] = u_bone[idx.y];
 		bone4[2] = u_bone[idx.z];
-		bone4[3] = u_bone[idx.w];
+		bone4[3] = u_bone[idx.x];
 
 		n = vec3(0.0);
 		t = vec3(0.0);
@@ -60,11 +60,8 @@ void main(void)
 			vw += (bone4[i] * vec4(a_vert - vec3(bonepos[i]), 1.0)) * wght[i];
 		}
 	}
-
 	mat3 m3camera = mat3(u_camera);
-	//vec3 pos = normalize(m3camera * vec3(vw));
 	vw = u_camera * vw;
-	vec3 pos = normalize(vec3(vw));
 
 	vw.x += u_offset.x * vw.w;
 	vw.y += u_offset.y * vw.w;
@@ -87,11 +84,11 @@ void main(void)
 	t = m3camera * t;
 	b = cross(n, t);
 
-	v_viewvec.x = dot(t, -pos);
-	v_viewvec.y = dot(b, -pos);
-	v_viewvec.z = dot(n, -pos);
+	v_viewvec.x = dot(t, -normalize(vec3(v_pos)));
+	v_viewvec.y = dot(b, -normalize(vec3(v_pos)));
+	v_viewvec.z = dot(n, -normalize(vec3(v_pos)));
 	v_viewvec = normalize(v_viewvec);
-	v_view = -pos;
+	v_view = -v_pos;
 	v_color = a_rgba;
 	v_norm = n;
 	v_uv = vec3(a_uv.x/vw.w, a_uv.y/vw.w, 1.0/vw.w);

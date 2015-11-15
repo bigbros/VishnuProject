@@ -56,6 +56,7 @@ CVSNTest2D::init(CVSNScriptArgs& args)
 	m_ctrl = new C2DNullObj();
 	m_ctrl->connectParent(root);
 	m_ctrl->setVisible(true);
+	m_ctrl->setPosition(C2DVec(-(float)(*kvParam)["x"], -(float)(*kvParam)["y"]));
 
 	for (int i = 0; i < 5; i++) {
 		m_sprite[i] = new C2DSprite();
@@ -92,7 +93,7 @@ CVSNTest2D::update(int deltaT)
 	float rot = (float)m_rot_deg * F_PI / 180.0f;
 	m_ctrl->setRotation(rot);
 
-	int wide = (m_width < m_height) ? m_width : m_height;
+//	int wide = (m_width < m_height) ? m_width : m_height;
 
 	CVSNTouchPanel& tpanel = CVSNTouchPanel::getInstance();
 	tpanel.seekTop();
