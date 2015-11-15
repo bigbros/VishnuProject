@@ -29,57 +29,38 @@ void main(void)
 	highp vec4 vw;
 	highp vec3 n;
 	highp vec3 t;
-	ivec4 idx = ivec4(a_bone);
+	{
+		ivec4 idx = ivec4(a_bone);
+		mat4 bone4[4];
+		vec4 bonepos[4];
+		float wght[4];
 	
-	mat4 bone4[4];
-	vec4 bonepos[4];
-	float wght[4];
+		bone4[0] = u_bone[idx.x];
+		bone4[1] = u_bone[idx.y];
+		bone4[2] = u_bone[idx.z];
+		bone4[3] = u_bone[idx.w];
 	
-	bone4[0] = u_bone[idx.x];
-	bone4[1] = u_bone[idx.y];
-	bone4[2] = u_bone[idx.z];
-	bone4[3] = u_bone[idx.w];
-	
-	bonepos[0] = u_bonepos[idx.x];
-	bonepos[1] = u_bonepos[idx.y];
-	bonepos[2] = u_bonepos[idx.z];
-	bonepos[3] = u_bonepos[idx.w];
+		bonepos[0] = u_bonepos[idx.x];
+		bonepos[1] = u_bonepos[idx.y];
+		bonepos[2] = u_bonepos[idx.z];
+		bonepos[3] = u_bonepos[idx.w];
 
-	wght[0] = a_wght.x;
-	wght[1] = a_wght.y;
-	wght[2] = a_wght.z;
-	wght[3] = a_wght.w;
+		wght[0] = a_wght.x;
+		wght[1] = a_wght.y;
+		wght[2] = a_wght.z;
+		wght[3] = a_wght.w;
 	
-	n = vec3(0.0);
-	t = vec3(0.0);
-	vw = vec4(0.0);
-	for(int i = 0; i < 4; i++) {
-		mat3 bone = mat3(bone4[i]);
-		n += (bone * a_norm) * wght[i];
-		t += (bone * a_tang) * wght[i];
-		vw += (bone4[i] * vec4(a_vert - vec3(bonepos[i]), 1.0)) * wght[i];
+		n = vec3(0.0);
+		t = vec3(0.0);
+		vw = vec4(0.0);
+		for(int i = 0; i < 4; i++) {
+			mat3 bone = mat3(bone4[i]);
+			n += (bone * a_norm) * wght[i];
+			t += (bone * a_tang) * wght[i];
+			vw += (bone4[i] * vec4(a_vert - vec3(bonepos[i]), 1.0)) * wght[i];
+		}
 	}
-/*
-	bone[0] = mat3(u_bone[idx.x]);
-	bone[1] = mat3(u_bone[idx.y]);
-	bone[2] = mat3(u_bone[idx.z]);
-	bone[3] = mat3(u_bone[idx.w]);
-	
-	n =  (bone[0] * a_norm) * a_wght.x;
-	n += (bone[1] * a_norm) * a_wght.y;
-	n += (bone[2] * a_norm) * a_wght.z;
-	n += (bone[3] * a_norm) * a_wght.w;
 
-	t =  (bone[0] * a_tang) * a_wght.x;
-	t += (bone[1] * a_tang) * a_wght.y;
-	t += (bone[2] * a_tang) * a_wght.z;
-	t += (bone[3] * a_tang) * a_wght.w;
-	
-	vw =  (u_bone[idx.x] * vec4(a_vert - vec3(u_bonepos[idx.x]), 1.0)) * a_wght.x;
-	vw += (u_bone[idx.y] * vec4(a_vert - vec3(u_bonepos[idx.y]), 1.0)) * a_wght.y;
-	vw += (u_bone[idx.z] * vec4(a_vert - vec3(u_bonepos[idx.z]), 1.0)) * a_wght.z;
-	vw += (u_bone[idx.w] * vec4(a_vert - vec3(u_bonepos[idx.w]), 1.0)) * a_wght.w;
-*/
 	mat3 m3camera = mat3(u_camera);
 	//vec3 pos = normalize(m3camera * vec3(vw));
 	vw = u_camera * vw;
