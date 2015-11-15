@@ -13,8 +13,8 @@
 
 
 CVSNGameEnvironment::CVSNGameEnvironment(void * pHeapBuffer, size_t sizeHeap, int width, int height)
-: m_sizeHeap(sizeHeap)
-, m_pHeapBuffer(pHeapBuffer)
+: m_pHeapBuffer(pHeapBuffer)
+, m_sizeHeap(sizeHeap)
 , m_scriptSystem(0)
 , m_firstScript(0)
 , m_pathShaders(0)
