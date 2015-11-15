@@ -55,7 +55,7 @@ CVSNGameEnvironment::initSystemTask()
 		CGLAlloc::setAllocator(vsnMemAlloc, vsnMemFree);
 
 		result = result && (m_pointingDevice = new CVSNPointingDevice())->init();
-//		result = result && initDraw3D();
+		result = result && initDraw3D();
 		result = result && initDraw2D();
 		result = result && (m_script = new CVSNScriptDriver(m_scriptSystem, m_firstScript));
 
