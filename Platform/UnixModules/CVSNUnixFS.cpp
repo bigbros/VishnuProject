@@ -65,8 +65,8 @@ CVSNUnixFS::loadFile(const char * path, size_t margine, size_t * size)
 			return 0;
 		}
 		read_size += status;
-	} while ((read_size < file_size) && (status > 0));
-	int err = errno;
+	} while (((size_t)read_size < file_size) && (status > 0));
+	//int err = errno;
 	close(fd);
 	*size = read_size + margine;
 	return buf;

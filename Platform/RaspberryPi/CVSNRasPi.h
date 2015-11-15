@@ -9,7 +9,7 @@
 class CVSNRasPi
 {
 	enum {
-		VISHNU_MEMORY = 16
+		VISHNU_MEMORY = 8
 	};
 public:
 	CVSNRasPi(const char * path, int width, int height, int is_vr);
