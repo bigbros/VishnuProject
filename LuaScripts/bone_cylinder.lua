@@ -4,11 +4,11 @@ function Init()
 	vsnUtil("3d_light_col", {r=1,g=1,b=1})				-- light col
 	vsnUtil("3d_ambient", {r=0.08,g=0.08,b=0.08})		-- ambient col
 
---	celestialSphere = vsnTaskCreate("sysSkyDome", "LuaScripts/SkyDome.png", 340.0)
+	celestialSphere = vsnTaskCreate("sysSkyDome", "LuaScripts/SkyDome.png", 340.0)
 
 	local skinning = false
 	local camerarot = false
---[[
+
 	camera = vsnTaskCreate("camera",
 							{angle=math.pi/2, near=0.05, far=350.0},
 							{x=0, y=0, z=10.0}, camerarot)			-- camera position
@@ -21,6 +21,7 @@ function Init()
 
 	local model = makeBoneCylinder(0.2, 1.44, 12, 24)
 	task1 = vsnTaskCreate("test2", {x=0, y=0, z=0}, model, skinning)
+--[[
 	task2 = vsnTaskCreate("test2", {x=0.3, y=-1.5, z=0}, model, skinning)
 	task3 = vsnTaskCreate("test2", {x=-0.3, y=-1.5, z=0}, model, skinning)
 	task4 = vsnTaskCreate("test2", {x=0.5, y=0, z=0}, model, skinning)
@@ -28,10 +29,11 @@ function Init()
 ]]
 	hand = nil
 	model = nil
-	
+--[[	
 	sprite = vsnTaskCreate("test2d",
 					{x=-300, y=-150, width=200, height=100, r=1, g=1, b=1, a=1.0},
 					{"LuaScripts/test.png", "LuaScripts/mars.png"}, true)
+]]
 	return true;
 end
 

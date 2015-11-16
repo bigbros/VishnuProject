@@ -5,18 +5,15 @@
 C3DObj::OBJLIST::OBJLIST() : begin(0), end(0) {}
 C3DObj::OBJLINK::OBJLINK() : prev(0), next(0) {}
 
-C3DObj::C3DObj(int matnum)
+C3DObj::C3DObj()
 	: CGLBase()
 	, m_parent(0)
 	, m_parent_matidx(0)
 	, m_visible(false)
 	, m_recalc(true)
-	, m_matrices(0)
-	, m_matnum(0)
 	, m_position()
 	, m_rotation()
 {
-	makeMatrices(matnum);
 }
 
 C3DObj::~C3DObj()
@@ -30,19 +27,8 @@ C3DObj::~C3DObj()
 	}
 	// 親から切断
 	removeByParent();
-
-	// マトリクス領域の破棄
-	delete[] m_matrices;
 }
 
-
-void
-C3DObj::makeMatrices(int matnum)
-{
-	if (m_matrices) delete[] m_matrices;
-	m_matrices = (matnum) ? new C3DMat[matnum] : 0;
-	m_matnum = matnum;
-}
 
 void
 C3DObj::removeByParent()
@@ -86,7 +72,7 @@ C3DObj::connectParent(C3DObj * parent, int matidx)
 }
 
 void
-C3DObj::recalcMatrix(C3DMat * m, bool upper_recalc)
+C3DObj::recalcMatrix(C3DMat& m, bool upper_recalc)
 {
 	// そもそも表示されていなければ、以下の再計算は不要。
 	if (!m_visible) return;
@@ -96,16 +82,16 @@ C3DObj::recalcMatrix(C3DMat * m, bool upper_recalc)
 
 	if (recalc) {
 		// 先頭のマトリクスだけは確実に計算する。
-		m_matrices[0] = m_rotation;
-		m_matrices[0] += m_position;			// ローカルマトリクスになる
-		m_matrices[0] *= m[m_parent_matidx];	// 貰った親のマトリクスをかけるとワールドマトリクスになる
+		m_matrix = m_rotation;
+		m_matrix += m_position;			// ローカルマトリクスになる
+		m_matrix *= m;	// 貰った親のマトリクスをかけるとワールドマトリクスになる
 		m_recalc = false;	// 再度変更されるまでは再計算不要(親が動けば別)
 	}
 
-	// 先頭以外のマトリクスは自分で計算させる。
+	// 回転情報などを計算させる。
 	calcProcedure(recalc);
 
 	for (C3DObj * child = m_childs.begin; child; child = child->m_sisters.next) {
-		child->recalcMatrix(m_matrices, recalc);
+		child->recalcMatrix(m_matrix, recalc);
 	}
 }

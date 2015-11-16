@@ -20,7 +20,7 @@ private:
 	C3DDrawable	*	m_drawable;
 	DRAWLINK		m_drawlink;
 public:
-	C3DDrawObj(int matnum = 1);
+	C3DDrawObj();
 	virtual ~C3DDrawObj();
 
 	void useDrawable(C3DDrawable * drawable);

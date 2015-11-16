@@ -22,7 +22,7 @@ bool
 C3DCameraObj::calcProcedure(bool is_recalc)
 {
 	if (m_isActive && is_recalc) {
-		m_cameraInvert = m_matrices->invert();
+		m_cameraInvert = m_matrix.invert();
 	}
 	return true;
 }

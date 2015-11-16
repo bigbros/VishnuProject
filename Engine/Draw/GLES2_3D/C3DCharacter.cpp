@@ -3,17 +3,19 @@
 #include "C3DCharacter.h"
 
 C3DCharacter::C3DCharacter(C3DModel * model)
-	: C3DDrawObj(0)
+	: C3DDrawObj()
 	, m_motion(0)
 	, m_color(1.0f, 1.0f, 1.0f, 1.0f)
 {
 	try {
 		useDrawable(model);
 		int bonenum = model->getBoneSize();
+		m_bonenum = bonenum;
 		m_motion = new C3DQuat[bonenum];
+		m_bonerot = new C3DQuat[bonenum];
+		m_bonepos = new VEC3[bonenum];
 		m_recalcmotion = (u8 *)CGLAlloc::malloc(bonenum);
 		for (int i = 0; i < bonenum; i++) m_recalcmotion[i] = 1;	// 最初の一回はすべて計算が必要
-		makeMatrices(bonenum);
 	}
 	catch (std::bad_alloc& ex) {
 		delete[] m_motion;
@@ -24,6 +26,8 @@ C3DCharacter::C3DCharacter(C3DModel * model)
 
 C3DCharacter::~C3DCharacter()
 {
+	delete[] m_bonepos;
+	delete[] m_bonerot;
 	delete[] m_motion;
 	CGLAlloc::free(m_recalcmotion);
 }
@@ -38,18 +42,35 @@ C3DCharacter::calcProcedure(bool recalc)
 	// モーションを適用し、各関節のマトリクスを生成
 	C3DModel * model = getDrawable<C3DModel>();
 	if (!model) return true;
-	m_recalcmotion[0] = (recalc) ? 2 : 0;
+	if (m_recalcmotion[0] & 1) {
+		m_bonerot[0] = m_motion[0];
+		m_bonepos[0].x = 0.0f;
+		m_bonepos[0].y = 0.0f;
+		m_bonepos[0].z = 0.0f;
+		m_recalcmotion[0] = 2;
+	}
 	u32 flag = 1;
-	for (int i = 1; i < m_matnum; i++) {
+	for (int i = 1; i < m_bonenum; i++) {
 		flag = flag << 1;
 		int pidx = model->m_boneparent[i];
 		m_recalcmotion[i] &= 1;
 		if (1 & (m_recalcmotion[i] | (m_recalcmotion[pidx] >> 1))) {	// 再計算が必要であれば処理する
-			C3DMat * parent = m_matrices + pidx;
+
+			C3DQuat * parent = m_bonerot + pidx;
 			C3DVec bpos = model->m_bones[i] - model->m_bones[pidx];
-			m_matrices[i] = m_motion[i];
-			m_matrices[i] += bpos;	// 親boneに対する相対位置に並行移動する
-			m_matrices[i] *= *parent;
+
+			// 関節原点に親グローバル回転をかけ、親グローバル位置を加算する。
+			bpos.z = 0.0f;
+			C3DQuat r = parent->conj();
+			bpos = r * bpos;
+			bpos = bpos * (*parent);
+			m_bonepos[i].x = bpos.x + m_bonepos[pidx].x;
+			m_bonepos[i].y = bpos.y + m_bonepos[pidx].y;
+			m_bonepos[i].z = bpos.z + m_bonepos[pidx].z;
+
+			// ローカル回転に親グローバル回転をかける。
+			m_bonerot[i] = m_motion[i] * (*parent);
+
 			m_recalcmotion[i] = 2;	// 再計算したので、以下自身を親とするボーンは再計算が必要。
 			m_flagUpdate |= flag;	// 再計算したので記録する
 		}
@@ -74,7 +95,7 @@ C3DCharacter::calcProcedure(bool recalc)
 void
 C3DCharacter::setBoneRotation(int bone, C3DQuat& rot)
 {
-	if (bone >= m_matnum) return;
+	if (bone >= m_bonenum) return;
 	m_motion[bone] = rot;
 	m_recalcmotion[bone] = 1;
 	m_ismotion = true;
@@ -88,8 +109,11 @@ C3DCharacter::render(C3DShader * pShader)
 	// 描画の際、全体の頂点色にかけるRGBA値を転送する
 	glUniform4fv(shader->m_u_modelcol, 1, (GLfloat *)&m_color);
 
-	// 描画の際に用いる関節のマトリクスを転送する(描画オブジェクトごとに値を転送する)
-	glUniformMatrix4fv(shader->m_u_bone, m_matnum, GL_FALSE, (const GLfloat *)m_matrices);	// ボーンのワールドマトリクス
+	// 描画の際に用いる関節のパラメータを転送する(描画オブジェクトごとに値を転送する)
+	glUniform4fv(shader->m_u_bone, m_bonenum, (const GLfloat *)m_bonerot);
+	glUniform3fv(shader->m_u_bonepos, m_bonenum, (const GLfloat *)m_bonepos);
+	glUniformMatrix4fv(shader->m_u_matrix, 1, GL_FALSE, (const GLfloat *)&m_matrix);
+
 
 	// 転送済みの頂点とインデックス、およびマトリクス、ボーン位置情報で描画する。
 	model->draw(shader);

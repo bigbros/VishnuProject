@@ -9,7 +9,18 @@
 class C3DCharacter : public C3DDrawObj
 {
 protected:
+	struct VEC3 {
+		float	x;
+		float	y;
+		float	z;
+	};
+
+	int				m_bonenum;		// 関節の数
 	C3DQuat		*	m_motion;		// 現在の各関節の親に対する回転
+
+	C3DQuat		*	m_bonerot;		// 各関節のグローバル回転(uniform)
+	VEC3		*	m_bonepos;		// モーション後の関節原点位置(uniform)
+
 	u8			*	m_recalcmotion;	// 各関節を再計算すべきか否かのフラグ
 	u32				m_flagUpdate;	// 更新されたマトリクスをフラグで表す(shaderの都合上1オブジェクトあたりmatrixは最大32個)
 
@@ -30,6 +41,8 @@ public:
 	}
 
 	void render(C3DShader * pShader);
+private:
+	void makeBones(int bonenum);
 };
 
 

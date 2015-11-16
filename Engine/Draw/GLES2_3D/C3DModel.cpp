@@ -142,7 +142,7 @@ C3DModel::setup(C3DShader * pShader)
 	// インデックスバッファを有効にする
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_idxIndex);
 
-	glUniform4fv(shader->m_u_bonepos, m_bonenum, (const GLfloat *)m_bones);	// モーションを与えない状態でのボーン起点
+	glUniform4fv(shader->m_u_boneorg, m_bonenum, (const GLfloat *)m_bones);	// モーションを与えない状態でのボーン起点
 
 	// ここまでの処理は、同じモデルを用いるすべてのオブジェクト描画直前に1回だけやれば良い。
 }

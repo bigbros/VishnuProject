@@ -48,8 +48,11 @@ C3DDefaultShader::setShaderParams(GLuint program)
 	m_u_offset = glGetUniformLocation(program, "u_offset");
 	m_u_camera = glGetUniformLocation(program, "u_camera");
 	m_u_projection = glGetUniformLocation(program, "u_projection");
+
 	m_u_bone = glGetUniformLocation(program, "u_bone");
 	m_u_bonepos = glGetUniformLocation(program, "u_bonepos");
+	m_u_boneorg = glGetUniformLocation(program, "u_boneorg");
+	m_u_matrix = glGetUniformLocation(program, "u_matrix");
 
 	m_u_maptexture = glGetUniformLocation(program, "u_maptexture");
 	m_u_mapnormal = glGetUniformLocation(program, "u_mapnormal");

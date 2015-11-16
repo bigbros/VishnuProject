@@ -65,7 +65,7 @@ struct C3DVec
 	const C3DVec& slerp(const C3DVec& q, const C3DVec& r, float rate) throw();
 	const C3DVec slerp(const C3DVec& q, float rate) throw();
 
-	inline const C3DVec conj(const C3DVec& v) throw() { return C3DVec(-x, -y, -z, w); }
+	inline const C3DVec conj() throw() { return C3DVec(-x, -y, -z, w); }
 	inline const C3DVec operator *(const C3DVec& q) throw() {
 		C3DVec ans;
 		ans.w = w*q.w - x*q.x - y*q.y - z*q.z;

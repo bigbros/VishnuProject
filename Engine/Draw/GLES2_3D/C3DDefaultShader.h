@@ -17,6 +17,8 @@ public:
 	GLint				m_u_projection;
 	GLint				m_u_bone;
 	GLint				m_u_bonepos;
+	GLint				m_u_boneorg;
+	GLint				m_u_matrix;
 
 	// textures
 	GLint				m_u_maptexture;

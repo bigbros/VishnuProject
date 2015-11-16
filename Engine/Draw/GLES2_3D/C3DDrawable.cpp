@@ -2,8 +2,8 @@
 
 C3DDrawObj::DRAWLINK::DRAWLINK() : prev(0), next(0) {}
 
-C3DDrawObj::C3DDrawObj(int matnum)
-	: C3DObj(matnum)
+C3DDrawObj::C3DDrawObj()
+	: C3DObj()
 	, m_drawable(0)
 	, m_drawlink()
 {

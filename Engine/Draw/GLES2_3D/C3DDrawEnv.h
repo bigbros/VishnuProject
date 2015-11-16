@@ -89,7 +89,7 @@ public:
 
 	inline C3DObj * getRootObj() { return m_objRoot; }
 
-	inline void CalcWorld() { m_objRoot->recalcMatrix(&m_rootMatrix, false); }
+	inline void CalcWorld() { m_objRoot->recalcMatrix(m_rootMatrix, false); }
 
 	// デフォルトシェーダの設定とRootObjectの生成
 	bool init(CGLFBO * fbo);

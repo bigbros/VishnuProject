@@ -29,15 +29,15 @@ private:
 	bool		m_recalc;	// 移動/回転したのでmatrixの再計算が必要
 
 protected:
-	C3DMat	*	m_matrices;	// 位置/回転をあらわす matrix(一つ以上)
-	int			m_matnum;	// オブジェクトに含まれるマトリクスの数
+
+	C3DMat		m_matrix;	// 位置/回転をあらわす matrix(一つ以上)
 
 	C3DVec		m_position;	// ローカル位置
 	C3DQuat		m_rotation;	// ローカル回転
 
 
 public:
-	C3DObj(int matnum = 1);
+	C3DObj();
 	virtual ~C3DObj();
 
 	inline void setVisible(bool visible) throw() {
@@ -58,12 +58,9 @@ public:
 
 protected:
 
-	// 指定された個数のマトリクスを作る
-	void makeMatrices(int num);
-
 	// このオブジェクト以下に対し、
 	// 指定されたマトリクスを上位マトリクスとして再計算を行う。
-	void recalcMatrix(C3DMat * m, bool upper_recalc = false);
+	void recalcMatrix(C3DMat& m, bool upper_recalc = false);
 
 	// このオブジェクトのマトリクス計算後に行う処理を記述
 	virtual bool calcProcedure(bool is_recalc) = 0;
