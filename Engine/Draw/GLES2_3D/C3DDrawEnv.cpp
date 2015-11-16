@@ -130,6 +130,12 @@ C3DDrawEnv::Render()
 		glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+		LOG("err-2.1\n");
+		while (errcode = glGetError()) {
+			if (errcode == GL_INVALID_OPERATION) LOG("GL_INVALID_OPERATION in C3DMaterial::setTexture().\n");
+		}
+
+
 		// ここから通常オブジェクトの描画
 		for (int i = 0; i < C3DShader::DP_MAX; i++) {
 			for (C3DShader * pShader = m_shaders[i].begin; pShader; pShader = pShader->m_sisters.next) {
@@ -141,6 +147,12 @@ C3DDrawEnv::Render()
 				pShader->after();
 			}
 		}
+		LOG("err-2.2\n");
+		while (errcode = glGetError()) {
+			if (errcode == GL_INVALID_OPERATION) LOG("GL_INVALID_OPERATION in C3DMaterial::setTexture().\n");
+		}
+
+
 	}
 	LOG("err-3\n");
 	while (errcode = glGetError()) {
