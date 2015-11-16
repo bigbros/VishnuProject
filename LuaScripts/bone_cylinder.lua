@@ -4,7 +4,7 @@ function Init()
 	vsnUtil("3d_light_col", {r=1,g=1,b=1})				-- light col
 	vsnUtil("3d_ambient", {r=0.08,g=0.08,b=0.08})		-- ambient col
 
---	celestialSphere = vsnTaskCreate("sysSkyDome", "LuaScripts/SkyDome.png", 340.0)
+	celestialSphere = vsnTaskCreate("sysSkyDome", "LuaScripts/SkyDome.png", 340.0)
 
 	local skinning = false
 	local camerarot = false
@@ -21,6 +21,7 @@ function Init()
 --[[
 	local model = makeBoneCylinder(0.2, 1.44, 12, 24)
 	task1 = vsnTaskCreate("test2", {x=0, y=0, z=0}, model, skinning)
+
 	task2 = vsnTaskCreate("test2", {x=0.3, y=-1.5, z=0}, model, skinning)
 	task3 = vsnTaskCreate("test2", {x=-0.3, y=-1.5, z=0}, model, skinning)
 	task4 = vsnTaskCreate("test2", {x=0.5, y=0, z=0}, model, skinning)
