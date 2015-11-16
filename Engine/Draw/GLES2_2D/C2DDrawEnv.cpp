@@ -135,6 +135,6 @@ C2DDrawEnv::Render()
 	while (errcode = glGetError()) {
 		if (errcode == GL_INVALID_OPERATION) LOG("GL_INVALID_OPERATION in C3DMaterial::setTexture().\n");
 	}
-	LOG("--------------\n")
+	LOG("--------------\n");
 
 }
