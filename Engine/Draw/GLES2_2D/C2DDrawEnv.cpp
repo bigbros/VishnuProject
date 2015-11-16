@@ -87,16 +87,42 @@ C2DDrawEnv::getTexOT(CGLTex * pTex)
 void
 C2DDrawEnv::Render()
 {
+	GLenum errcode;
+	LOG("err-1\n");
+	while (errcode = glGetError()) {
+		if (errcode == GL_INVALID_OPERATION) LOG("GL_INVALID_OPERATION in C3DMaterial::setTexture().\n");
+	}
+
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	glEnable(GL_BLEND);
+
+	LOG("err-2\n");
+	while (errcode = glGetError()) {
+		if (errcode == GL_INVALID_OPERATION) LOG("GL_INVALID_OPERATION in C3DMaterial::setTexture().\n");
+	}
 
 	// zバッファを無効にする
 	glDisable(GL_DEPTH_TEST);
 
+	LOG("err-3\n");
+	while (errcode = glGetError()) {
+		if (errcode == GL_INVALID_OPERATION) LOG("GL_INVALID_OPERATION in C3DMaterial::setTexture().\n");
+	}
+
 	// デフォルトシェーダを使用
 	m_shader->useProgram();
 
+	LOG("err-4\n");
+	while (errcode = glGetError()) {
+		if (errcode == GL_INVALID_OPERATION) LOG("GL_INVALID_OPERATION in C3DMaterial::setTexture().\n");
+	}
+
 	glUniformMatrix4fv(m_shader->m_u_projection, 1, GL_FALSE, (const GLfloat *)&m_projection);
+	LOG("err-5\n");
+	while (errcode = glGetError()) {
+		if (errcode == GL_INVALID_OPERATION) LOG("GL_INVALID_OPERATION in C3DMaterial::setTexture().\n");
+	}
+
 
 	// この条件で各オブジェクトの描画を開始する。
 	// 描画対象は各プライオリティごと、C2DTexOT単位で処理する。
@@ -105,4 +131,10 @@ C2DDrawEnv::Render()
 	for (int i = 0; i < C2DTexOT::C2D_MAX_PRIORITY; i++) {
 		for (C2DTexOT * pOT = m_texlist.begin; pOT; pOT = pOT->m_chain.next) pOT->render(m_drawQueue, i);
 	}
+	LOG("err-6\n");
+	while (errcode = glGetError()) {
+		if (errcode == GL_INVALID_OPERATION) LOG("GL_INVALID_OPERATION in C3DMaterial::setTexture().\n");
+	}
+	LOG("--------------\n")
+
 }

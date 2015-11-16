@@ -34,11 +34,6 @@ C3DMaterial::setTexture(int mask, CGLTex * tex, GLenum target, int num, GLint sh
 void
 C3DMaterial::setup(C3DDefaultShader * shader)
 {
-	GLenum errcode;
-	while (errcode = glGetError()) {
-		if (errcode == GL_INVALID_OPERATION) LOG("GL_INVALID_OPERATION in C3DMaterial::setTexture().\n");
-	}
-
 	setTexture(TEXTURE, m_texture, GL_TEXTURE0, 0, shader->m_u_maptexture, shader->m_u_f_texmap);
 	setTexture(NORMAL, m_normal,	GL_TEXTURE1, 1, shader->m_u_mapnormal, shader->m_u_f_normalmap);
 	setTexture(SPECULAR, m_specular, GL_TEXTURE2, 2, shader->m_u_mapspecular, shader->m_u_f_specularmap);
