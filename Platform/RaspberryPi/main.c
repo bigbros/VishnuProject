@@ -120,7 +120,8 @@ int main(int argc, char *argv[])
 		/* draw */
 		vsnUpdate(env);
 		eglSwapBuffers(sc.display, sc.surface);
-		if(++count > 600) break;
+printf("update\n");
+//		if(++count > 600) break;
 	}
 	printf("finish-1\n");
 	vsnDestroy(env);

@@ -15,6 +15,7 @@ CVSN3DVMDModel::CVSN3DVMDModel(C3DDefaultShader * shader, const char * modelName
 		strcpy(buf, path);
 		m_pathName = buf;
 		if (!loadModel(path)) throw std::bad_alloc();
+		LOG("MODEL Loaded.\n");	
 	}
 	catch (std::bad_alloc& ex) {
 		vsnMemFree((void *)m_pathName);

@@ -22,13 +22,13 @@ CRasPiEnv::initUserTask()
 {
 	return true;
 }
-
+/*
 bool
 CRasPiEnv::initDraw3D()
 {
 	return true;
 }
-
+*/
 
 CGLFBO *
 CRasPiEnv::createFBO()

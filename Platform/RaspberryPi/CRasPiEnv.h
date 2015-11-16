@@ -12,7 +12,7 @@ public:
 protected:
 	CVSNScript * createScriptSystem();
 	bool initUserTask();
-	bool initDraw3D();
+//	bool initDraw3D();
 	CGLFBO * createFBO();
 
 	bool	m_is_vr;
