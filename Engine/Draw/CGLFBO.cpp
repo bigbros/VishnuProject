@@ -122,10 +122,37 @@ CGLFBO::makeFrameBuffer()
 void
 CGLFBO::SwitchFBO(int lensId)
 {
+	GLenum errcode;
+
+	LOG("err-1\n");
+	while (errcode = glGetError()) {
+		if (errcode == GL_INVALID_OPERATION) LOG("GL_INVALID_OPERATION in C3DMaterial::setTexture().\n");
+	}
+
 	glBindTexture(GL_TEXTURE_2D, 0);
+	LOG("err-2\n");
+	while (errcode = glGetError()) {
+		if (errcode == GL_INVALID_OPERATION) LOG("GL_INVALID_OPERATION in C3DMaterial::setTexture().\n");
+	}
+
 	glEnable(GL_TEXTURE_2D);
+	LOG("err-3\n");
+	while (errcode = glGetError()) {
+		if (errcode == GL_INVALID_OPERATION) LOG("GL_INVALID_OPERATION in C3DMaterial::setTexture().\n");
+	}
+
 	glBindFramebuffer(GL_FRAMEBUFFER, m_fboIdx[lensId]);
+	LOG("err-4\n");
+	while (errcode = glGetError()) {
+		if (errcode == GL_INVALID_OPERATION) LOG("GL_INVALID_OPERATION in C3DMaterial::setTexture().\n");
+	}
+
 	glViewport(0, 0, m_width, m_height);
+	LOG("err-5\n");
+	while (errcode = glGetError()) {
+		if (errcode == GL_INVALID_OPERATION) LOG("GL_INVALID_OPERATION in C3DMaterial::setTexture().\n");
+	}
+
 }
 
 void
