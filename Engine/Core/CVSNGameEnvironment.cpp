@@ -214,7 +214,12 @@ CVSNGameEnvironment::initDraw3D()
 	static CVSN3DLightVecFunc lightvec;
 	static CVSN3DLightColFunc lightcol;
 	static CVSN3DAmbientFunc  ambient;
-	CGLFBO * fbo = createFBO();
+	CGLFBO * fbo = 0;
+#ifndef NO_FBO
+	fbo = createFBO();
+#else
+	fbo = new C3DGlobalFBO(m_pathShaders, m_width, m_height);
+#endif
 	return (m_draw3d = new CVSNDraw3D())->init(m_pathShaders, fbo);
 }
 

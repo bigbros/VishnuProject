@@ -114,6 +114,7 @@ C3DDrawEnv::Render()
 	int lens_num = m_fbo->getLensNum();
 
 	for (int lens = 0; lens < lens_num; lens++) {	// FBO‚ÌƒŒƒ“ƒY”‚¾‚¯ŒJ‚è•Ô‚·
+
 		m_fbo->SwitchFBO(lens);		// •`‰ææFBO‚ÌÝ’è
 
 		glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
@@ -130,12 +131,11 @@ C3DDrawEnv::Render()
 				pShader->after();
 			}
 		}
-
 	}
-
+#ifndef NO_FBO
 	glBindFramebuffer(GL_FRAMEBUFFER, 0);	// global FBO
 	m_fbo->renderGlobal();
-
+#endif
 }
 
 void

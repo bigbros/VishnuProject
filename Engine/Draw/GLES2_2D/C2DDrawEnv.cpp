@@ -87,12 +87,6 @@ C2DDrawEnv::getTexOT(CGLTex * pTex)
 void
 C2DDrawEnv::Render()
 {
-	GLenum errcode;
-	LOG("err-1\n");
-	while (errcode = glGetError()) {
-		if (errcode == GL_INVALID_OPERATION) LOG("GL_INVALID_OPERATION in C3DMaterial::setTexture().\n");
-	}
-
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	glEnable(GL_BLEND);
 
