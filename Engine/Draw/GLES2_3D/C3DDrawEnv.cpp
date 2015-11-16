@@ -124,8 +124,19 @@ C3DDrawEnv::Render()
 	// このフレームにおけるcamera->view->projection行列を一つにまとめたものをプロジェクション用に作る
 	C3DMat proj = (m_objCamera->m_view * m_fbo->getProjection());
 	int lens_num = m_fbo->getLensNum();
+
+	LOG("err-2.x\n");
+	while (errcode = glGetError()) {
+		if (errcode == GL_INVALID_OPERATION) LOG("GL_INVALID_OPERATION in C3DMaterial::setTexture().\n");
+	}
+
+
 	for (int lens = 0; lens < lens_num; lens++) {	// FBOのレンズ数だけ繰り返す
 		m_fbo->SwitchFBO(lens);		// 描画先FBOの設定
+		LOG("err-2.0\n");
+		while (errcode = glGetError()) {
+			if (errcode == GL_INVALID_OPERATION) LOG("GL_INVALID_OPERATION in C3DMaterial::setTexture().\n");
+		}
 
 		glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 		//glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
