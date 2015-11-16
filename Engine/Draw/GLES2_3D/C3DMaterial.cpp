@@ -30,6 +30,11 @@ C3DMaterial::setTexture(int mask, CGLTex * tex, GLenum target, int num, GLint sh
 	else {
 		glUniform1i(flagIdx, GL_FALSE);
 	}
+	GLenum errcode = glGetError();
+	if (errcode == GL_INVALID_OPERATION) {
+		LOG("GL_INVALID_OPERATION in C3DMaterial::setTexture().\n");
+	}
+
 }
 void
 C3DMaterial::setup(C3DDefaultShader * shader)
