@@ -10,16 +10,41 @@ C3DFBOShader::~C3DFBOShader() {}
 void
 C3DFBOShader::setShaderParams(GLuint program)
 {
+	GLenum errcode;
+
+	LOG("err-1\n");
+	while (errcode = glGetError()) {
+		if (errcode == GL_INVALID_OPERATION) LOG("GL_INVALID_OPERATION in C3DMaterial::setTexture().\n");
+	}
+
 	// shaderの各uniformに相当する値を取得しておく。
 	m_u_tex = glGetUniformLocation(program, "u_tex");
+
+	LOG("err-2\n");
+	while (errcode = glGetError()) {
+		if (errcode == GL_INVALID_OPERATION) LOG("GL_INVALID_OPERATION in C3DMaterial::setTexture().\n");
+	}
+
 
 	// shaderの各attribに相当する値を取得しておく。
 	m_a_vert = glGetAttribLocation(program, "a_vert");
 	m_a_uv = glGetAttribLocation(program, "a_uv");
 
+	LOG("err-3\n");
+	while (errcode = glGetError()) {
+		if (errcode == GL_INVALID_OPERATION) LOG("GL_INVALID_OPERATION in C3DMaterial::setTexture().\n");
+	}
+
+
 	// attribute を有効にする
 	glEnableVertexAttribArray(m_a_vert);
 	glEnableVertexAttribArray(m_a_uv);
+
+	LOG("err-4\n");
+	while (errcode = glGetError()) {
+		if (errcode == GL_INVALID_OPERATION) LOG("GL_INVALID_OPERATION in C3DMaterial::setTexture().\n");
+	}
+
 }
 
 C3DFBO::C3DFBO(const char * shaderPath, int width, int height)

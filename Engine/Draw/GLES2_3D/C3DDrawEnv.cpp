@@ -104,20 +104,8 @@ C3DDrawEnv::Clear()
 void
 C3DDrawEnv::Render()
 {
-	GLenum errcode;
-
-	LOG("err-1\n");
-	while (errcode = glGetError()) {
-		if (errcode == GL_INVALID_OPERATION) LOG("GL_INVALID_OPERATION in C3DMaterial::setTexture().\n");
-	}
-
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	glEnable(GL_BLEND);
-
-	LOG("err-2\n");
-	while (errcode = glGetError()) {
-		if (errcode == GL_INVALID_OPERATION) LOG("GL_INVALID_OPERATION in C3DMaterial::setTexture().\n");
-	}
 
 	if (!m_objCamera) return;
 
@@ -125,27 +113,11 @@ C3DDrawEnv::Render()
 	C3DMat proj = (m_objCamera->m_view * m_fbo->getProjection());
 	int lens_num = m_fbo->getLensNum();
 
-	LOG("err-2.x\n");
-	while (errcode = glGetError()) {
-		if (errcode == GL_INVALID_OPERATION) LOG("GL_INVALID_OPERATION in C3DMaterial::setTexture().\n");
-	}
-
-
 	for (int lens = 0; lens < lens_num; lens++) {	// FBOのレンズ数だけ繰り返す
 		m_fbo->SwitchFBO(lens);		// 描画先FBOの設定
-		LOG("err-2.0\n");
-		while (errcode = glGetError()) {
-			if (errcode == GL_INVALID_OPERATION) LOG("GL_INVALID_OPERATION in C3DMaterial::setTexture().\n");
-		}
 
 		glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
-		//glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-		LOG("err-2.1\n");
-		while (errcode = glGetError()) {
-			if (errcode == GL_INVALID_OPERATION) LOG("GL_INVALID_OPERATION in C3DMaterial::setTexture().\n");
-		}
-
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 		// ここから通常オブジェクトの描画
 		for (int i = 0; i < C3DShader::DP_MAX; i++) {
@@ -158,27 +130,11 @@ C3DDrawEnv::Render()
 				pShader->after();
 			}
 		}
-		LOG("err-2.2\n");
-		while (errcode = glGetError()) {
-			if (errcode == GL_INVALID_OPERATION) LOG("GL_INVALID_OPERATION in C3DMaterial::setTexture().\n");
-		}
-
 
 	}
-	LOG("err-3\n");
-	while (errcode = glGetError()) {
-		if (errcode == GL_INVALID_OPERATION) LOG("GL_INVALID_OPERATION in C3DMaterial::setTexture().\n");
-	}
-
 
 	glBindFramebuffer(GL_FRAMEBUFFER, 0);	// global FBO
 	m_fbo->renderGlobal();
-
-	LOG("err-4\n");
-	while (errcode = glGetError()) {
-		if (errcode == GL_INVALID_OPERATION) LOG("GL_INVALID_OPERATION in C3DMaterial::setTexture().\n");
-	}
-	LOG("---------------------\n");
 
 }
 
