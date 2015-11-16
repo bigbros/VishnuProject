@@ -128,7 +128,7 @@ C3DDrawEnv::Render()
 		m_fbo->SwitchFBO(lens);		// ï`âÊêÊFBOÇÃê›íË
 
 		glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
-		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+		//glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 		LOG("err-2.1\n");
 		while (errcode = glGetError()) {
