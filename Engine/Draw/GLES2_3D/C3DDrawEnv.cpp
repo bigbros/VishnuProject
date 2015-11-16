@@ -104,8 +104,20 @@ C3DDrawEnv::Clear()
 void
 C3DDrawEnv::Render()
 {
+	GLenum errcode;
+
+	LOG("err-1\n");
+	while (errcode = glGetError()) {
+		if (errcode == GL_INVALID_OPERATION) LOG("GL_INVALID_OPERATION in C3DMaterial::setTexture().\n");
+	}
+
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	glEnable(GL_BLEND);
+
+	LOG("err-2\n");
+	while (errcode = glGetError()) {
+		if (errcode == GL_INVALID_OPERATION) LOG("GL_INVALID_OPERATION in C3DMaterial::setTexture().\n");
+	}
 
 	if (!m_objCamera) return;
 
@@ -130,8 +142,21 @@ C3DDrawEnv::Render()
 			}
 		}
 	}
+	LOG("err-3\n");
+	while (errcode = glGetError()) {
+		if (errcode == GL_INVALID_OPERATION) LOG("GL_INVALID_OPERATION in C3DMaterial::setTexture().\n");
+	}
+
+
 	glBindFramebuffer(GL_FRAMEBUFFER, 0);	// global FBO
 	m_fbo->renderGlobal();
+
+	LOG("err-4\n");
+	while (errcode = glGetError()) {
+		if (errcode == GL_INVALID_OPERATION) LOG("GL_INVALID_OPERATION in C3DMaterial::setTexture().\n");
+	}
+	LOG("---------------------\n");
+
 }
 
 void
